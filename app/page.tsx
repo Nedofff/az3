@@ -1,8 +1,9 @@
+import FirstScreen from "@/components/HomePage/FirstScreen/FirstScreen";
 
 export default function HomePage() {
   return (
     <main>
-HomePage
+      <FirstScreen/>
     </main>
   )
 }
