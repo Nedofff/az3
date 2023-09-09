@@ -10,8 +10,8 @@ const config: Config = {
     extend: {
       colors: {
         'main-color': '#F5F5F5',
-        'sub-color':'#FFFFFF',
-        'accent-color' : '#232C61'
+        'sub-color' : '#232C61',
+        'accent-color':'#374699',
       }
     },
   },
