@@ -4,7 +4,7 @@ import {BsTelegram} from 'react-icons/bs'
 
 export default function Footer() {
   return (
-    <footer className="px-2 pt-16 pb-28 text-white w-screen h-full bg-[#242424] lg:px-20 ">
+    <footer className="px-2 pt-16 pb-28 text-white w-full bg-[#242424] lg:px-20 ">
       <div className="flex mx-auto text-sm justify-between sm:justify-center sm:text-base">
         <address className="not-italic px-2">
           <span className="text-base font-semibold block mb-2">Контакты</span>
