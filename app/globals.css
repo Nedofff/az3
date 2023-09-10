@@ -8,6 +8,6 @@
 .heading {
     @apply text-sub-color text-center uppercase font-bold text-5xl mb-4 after:block after:w-3/4 after:-translate-x-1/2 after:left-1/2 after:relative after:box-border after:border-t-[2px] after:border-sub-color after:mt-4;
 }
-.separate{
+.separator{
     @apply bg-main-color py-14 md:py-14;
 }
