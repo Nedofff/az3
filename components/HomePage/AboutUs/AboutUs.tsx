@@ -7,7 +7,7 @@ export default function AboutUs() {
   return (
     <div className="bg-main-color flex items-center flex-col pb-20 pt-10 md:flex-row md:justify-center md:items-start  md:py-20">
       <div className="w-full flex flex-col mb-5 px-5 md:w-1/3 md:mr-10 md:max-w-lg md:p-0">
-        <h2 className="text-sub-color text-center uppercase font-bold text-5xl mb-4 after:block after:w-3/4 after:-translate-x-1/2 after:left-1/2 after:relative after:box-border after:border-t-[2px] after:border-sub-color after:mt-4">О нас</h2>
+        <h2 className="heading">О нас</h2>
         <p className="mb-7 break-word hyphens-auto">
           Наша компания занимается аудиторскими услугами по всей России уже
           более 30 лет! Мы являемся членом саморегулируемой организации
