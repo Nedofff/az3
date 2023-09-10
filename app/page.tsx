@@ -1,6 +1,6 @@
 import AboutUs from "@/components/HomePage/AboutUs/AboutUs";
 import FirstScreen from "@/components/HomePage/FirstScreen/FirstScreen";
-import Services from "@/components/Services/Services";
+import Services from "@/components/HomePage/Services/Services";
 
 export default function HomePage() {
   return (
