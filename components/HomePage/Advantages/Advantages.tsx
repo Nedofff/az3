@@ -11,8 +11,8 @@ export default function Advantages() {
       <div className="flex mt-10 flex-col-reverse px-5 md:flex-row md:justify-center lg:w-3/4 lg:mx-auto">
         <Image
           src="/secondFace.png"
-          width={445}
-          height={593}
+          width={1000}
+          height={1000}
           alt="Человек, работающий"
           className="w-11/12 mt-16 self-center rounded-sm md:w-1/2 md:mt-0"
         ></Image>

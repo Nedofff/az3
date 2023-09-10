@@ -41,8 +41,8 @@ export default function AboutUs() {
       <figure className="w-full px-2 md:w-1/3 md:max-w-md sm:w-1/2 sm:px-0">
         <Image
           className="rounded-sm w-full"
-          width={540}
-          height={700}
+          width={1000}
+          height={1000}
           src={"/mainFace.png"}
           alt="Генерального директора  ООО «Аудиторской группы «Аземша и партнеры» Е.А Аземшы"
         />
