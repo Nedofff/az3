@@ -5,7 +5,7 @@ import { BsFillPeopleFill } from "react-icons/bs";
 
 export default function AboutUs() {
   return (
-    <div className="bg-main-color flex items-center flex-col pb-20 pt-10 md:flex-row md:justify-center md:items-start  md:py-20">
+    <div className="flex items-center flex-col md:flex-row md:justify-center md:items-start separate">
       <div className="w-full flex flex-col mb-5 px-5 md:w-1/3 md:mr-10 md:max-w-lg md:p-0">
         <h2 className="heading">О нас</h2>
         <p className="mb-7 break-word hyphens-auto">
