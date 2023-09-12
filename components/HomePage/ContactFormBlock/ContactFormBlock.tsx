@@ -10,7 +10,7 @@ export default function ContactFormBlock() {
     <section className='bg-sub-color text-white flex flex-col bg-[url("/bgPhoto.png")] bg-center bg-no-repeat bg-fixed bg-cover py-14 lg:py-28 lg:justify-center lg:flex-row lg:px-20'>
       <div className="mb-14 lg:ml-7 flex flex-col items-center lg:w-1/3 lg:items-start lg:px-0 lg:pr-20">
         <h2 className="text-3xl mb-4 font-bol">Свяжитесь с нами</h2>
-        <p className="opacity-70 w-96 mb-6 lg:w-full">
+        <p className="opacity-70 text-center max-w-lg mb-6 lg:w-full lg:text-start">
           Вы можете позвонить нам или написать письмо. Мы всегда рады пообщаться
           и ответить на интересующие вопросы.
         </p>
@@ -50,8 +50,7 @@ export default function ContactFormBlock() {
             <p className="inline text-[11px] opacity-70">
               Нажимая кнопку «Отправить», я даю свое согласие на обработку моих
               персональных данных, в соответствии с Федеральным законом от
-              27.07.2006 года №152-ФЗ «О персональных данных», на условиях и для
-              целей, определенных в Согласии на обработку персональных данных
+              27.07.2006 года №152-ФЗ «О персональных данных».
             </p>
           </label>
           <button className="bg-[#34BCF2] mt-10 duration-200 rounded-sm hover:bg-opacity-80 py-2 mx-10 sm:mx-0 sm:py-5">Отправить</button>
