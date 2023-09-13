@@ -15,6 +15,7 @@ const config: Config = {
         'main-color': '#F5F5F5',
         'sub-color' : '#232C61',
         'accent-color':'#374699',
+        'sub-accent-color': '#30D5C7'
       }
     },
   },
