@@ -1,6 +1,5 @@
 import React from "react";
-import {FaViber} from 'react-icons/fa'
-import {BsTelegram} from 'react-icons/bs'
+import Messengers from "../Messengers/Messengers";
 
 export default function Footer() {
   return (
@@ -22,11 +21,7 @@ export default function Footer() {
         <address className="not-italic px-2">
           <span className="text-base font-semibold block mb-2">Адрес</span>
           г. Красноярск, пр. Мира д.7г
-          <div className="flex mt-5 w-full sm:flex">
-          <a href="tg://resolve?domain=Kondraschov"><BsTelegram className='mr-3 duration-300 text-4xl hover:text-accent-color active:scale-90' title='Иконка Telegram'/></a>
-          {/* Вместо плюса используется %2B */}
-          <a href="viber://chat?number=%2B4957777777"><FaViber className='duration-300 bg-white w-9 rounded-full h-9 p-1.5 hover:bg-accent-color active:scale-90' color='#242424' title='Иконка Viber'/></a>
-          </div>
+          <Messengers className="mt-5 w-full"/>
         </address>
       </div>
     </footer>
