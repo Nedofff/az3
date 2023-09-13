@@ -22,7 +22,7 @@ export default function News() {
   ];
 
   return (
-    <section className="separator flex flex-col items-center">
+    <section id="News" className="separator flex flex-col items-center">
       <h2 className="heading">Новости</h2>
       <div className="flex justify-center mt-10">
         <div className="flex px-2 flex-col sm:px-10 md:px-0 md:flex-row lg:w-5/6 md:justify-center">

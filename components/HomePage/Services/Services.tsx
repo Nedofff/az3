@@ -5,7 +5,7 @@ export default function Services() {
   const services = [];
 //   inline break-words hyphens-auto
   return (
-    <section className="separator">
+    <section id="Services" className="separator">
       <h2 className="heading">Услуги</h2>
       <div className="flex flex-col items-center px-3 mt-12">
         <AService title="Аудит">

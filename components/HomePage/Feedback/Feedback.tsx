@@ -39,7 +39,7 @@ export default function Feedback() {
     bottom: '-2%'
 };
   return (
-    <section className="separator">
+    <section id='Feedback' className="separator pb-14">
       <h2 className="heading">Отзывы клиентов</h2>
       <div className="items-between hidden md:flex mt-10">
       {feedbacks.map((AFeedback) => (

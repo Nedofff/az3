@@ -6,7 +6,7 @@ import { FaAward, FaComments } from "react-icons/fa6";
 
 export default function Advantages() {
   return (
-    <section className="separator">
+    <section id='Advantages' className="separator">
       <h2 className="heading">ВЫбирайте нас</h2>
       <div className="flex mt-10 flex-col-reverse px-5 md:flex-row md:justify-center lg:w-3/4 lg:mx-auto">
         <Image
