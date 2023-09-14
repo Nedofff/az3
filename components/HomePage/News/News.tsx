@@ -26,12 +26,19 @@ export default function News() {
       src: "/news/3.jpg",
     },
   ];
+  let minHeight = news.reduce((a,b) => {
+    if (a.height < b.height) {
+      return a;
+    } else {
+      return b
+    }
+  }).height
 
   return (
     <section id="News" className="separator flex flex-col items-center">
       <h2 className="heading">Новости</h2>
       <div className="flex justify-center mt-10">
-        <div className="flex px-2 flex-col sm:px-10 md:px-0 md:flex-row lg:w-5/6 md:justify-center">
+        <div className="flex px-2 h-fit md:h-auto md:max-h-96 flex-col sm:px-10 md:px-0 md:flex-row lg:w-5/6 md:justify-center">
           {news.map(oneNews => (
             <ANewsItem
             key={oneNews.id}
