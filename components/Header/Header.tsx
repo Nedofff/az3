@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -43,7 +43,6 @@ export default function Header() {
       "#Feedback",
       "#ContactFormBlock",
     ];
-    // stylizeActiveAnchorLink
     const stylizeActiveAnchorLink = () => {
       let activeLink: string = "";
       for (const link of linksOnMainPage) {
@@ -79,24 +78,8 @@ export default function Header() {
     };
   }, [path, ]);
 
-  useEffect(() => {
-    const onClick = (e:any) => {
-      e.stopPropagation()
-      const header = document.querySelector('header')
-      if (!header?.contains(e.target as Node)) {
-        if (burgerIsActive) {
-        clickOnBurgerHandler()
-        }
-      }
-    }
-      document.addEventListener('click', onClick)
-      return () => document.removeEventListener('click', onClick);
-  }, [burgerIsActive])
- 
-
-  const clickOnBurgerHandler = () => {
+  const clickOnBurgerHandler = useCallback(() => {
     setBurgerIsActive(!burgerIsActive);
-    console.log(burgerIsActive)
     if (
       refCollapsed.current!.style.maxHeight !== "0px" &&
       !!refCollapsed.current!.style.maxHeight
@@ -109,7 +92,22 @@ export default function Header() {
       refCollapsed.current!.style.marginBottom = "2.5rem";
 
     }
-  };
+  }, [burgerIsActive])
+
+  useEffect(() => {
+    const onClick = (e:any) => {
+      e.stopPropagation()
+      const header = document.querySelector('header')
+      if (!header?.contains(e.target as Node)) {
+        if (burgerIsActive) {
+        clickOnBurgerHandler()
+        }
+      }
+    }
+      document.addEventListener('click', onClick)
+      return () => document.removeEventListener('click', onClick);
+  }, [burgerIsActive, clickOnBurgerHandler])
+  
   const styleLinkDesktop =
     "block py-6 h-[72px] whitespace-nowrap px-2 duration-300 hover:shadow-2xl hover:shadow-black active:text-sub-accent-color";
   const styleLinkMobile = "duration-300 pt-3 pb-2 active:text-sub-accent-color border-b-2 border-sub-color border-opacity-0 hover:border-opacity-100 hover:border-white hover:duration-300";
@@ -117,7 +115,7 @@ export default function Header() {
   return (
     <header className="fixed z-50 bg-sub-color bg-opacity-95 w-screen flex items-center">
       <div className="hidden lg:block w-full">
-        <nav className="max-w-7xl duration-150 font-medium mx-auto flex justify-between items-center">
+        <nav className="max-w-7xl duration-150 font-medium mx-auto flex justify-around items-center">
           <Link
             className="p-3 duration-300 hover:shadow-2xl hover:shadow-black"
             href="/"
@@ -205,13 +203,12 @@ export default function Header() {
           </div>
           <address className="flex items-center mr-8 not-italic">
             <a
-              // className="hover:text-sub-accent-color text-white duration-300"
               className={`${styleLinkDesktop} text-white`}
               href="tel:+7 (391) 214-93-60"
             >
               +7 (391) 214-93-60
             </a>
-            <Messengers className=""/>
+            <Messengers className="ml-1"/>
           </address>
         </nav>
       </div>
@@ -327,7 +324,6 @@ export default function Header() {
           </nav>
           <address className="flex flex-col items-end">
             <a
-              // className="hover:text-sub-accent-color text-white duration-300"
               className={`${styleLinkMobile} sm:whitespace-nowrap mb-5 text-white`}
               href="tel:+7 (391) 214-93-60"
             >
