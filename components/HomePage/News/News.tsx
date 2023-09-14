@@ -26,14 +26,6 @@ export default function News() {
       src: "/news/3.jpg",
     },
   ];
-  let minHeight = news.reduce((a,b) => {
-    if (a.height < b.height) {
-      return a;
-    } else {
-      return b
-    }
-  }).height
-
   return (
     <section id="News" className="separator flex flex-col items-center">
       <h2 className="heading">Новости</h2>
