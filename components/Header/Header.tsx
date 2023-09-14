@@ -113,7 +113,7 @@ export default function Header() {
   const styleLinkMobile = "duration-300 pt-3 pb-2 active:text-sub-accent-color border-b-2 border-sub-color border-opacity-0 hover:border-opacity-100 hover:border-white hover:duration-300";
 
   return (
-    <header className="fixed z-50 bg-sub-color bg-opacity-95 w-screen flex items-center">
+    <header className="fixed z-20 bg-sub-color bg-opacity-95 w-screen flex items-center">
       <div className="hidden lg:block w-full">
         <nav className="max-w-7xl duration-150 font-medium mx-auto flex justify-around items-center">
           <Link
@@ -212,7 +212,7 @@ export default function Header() {
           </address>
         </nav>
       </div>
-      <div className="z-20  w-5/6 mx-auto md:w-1/2 lg:hidden">
+      <div className="z-30  w-5/6 mx-auto md:w-1/2 lg:hidden">
         <div className="flex justify-between items-center">
           <Link
             className="py-3 block duration-300 hover:shadow-2xl hover:shadow-black"
