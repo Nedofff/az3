@@ -203,7 +203,7 @@ export default function Header() {
                   }
                 })}
           </div>
-          <address className="flex items-center mr-8">
+          <address className="flex items-center mr-8 not-italic">
             <a
               // className="hover:text-sub-accent-color text-white duration-300"
               className={`${styleLinkDesktop} text-white`}

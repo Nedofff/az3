@@ -7,17 +7,23 @@ export default function News() {
     {
       id: "1",
       title: "Изменения в законодательстве этой осенью",
-      src: "/news/1.png",
+      width: 564,
+      height: 564,
+      src: "/news/1.jpg",
     },
     {
       id: "2",
       title: "Минфин утвердил ФСБУ «Инвентаризация» (ФСБУ 28/2023)",
-      src: "/news/2.png",
+      width: 870,
+      height: 1280,
+      src: "/news/2.jpg",
     },
     {
       id: "3",
       title: "Изменения в выдаче справок о сальдо по ЕНС",
-      src: "/news/3.png",
+      width: 920,
+      height: 1280,
+      src: "/news/3.jpg",
     },
   ];
 
@@ -31,6 +37,8 @@ export default function News() {
             key={oneNews.id}
             id={oneNews.id}
             src={oneNews.src}
+            width={oneNews.width}
+          height={oneNews.height}
             title={oneNews.title}
             />
           ))}

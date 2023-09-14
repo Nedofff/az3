@@ -10,9 +10,9 @@ export default function Advantages() {
       <h2 className="heading">ВЫбирайте нас</h2>
       <div className="flex mt-10 flex-col-reverse px-5 md:flex-row md:justify-center lg:w-3/4 lg:mx-auto">
         <Image
-          src="/secondFace.png"
-          width={1000}
-          height={1000}
+          src="/secondFace.jpg"
+          width={853}
+          height={1280}
           alt="Человек, работающий"
           className="w-11/12 mt-16 self-center rounded-sm md:w-1/2 md:mt-0"
         ></Image>
