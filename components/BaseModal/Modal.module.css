@@ -1,0 +1,22 @@
+
+
+.close {
+    @apply flex items-center relative w-[20px] h-[20px] cursor-pointer rounded-full;
+  }
+
+
+.close > span,
+.close > span::after {
+    @apply block absolute w-full h-[2px] duration-500 bg-gray-400 hover:bg-black;
+}
+.close > span{
+    @apply rotate-45;
+}
+.close > span::after {
+    @apply content-[''] rotate-90
+  }
+
+  .close:hover > span,
+.close:hover > span::after {
+    @apply bg-black ;
+}
