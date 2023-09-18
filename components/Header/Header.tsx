@@ -25,27 +25,19 @@ export default function Header() {
     { href: "/info", label: "Раскрытие информации" },
   ];
   const allLinks = [
-    { href: "/#AboutUs", label: "О нас" },
-    { href: "/#Services", label: "Услуги" },
-    { href: "/#News", label: "Новости" },
-    { href: "/#Feedback", label: "Отзывы" },
-    { href: "/#ContactFormBlock", label: "Контакты" },
-    { href: "/team", label: "Команда" },
-    { href: "/info", label: "Раскрытие информации" },
+    ...scrollingNavItems.map((navItem) => ({
+      ...navItem,
+      href: `/${navItem.href}`,
+    })),
+    ...notScrollingNavItems,
   ];
 
   const path = usePathname();
   useEffect(() => {
-    const linksOnMainPage = [
-      "#AboutUs",
-      "#Services",
-      "#News",
-      "#Feedback",
-      "#ContactFormBlock",
-    ];
     const stylizeActiveAnchorLink = () => {
       let activeLink: string = "";
-      for (const link of linksOnMainPage) {
+      for (const navItem of scrollingNavItems) {
+        const link = navItem.href;
         if (
           document.querySelector(link)!.getBoundingClientRect().top -
             document.documentElement.clientHeight / 4 <=
@@ -67,7 +59,7 @@ export default function Header() {
     } else {
       setActiveLink(path);
     }
-    
+
     return () => {
       if (path === "/") {
         document.removeEventListener(
@@ -76,41 +68,38 @@ export default function Header() {
         );
       }
     };
-  }, [path, ]);
+  }, [path]);
 
   const clickOnBurgerHandler = useCallback(() => {
+    const colapsedStyle = refCollapsed.current!.style;
     setBurgerIsActive(!burgerIsActive);
-    if (
-      refCollapsed.current!.style.maxHeight !== "0px" &&
-      !!refCollapsed.current!.style.maxHeight
-    ) {
-      refCollapsed.current!.style.maxHeight = "0";
-      refCollapsed.current!.style.marginBottom = "0";
+    if (colapsedStyle.maxHeight !== "0px" && !!colapsedStyle.maxHeight) {
+      colapsedStyle.maxHeight = "0";
+      colapsedStyle.marginBottom = "0";
     } else {
-      refCollapsed.current!.style.maxHeight = 
-        refCollapsed.current!.scrollHeight + 12 + "px";
-      refCollapsed.current!.style.marginBottom = "2.5rem";
-
+      colapsedStyle.maxHeight = refCollapsed.current!.scrollHeight + 12 + "px";
+      colapsedStyle.marginBottom = "2.5rem";
     }
-  }, [burgerIsActive])
+  }, [burgerIsActive]);
 
   useEffect(() => {
-    const onClick = (e:any) => {
-      e.stopPropagation()
-      const header = document.querySelector('header')
+    const onClick = (e: any) => {
+      e.stopPropagation();
+      const header = document.querySelector("header");
       if (!header?.contains(e.target as Node)) {
         if (burgerIsActive) {
-        clickOnBurgerHandler()
+          clickOnBurgerHandler();
         }
       }
-    }
-      document.addEventListener('click', onClick)
-      return () => document.removeEventListener('click', onClick);
-  }, [burgerIsActive, clickOnBurgerHandler])
-  
+    };
+    document.addEventListener("click", onClick);
+    return () => document.removeEventListener("click", onClick);
+  }, [burgerIsActive, clickOnBurgerHandler]);
+
   const styleLinkDesktop =
     "block py-6 h-[72px] whitespace-nowrap px-2 duration-300 hover:shadow-2xl hover:shadow-black active:text-sub-accent-color";
-  const styleLinkMobile = "duration-300 pt-3 pb-2 active:text-sub-accent-color border-b-2 border-sub-color border-opacity-0 hover:border-opacity-100 hover:border-white hover:duration-300";
+  const styleLinkMobile =
+    "duration-300 pt-3 pb-2 active:text-sub-accent-color border-b-2 border-sub-color border-opacity-0 hover:border-opacity-100 hover:border-white hover:duration-300";
 
   return (
     <header className="fixed z-20 bg-sub-color bg-opacity-95 w-screen flex items-center">
@@ -276,7 +265,7 @@ export default function Header() {
                         className={`text-sub-accent-color ${styleLinkMobile}`}
                         key={link.label}
                         href={link.href}
-                      onClick={clickOnBurgerHandler}
+                        onClick={clickOnBurgerHandler}
                       >
                         {link.label}
                       </Link>
@@ -287,7 +276,7 @@ export default function Header() {
                         className={styleLinkMobile}
                         key={link.label}
                         href={link.href}
-                      onClick={clickOnBurgerHandler}
+                        onClick={clickOnBurgerHandler}
                       >
                         {link.label}
                       </Link>
@@ -301,8 +290,7 @@ export default function Header() {
                         className={`text-sub-accent-color ${styleLinkMobile}`}
                         key={link.label}
                         href={link.href}
-                      onClick={clickOnBurgerHandler}
-
+                        onClick={clickOnBurgerHandler}
                       >
                         {link.label}
                       </Link>
@@ -313,8 +301,7 @@ export default function Header() {
                         className={styleLinkMobile}
                         key={link.label}
                         href={link.href}
-                      onClick={clickOnBurgerHandler}
-
+                        onClick={clickOnBurgerHandler}
                       >
                         {link.label}
                       </Link>
@@ -329,7 +316,7 @@ export default function Header() {
             >
               +7 (391) 214-93-60
             </a>
-            <Messengers className="flex-col items-end space-y-3"/>
+            <Messengers className="flex-col items-end space-y-3" />
           </address>
         </div>
       </div>
