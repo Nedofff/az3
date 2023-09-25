@@ -4,12 +4,22 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+    font-family: 'logoForAzemsha';
+    src:  url('./fonts/logoForAzemsha.eot?4k7cbd');
+    src:  url('./fonts/logoForAzemsha.eot?4k7cbd#iefix') format('embedded-opentype'),
+      url('./fonts/logoForAzemsha.ttf?4k7cbd') format('truetype'),
+      url('./fonts/logoForAzemsha.woff?4k7cbd') format('woff'),
+      url('./fonts/logoForAzemsha.svg?4k7cbd#logoForAzemsha') format('svg');
+    font-weight: normal;
+    font-style: normal;
+    font-display: block;
+  }
 
 .heading {
     @apply text-sub-color text-center uppercase font-bold text-5xl mb-4 after:block after:w-3/4 after:-translate-x-1/2 after:left-1/2 after:relative after:box-border after:border-t-[2px] after:border-sub-color after:mt-4;
 }
 .separator{
-    /* @apply bg-main-color py-14 md:py-14; */
     @apply bg-main-color pt-32;
 }
 @media (max-width: 300px) {

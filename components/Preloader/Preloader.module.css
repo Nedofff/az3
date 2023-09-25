@@ -1,0 +1,29 @@
+
+
+.preloader {
+    @apply w-screen bg-sub-color fixed text-sub-color h-screen flex justify-center items-center z-50 duration-150 bg-['url("/bgPhoto.png")'] bg-center bg-no-repeat bg-cover;
+}
+
+/* styles for LogoIcon */
+.ic {
+    font-family: 'logoForAzemsha' !important;
+    speak: never;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+  
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  .ic_logot.show:before {
+    @apply opacity-100 text-white;
+  }
+  
+  .ic_logot:before {
+    content: "\e900";
+    @apply sm:text-[700px] opacity-0 text-sub-color text-[250px] duration-[1400ms];
+  }

@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Header from "@/components/Header/Header";
 import Footer from "@/components/Footer/Footer";
+import Preloader from "@/components/Preloader/Preloader";
 
 export const metadata: Metadata = {
   title: 'Аудиторская группа "Аземша и партнеры"',
@@ -15,9 +16,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html className="scroll-smooth" lang="ru">
+    <html className="overflow-x-hidden" lang="ru">
       <body>
         <StrictMode>
+      {/* <Preloader/> */}
         <Header />
         {children}
         <Footer />
