@@ -1,3 +1,4 @@
+import { StrictMode } from "react";
 import type { Metadata } from "next";
 import "./globals.css";
 import Header from "@/components/Header/Header";
@@ -9,16 +10,18 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({
-  children,
+  children, 
 }: {
   children: React.ReactNode;
 }) {
   return (
     <html className="scroll-smooth" lang="ru">
       <body>
+        <StrictMode>
         <Header />
         {children}
         <Footer />
+        </StrictMode>
       </body>
     </html>
   );
