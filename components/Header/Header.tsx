@@ -36,10 +36,12 @@ export default function Header() {
   useEffect(() => {
     const stylizeActiveAnchorLink = () => {
       let activeLink: string = "";
+
       for (const navItem of scrollingNavItems) {
         const link = navItem.href;
-        if (
-          document.querySelector(link)!.getBoundingClientRect().top -
+        const linkElement = document.querySelector(link)
+        if ( linkElement &&
+          linkElement.getBoundingClientRect().top -
             document.documentElement.clientHeight / 4 <=
           0
         ) {
@@ -55,6 +57,7 @@ export default function Header() {
       500
     );
     if (path === "/") {
+      setActiveLink('');
       document.addEventListener("scroll", throtlingStylizeActiveAnchorLink);
     } else {
       setActiveLink(path);
