@@ -1,11 +1,13 @@
 import React from "react";
+import OptimizedBgImg from "./OptimizedBgImg";
 
 export default function FirstScreen() {
   return (
     <section
-      className={`bg-[url("/firstScreen.jpg")] bg-blend-overlay bg-black bg-opacity-40 flex items-center w-full h-screen bg-center bg-no-repeat bg-fixed bg-cover justify-center`}
+      className={` bg-blend-overlay relative bg-black bg-opacity-40 flex items-center w-full h-screen bg-center bg-no-repeat bg-cover justify-center`}
     >
-      <div className=" text-white px-3 md:w-1/2 md:p-0">
+      <OptimizedBgImg/>
+      <div className=" text-white px-3 md:w-1/2 md:p-0 z-[1]">
         <p className="font-bold text-xl mb-5 md:text-2xl">
           Аудиторская группа
           <br className="block sm:hidden"/>
