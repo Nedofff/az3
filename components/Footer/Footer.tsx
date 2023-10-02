@@ -4,7 +4,7 @@ import Messengers from "../Messengers/Messengers";
 export default function Footer() {
   return (
     <footer className="px-2 pt-16 pb-28 text-white w-full bg-[#242424] lg:px-20 ">
-      <div className="flex mx-auto text-sm justify-between sm:justify-center sm:text-base">
+      <div className="flex mx-auto text-sm justify-between p-0 sm:px-10 sm:text-base">
         <address className="not-italic px-2">
           <span className="text-base font-semibold block mb-2">Контакты</span>
           <p className="mb-1">
@@ -14,10 +14,11 @@ export default function Footer() {
             <a className="hover:text-accent-color duration-300" href="mailto:info@ap-audit.ru">info@ap-audit.ru</a>
           </p>
         </address>
-        <div className="hidden px-2 mx-40 sm:block">
+        {/* TODO: удалить комментарий или добавить ссылки */}
+        {/* <div className="hidden px-2 mx-40 sm:block">
           <span className="text-base font-semibold block mb-2">Услуги</span>
             link link link
-        </div>
+        </div> */}
         <address className="not-italic px-2">
           <span className="text-base font-semibold block mb-2">Адрес</span>
           г. Красноярск, пр. Мира д.7г
