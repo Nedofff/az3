@@ -3,13 +3,14 @@ import React from "react";
 import {createPortal} from "react-dom";
 import styles from './Modal.module.css'
 
-const ModalWindow = ({children, title }:{children:React.ReactNode, title:string}) => {
+const ModalWindow = ({children, title, onClose }:{children:React.ReactNode, title:React.ReactNode, onClose:()=>void}) => {
+
   return (
-    <div role="dialog" className="w-screen h-screen fixed top-0 bg-opacity-70 flex items-center justify-center left-0 z-50 bg-black">
-      <div className=" bg-white py-5 rounded-sm px-10">
-        <div className="flex justify-between">
-        <h2>{title}</h2>
-        <button className={styles.close}><span></span></button>
+    <div onClick={onClose} role="dialog" className="w-screen sm:p-5 p-0 h-screen fixed top-0 bg-opacity-70 flex items-center justify-center left-0 z-50 bg-black">
+      <div onClick={e => e.stopPropagation()} className="bg-white py-5 rounded-sm px-10 h-screen w-screen sm:h-auto sm:w-auto">
+        <div className="flex justify-between pb-2 space-x-4">
+        <>{title}</>
+        <button onClick={onClose} className={styles.close}><span></span></button>
         </div>
         <div>
         {children}
@@ -20,10 +21,10 @@ const ModalWindow = ({children, title }:{children:React.ReactNode, title:string}
 };
 
 
-const BaseModal = ({children, title}:{children:React.ReactNode, title:string}) => {
+const BaseModal = ({children, title, onClose}:{children:React.ReactNode, title:any, onClose:()=>void}) => {
   return (
     <>
-    {createPortal(<ModalWindow title={title}>{children}</ModalWindow>, document.body)}
+    {createPortal(<ModalWindow onClose={onClose} title={title}>{children}</ModalWindow>, document.body)}
     </>
   );
 };
