@@ -1,14 +1,14 @@
 import React from "react";
 import AService from "./AService/AService";
+import { EWhatOpen } from "@/store/modalSlice/modalSlice";
 
 export default function Services() {
-  const services = [];
-//   inline break-words hyphens-auto
+  EWhatOpen
   return (
     <section id="Services" className="separator">
       <h2 className="heading">Услуги</h2>
       <div className="flex flex-col items-center px-3 mt-12">
-        <AService title="Аудит">
+        <AService linkTo='audit' title="Аудит">
           <ul className="pl-5 list-disc marker:text-lg break-words hyphens-auto">
             <li className="">Отчетности по Российским стандартам бухгалтерского учета</li>
             <li>
@@ -16,7 +16,7 @@ export default function Services() {
             </li>
           </ul>
         </AService>
-        <AService title="Налоговый консалтинг">
+        <AService linkTo='tax' title="Налоговый консалтинг">
           <ul className="pl-5 break-words hyphens-auto list-disc">
             <li>Определение налоговых рисков компании</li>
             <li>
@@ -25,7 +25,7 @@ export default function Services() {
             </li>
           </ul>
         </AService>
-        <AService title='Управленческий консалтинг'>
+        <AService linkTo='managment' title='Управленческий консалтинг'>
           <ul className="pl-5 list-disc break-words hyphens-auto">
             <li>Выстраивание модели учета групп компаний</li>
             <li>Проверка финансовых показателей компаний</li>
@@ -33,7 +33,7 @@ export default function Services() {
             <li>Оптимизация финансовых потоков</li>
           </ul>
         </AService>
-        <AService title="Транформация отчетности под МСФО">
+        <AService linkTo='transform' title="Транформация отчетности под МСФО">
           <p className="break-words hyphens-auto">
             Это процедура формирования отчетности в соответствии с
             Международными стандартами финансовой отчетности, на основе данных
