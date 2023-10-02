@@ -4,6 +4,7 @@ import "./globals.css";
 import Header from "@/components/Header/Header";
 import Footer from "@/components/Footer/Footer";
 import Preloader from "@/components/Preloader/Preloader";
+import Providers from "@/components/Providers/Providers";
 
 export const metadata: Metadata = {
   title: 'Аудиторская группа "Аземша и партнеры"',
@@ -19,10 +20,12 @@ export default function RootLayout({
     <html className="overflow-x-hidden" lang="ru">
       <body>
         <StrictMode>
+        <Providers>
       {/* <Preloader/> */}
         <Header />
         {children}
         <Footer />
+        </Providers>
         </StrictMode>
       </body>
     </html>
