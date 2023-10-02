@@ -22,6 +22,9 @@
 .separator{
     @apply bg-main-color pt-32;
 }
+.separator-min{
+    @apply bg-main-color pt-16;
+}
 @media (max-width: 300px) {
     .heading {
         @apply text-3xl
@@ -30,5 +33,29 @@
 @media (min-width: 725px) and (max-width: 768px) {
     .carousel-slider{
         height: 200px;
+    }
+}
+
+.fade-in-div{
+    animation: fade-in 300ms forwards;
+}
+.fade-out-div{
+    animation: fade-out 300ms forwards;
+}
+
+@keyframes fade-in {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+@keyframes fade-out {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
     }
 }
