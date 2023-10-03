@@ -24,7 +24,7 @@ export default function page() {
         </div>
       </article>
       <MustBeAuditedToggle/>
-      <section className="separator-min md:w-2/3 md:flex md:flex-col md:items-center px-3 sm:px-28 md:px-3">
+      <section className="separator-min md:w-2/3 md:flex md:flex-col md:items-center">
         <h2 className="text-lg text-sub-color font-semibold">
           Мы проводим аудит, если Вы ведете учет, согласно плану счетов
           утвержденному:
@@ -43,7 +43,7 @@ export default function page() {
           </li>
         </ul>
       </section>
-      <section className="separator-min px-3 sm:px-28 md:px-3">
+      <section className="separator-min">
         <h2 className="text-lg text-sub-color font-semibold">
           Порядок взаимодействия
         </h2>
@@ -56,7 +56,7 @@ export default function page() {
         />
       </section>
       <Methodic />
-      <section className="separator-min md:flex md:flex-col md:items-center px-3 sm:px-28 md:px-3">
+      <section className="separator-min md:flex md:flex-col md:items-center">
         <h2 className="text-lg text-sub-color font-semibold mb-5">
           Что вы получаете при заказе аудита?
         </h2>

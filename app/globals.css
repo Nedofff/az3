@@ -23,7 +23,7 @@
     @apply bg-main-color pt-32;
 }
 .separator-min{
-    @apply bg-main-color pt-16;
+    @apply bg-main-color pt-16 px-3 sm:px-28 md:px-3;
 }
 @media (max-width: 300px) {
     .heading {
