@@ -1,9 +1,7 @@
 import React from "react";
 import AService from "./AService/AService";
-import { EWhatOpen } from "@/store/modalSlice/modalSlice";
 
 export default function Services() {
-  EWhatOpen
   return (
     <section id="Services" className="separator">
       <h2 className="heading">Услуги</h2>

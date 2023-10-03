@@ -6,8 +6,8 @@ import ContactFormBlock from "@/components/HomePage/ContactFormBlock/ContactForm
 
 export default function page() {
   return (
-    <main className="flex flex-col bg-main-color items-center pb-20 pt-28 px-3 sm:px-28 md:px-3">
-      <article className="md:w-2/3">
+    <main className="flex flex-col bg-main-color items-center pt-28">
+      <article className="md:w-2/3 px-3 sm:px-28 md:px-3">
         <h1 className="text-4xl text-sub-color mb-5 font-bold">Аудит</h1>
         <p>
         Аудит - независимая проверка бухгалтерской (финансовой) отчетности
@@ -24,7 +24,7 @@ export default function page() {
         </div>
       </article>
       <MustBeAuditedToggle/>
-      <section className="separator-min md:w-2/3 md:flex md:flex-col md:items-center">
+      <section className="separator-min md:w-2/3 md:flex md:flex-col md:items-center px-3 sm:px-28 md:px-3">
         <h2 className="text-lg text-sub-color font-semibold">
           Мы проводим аудит, если Вы ведете учет, согласно плану счетов
           утвержденному:
@@ -43,7 +43,7 @@ export default function page() {
           </li>
         </ul>
       </section>
-      <section className="separator-min">
+      <section className="separator-min px-3 sm:px-28 md:px-3">
         <h2 className="text-lg text-sub-color font-semibold">
           Порядок взаимодействия
         </h2>
@@ -56,7 +56,7 @@ export default function page() {
         />
       </section>
       <Methodic />
-      <section className="separator-min md:flex md:flex-col md:items-center">
+      <section className="separator-min md:flex md:flex-col md:items-center px-3 sm:px-28 md:px-3">
         <h2 className="text-lg text-sub-color font-semibold mb-5">
           Что вы получаете при заказе аудита?
         </h2>

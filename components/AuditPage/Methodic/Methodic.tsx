@@ -4,7 +4,7 @@ import React from 'react'
 
 export default function Methodic() {
   return (
-    <section className='separator-min md:w-2/3'>
+    <section className='separator-min md:w-2/3 px-3 sm:px-28 md:px-3'>
         <h2 className='text-lg text-sub-color font-semibold'>Методические основы аудита</h2>
         <p>
         Мы проводим аудит в соответствии с Международными стандартами аудита (МСА) изданными Международной федерацией бухгалтеров (IFAC) через Комитет по международным стандартам аудита и подтверждения достоверности информации (International Auditing and Assurance Standards Board, IAASB) и введенными в действие на территории РФ Приказом Минфина России от 09.01.2019 N 2н {'"'}О введении в действие международных стандартов аудита на территории Российской Федерации и о признании утратившими силу некоторых приказов Министерства финансов Российской Федерации{'"'}

@@ -28,7 +28,10 @@ function Ifrs({ onClick, styleForButtons }: { onClick: Dispatch<SetStateAction<E
     useEffect(()=>{
         document.querySelector<HTMLElement>('#mustBeAudited')!.classList.add('fade-in-div')
         return () => {
+          try {
         document.querySelector<HTMLElement>('#mustBeAudited')!.classList.remove('fade-out-div')
+            
+          } catch (error) {}
         }
 }, [])
 
@@ -41,7 +44,7 @@ const clickHandler = (type:ENormType) => {
     }, 300)
 }
   return (
-    <section id="mustBeAudited" className="separator-min w-full flex flex-col items-center sm:items-start md:items-center">
+    <section id="mustBeAudited" className="separator-min w-full flex flex-col items-center sm:items-start md:items-center px-3 sm:px-28 md:px-3">
       <h2 className="text-lg text-sub-color font-semibold mb-5">
         Кому обязательно проходить аудит по МСФО?
       </h2>
@@ -70,7 +73,9 @@ function Ras({ onClick, styleForButtons }: { onClick: Dispatch<SetStateAction<EN
     useEffect(()=>{
             document.querySelector<HTMLElement>('#mustBeAudited')!.classList.add('fade-in-div')
             return () => {
+              try {
             document.querySelector<HTMLElement>('#mustBeAudited')!.classList.remove('fade-out-div')
+              } catch (error) {}
             }
     }, [])
 
@@ -84,7 +89,7 @@ function Ras({ onClick, styleForButtons }: { onClick: Dispatch<SetStateAction<EN
     }
 
   return (
-    <section id="mustBeAudited" className="separator-min w-full flex flex-col items-center sm:items-start md:items-center">
+    <section id="mustBeAudited" className="separator-min w-full flex flex-col items-center sm:items-start md:items-center px-3 sm:px-28 md:px-3">
       <h2 className="text-lg text-sub-color font-semibold mb-5">
         Кому обязательно проходить аудит по РСБУ?
       </h2>
@@ -123,7 +128,9 @@ function NormSelection({onClick, styleForButtons, isFirst, setIsFirst}: {
         }
         return () => {
             if (!isFirst) {
+              try {
                 document.querySelector<HTMLElement>('#mustBeAudited')!.classList.remove('fade-out-div')
+              } catch (error) {}
             }
         }
     }, [isFirst])
@@ -140,7 +147,7 @@ function NormSelection({onClick, styleForButtons, isFirst, setIsFirst}: {
 
     
   return (
-    <section id="mustBeAudited" className=" separator-min w-full flex flex-col items-center sm:items-start md:items-center">
+    <section id="mustBeAudited" className=" separator-min w-full flex flex-col items-center sm:items-start md:items-center px-3 sm:px-28 md:px-3">
       <h2 className="text-lg text-sub-color font-semibold mb-5">Кому обязательно проходить аудит по ...?</h2>
       <div className="flex space-x-16 py-10">
         <button onClick={() => clickHandler(ENormType.ras)} className={styleForButtons}>РСБУ</button>
