@@ -45,7 +45,6 @@ export default function TaxPage() {
           </li>
         </ul>
       </section>
-      {/* px-3 sm:px-28 md:px-3 */}
       <section className="bg-main-color pt-16 w-full sm:w-auto sm:flex sm:flex-col sm:items-center">
         <h2 className={`${heading2Style} text-center`}>Налоговые споры</h2>
         <div className="hidden lg:grid grid-cols-3 grid-rows-1 w-2/3">
@@ -172,4 +171,3 @@ export default function TaxPage() {
     </main>
   );
 }
-// TODO: Сделать компонент страницы налогов
