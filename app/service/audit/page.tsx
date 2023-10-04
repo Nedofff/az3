@@ -2,7 +2,7 @@ import React from "react";
 import Image from "next/image";
 import Methodic from "@/components/AuditPage/Methodic/Methodic";
 import MustBeAuditedToggle from "@/components/AuditPage/MustBeAuditedToggle/MustBeAuditedToggle";
-import ContactFormBlock from "@/components/HomePage/ContactFormBlock/ContactFormBlock";
+import ContactForm from "@/components/ContactForm/ContactForm";
 
 export default function page() {
   return (
@@ -62,7 +62,7 @@ export default function page() {
         </h2>
         <Image src={'/6screen__img.png'} width={700} height={700} alt={''}/>
       </section>
-      <ContactFormBlock/>
+      <ContactForm/>
     </main>
   );
 }
