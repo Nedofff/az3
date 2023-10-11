@@ -3,8 +3,8 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 export const modalFeedbackSlice = createSlice({
     name: "modalFeedback",
     initialState: {
-        isOpen: true,
-        whatFeedback: '1',
+        isOpen: false,
+        whatFeedback: 'idle',
     },
     reducers: {
         openModal(state, actions:PayloadAction<string>) {
