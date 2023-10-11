@@ -1,5 +1,6 @@
 import React from "react";
 import ANewsItem from "./ANewItem/ANewsItem";
+import Link from "next/link";
 
 export default function News() {
   // const news = fetch('url', {next: {revalidate: seconds}})
@@ -43,7 +44,7 @@ export default function News() {
           ))}
         </div>
       </div>
-      <button className="mt-10 text-white bg-sub-color outline-none font-bold uppercase tracking-wider rounded-sm px-8 py-2 hover:bg-accent-color duration-300 active:scale-95">больше новостей</button>
+      <Link href="/news" className="mt-10 text-white bg-sub-color outline-none font-bold uppercase tracking-wider rounded-sm px-8 py-2 hover:bg-accent-color duration-300 active:scale-95">больше новостей</Link>
     </section>
   );
 }

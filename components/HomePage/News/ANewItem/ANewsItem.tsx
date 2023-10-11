@@ -2,7 +2,8 @@
 
 import React from "react";
 import Image from "next/image";
-import WaveSvg from "../WaveSvg";
+import Link from "next/link";
+import WaveSvg from "@/components/WaveSvg/WaveSvg";
 
 
 export default function ANewsItem({
@@ -28,13 +29,13 @@ export default function ANewsItem({
       <div className="px-5 pt-5 sm:pb-24 relative ">
       {/* <div className="px-5 pt-5 sm:pb-24 flex flex-col justify-around space-y-10 h-fit"> */}
         <h3 className="font-medium">{title}</h3>
-        <p
+        <Link
           className="text-accent-color absolute font-medium bottom-7"
           // className="text-accent-color font-medium "
-          onClick={() => alert(`Открыта новость c id: ${id}`)}
+          href={`/news/${id}`}
         >
           Читать подробнее
-        </p>
+        </Link>
       </div>
     </article>
   );
