@@ -1,0 +1,30 @@
+
+
+.close {
+    @apply flex items-center absolute mr-5 mt-2 sm:right-1 sm:top-2 w-[20px] h-[20px] cursor-pointer rounded-full;
+  }
+
+
+.content::before {
+  display: inline-block;
+  content: '';
+  height: 50%;
+  width: 1px;
+  margin-right: -1px;
+}
+
+.close > span,
+.close > span::after {
+    @apply block absolute w-full h-[2px] duration-500 bg-white ;
+}
+.close > span{
+    @apply rotate-45;
+}
+.close > span::after {
+    @apply content-[''] rotate-90
+  }
+
+  .close:hover > span,
+.close:hover > span::after {
+    @apply bg-opacity-70;
+}
