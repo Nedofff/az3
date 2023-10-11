@@ -4,7 +4,7 @@ import Methodic from "@/components/AuditPage/Methodic/Methodic";
 import MustBeAuditedToggle from "@/components/AuditPage/MustBeAuditedToggle/MustBeAuditedToggle";
 import ContactForm from "@/components/ContactForm/ContactForm";
 
-export default function page() {
+export default function AuditPage() {
   return (
     <main className="flex flex-col bg-main-color items-center pt-28">
       <article className="md:w-2/3 px-3 sm:px-28 md:px-3">
