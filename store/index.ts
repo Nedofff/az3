@@ -1,19 +1,9 @@
 import { configureStore } from "@reduxjs/toolkit";
-// import { modalServiceSlice } from "./modalSlice/modalSlice";
-
-
-// import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-
-// export const modalServiceSlice = createSlice({
-//     name: 'modalSevice',
-//     initialState,
-//     reducers: {    }
-// })
+import { modalFeedbackSlice } from "./modalSlice/feedbackModal.slice";
 
 export const store = configureStore({
     reducer: {
-        // TODO: Сделать редюсер
-        // LIKE modalService: modalServiceSlice.reducer
+        modalFeedback: modalFeedbackSlice.reducer
     },
     middleware: (getDefaultMiddleware) => getDefaultMiddleware({
         serializableCheck: false
