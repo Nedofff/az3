@@ -13,12 +13,17 @@ const config: Config = {
     extend: {
       colors: {
         'main-color': '#F5F5F5',
-        'sub-color' : '#232C61',
-        'accent-color':'#374699',
-        'sub-accent-color': '#30D5C7'
+        'sub-color' : '#282723',
+        'accent-color':'#54514C',
+        'sub-accent-color': '#374699'
       }
     },
   },
   plugins: [],
 }
 export default config
+
+// 'main-color': '#F5F5F5',
+// 'sub-color' : '#232C61',
+// 'accent-color':'#374699',
+// 'sub-accent-color': '#30D5C7'
