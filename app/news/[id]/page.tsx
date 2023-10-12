@@ -1,6 +1,5 @@
 import React from "react";
 import type { Metadata, ResolvingMetadata } from "next";
-import Image from "next/image";
 import { parser } from "@/service/jsonToHtml";
 import OptimizedBgImg from "@/components/OptimizedBgImg/OptimizedBgImg";
 
@@ -35,12 +34,14 @@ interface IOneNews {
 
 
 export default async function Page({ params }: IProps) {
-  console.log(params.id)
-  const response = await fetch(`http://localhost:3000/api/news/${params.id}`);
+  const response = await fetch(`http://localhost:3000/api/news/${params.id}`, {
+    cache: "no-store",
+  });
 
   if (response.ok) {
   const newsData:IOneNews = await response.json();
   const {title, text, ...forImg} = newsData
+  console.log(newsData)
     return (
       <main className="pb-24 flex flex-col items-center bg-main-color">
         <section
@@ -62,7 +63,6 @@ export default async function Page({ params }: IProps) {
   } else {
     return (
       <div>
-        keeek
       </div>
     )
   }

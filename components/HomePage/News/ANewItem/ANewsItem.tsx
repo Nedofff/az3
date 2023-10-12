@@ -4,6 +4,7 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import WaveSvg from "@/components/WaveSvg/WaveSvg";
+import { useRouter } from "next/navigation";
 
 
 export default function ANewsItem({
@@ -13,9 +14,14 @@ export default function ANewsItem({
   width,
   height,
 }: IOneNews) {
+  const router = useRouter()
+
+  const clickHandler = () => {
+    router.push(`/news/${id}`)
+  }
 
   return (
-    <article className={`w-full h-1/5 md:h-full cursor-pointer mb-7 bg-white shadow-lg rounded-lg md:w-1/4 md:m-3 duration-500 hover:duration-500 active:duration-150 hover:shadow-2xl active:scale-95`}>
+    <article onClick={clickHandler} className={`w-full h-1/5 md:h-full cursor-pointer mb-7 bg-white shadow-lg rounded-lg md:w-1/4 md:m-3 duration-500 hover:duration-500 active:duration-150 hover:shadow-2xl active:scale-95`}>
       <div className={`relative h-2/3 overflow-hidden md:h-1/2`}>
         <Image
           src={src}

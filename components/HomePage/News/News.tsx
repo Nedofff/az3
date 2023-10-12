@@ -2,9 +2,11 @@ import React from "react";
 import ANewsItem from "./ANewItem/ANewsItem";
 import Link from "next/link";
 
-export default function News() {
-  // const news = fetch('url', {next: {revalidate: seconds}})
-  const news: IOneNews[] = [
+export default async function News() {
+  const response = await fetch('http://localhost:3000/api/news/top3', {cache: 'no-store'});
+  const news: IOneNews[] = await response.json();
+  console.log(news)
+  const newss: IOneNews[] = [
     {
       id: "1",
       title: "Изменения в законодательстве этой осенью",
