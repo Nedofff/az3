@@ -7,6 +7,7 @@ import News from "@/components/HomePage/News/News";
 import Services from "@/components/HomePage/Services/Services";
 import YandexMap from "@/components/HomePage/YandexMap/YandexMap";
 import FeedbackModal from "@/components/Modals/FeedbackModal";
+import TestModal from "@/components/Modals/TestModal";
 
 export default function HomePage() {
   return (
@@ -20,6 +21,7 @@ export default function HomePage() {
       <ContactForm/>
       <YandexMap/>
       <FeedbackModal/>
+      <TestModal/>
     </main>
   )
 }

@@ -4,8 +4,8 @@ import React from "react";
 import Image from "next/image";
 import {BsEyeFill} from "react-icons/bs";
 import DialogBaseModal from "../BaseModals/DialogBaseModal";
-import { useModalFeedback } from "@/hooks/useModalFeedback";
-import useModalFeedbackActions from "@/hooks/useModalFeedbackActions";
+import { useModalFeedback } from "@/hooks/modalFeedback/useModalFeedback";
+import useModalFeedbackActions from "@/hooks/modalFeedback/useModalFeedbackActions";
 
 const dataForFeedback = [
   {

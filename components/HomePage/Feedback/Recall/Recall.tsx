@@ -1,5 +1,5 @@
 'use client'
-import useModalFeedbackActions from '@/hooks/useModalFeedbackActions'
+import useModalFeedbackActions from '@/hooks/modalFeedback/useModalFeedbackActions'
 import React from 'react'
 
 export default function Recall({

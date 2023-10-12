@@ -1,5 +1,6 @@
 import React from "react";
 import OptimizedBgImg from "../../OptimizedBgImg/OptimizedBgImg";
+import BtnTest from "./BtnTest/BtnTest";
 
 export default function FirstScreen() {
   return (
@@ -17,7 +18,7 @@ export default function FirstScreen() {
         <p className="font-medium text-base mb-7 md:text-xl">
           Приносим реальную пользу своим клиентам!
         </p>
-        <button className="bg-white outline-none font-bold uppercase tracking-wider rounded-sm text-black px-8 py-2 hover:bg-accent-color duration-300 active:scale-95">Рассчитать</button>
+        <BtnTest/>
       </div>
         <div className="hidden w-1/6 md:block"></div>
     </section>

@@ -1,4 +1,4 @@
-import { useTypedSelector } from "./useTypedSelector";
+import { useTypedSelector } from "../useTypedSelector";
 
 
 
