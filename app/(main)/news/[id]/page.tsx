@@ -41,7 +41,6 @@ export default async function Page({ params }: IProps) {
   if (response.ok) {
   const newsData:IOneNews = await response.json();
   const {title, text, ...forImg} = newsData
-  console.log(newsData)
     return (
       <main className="pb-24 flex flex-col items-center bg-main-color">
         <section

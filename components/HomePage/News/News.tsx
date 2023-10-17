@@ -3,9 +3,8 @@ import ANewsItem from "./ANewItem/ANewsItem";
 import Link from "next/link";
 
 export default async function News() {
-  const response = await fetch('http://localhost:3000/api/news/top3', {cache: 'no-store'});
+  const response = await fetch('http://localhost:3000/api/news/top');
   const news: IOneNews[] = await response.json();
-  console.log(news)
   const newss: IOneNews[] = [
     {
       id: "1",

@@ -34,7 +34,7 @@ export default function InfoPage() {
     },
   ];
   return (
-    <main className="flex flex-col bg-main-color items-center pt-28">
+    <main className="flex flex-col bg-main-color items-center pt-28 pb-20">
       <h1 className="text-4xl text-sub-color font-bold text-center">
         Раскрытие информации
       </h1>
