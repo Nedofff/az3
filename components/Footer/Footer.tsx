@@ -14,11 +14,6 @@ export default function Footer() {
             <a className="hover:text-accent-color duration-300" href="mailto:info@ap-audit.ru">info@ap-audit.ru</a>
           </p>
         </address>
-        {/* TODO: удалить комментарий или добавить ссылки */}
-        {/* <div className="hidden px-2 mx-40 sm:block">
-          <span className="text-base font-semibold block mb-2">Услуги</span>
-            link link link
-        </div> */}
         <address className="not-italic px-2">
           <span className="text-base font-semibold block mb-2">Адрес</span>
           г. Красноярск, пр. Мира д.7г
