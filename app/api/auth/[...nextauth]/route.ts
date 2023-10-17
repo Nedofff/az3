@@ -8,7 +8,7 @@ const users: {id:string, name: string; password: string}[] = [
 ];
 
 
-export const authConfig: AuthOptions = {
+const authConfig: AuthOptions = {
   providers: [
     Credentials({
       credentials: {
