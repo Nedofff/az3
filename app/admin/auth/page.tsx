@@ -2,13 +2,12 @@
 
 
 
-// TODO: Сделать админку
 
 import React from 'react'
 
-export default function AdminPage() {
+export default function AuthPage() {
   return (
-    <main>
+    <main className='flex items-center justify-center'>
       <form>
         <label htmlFor="login">Логин</label>
         <input type="text" id='login'/>
