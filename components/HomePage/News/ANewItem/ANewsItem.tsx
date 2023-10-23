@@ -34,9 +34,9 @@ export default function ANewsItem({
       </div>
       <div className="px-5 pt-5 sm:pb-24 relative ">
       {/* <div className="px-5 pt-5 sm:pb-24 flex flex-col justify-around space-y-10 h-fit"> */}
-        <h3 className="font-medium">{title}</h3>
+        <h3 className="font-medium pb-10 sm:pb-0">{title}</h3>
         <Link
-          className="text-accent-color absolute font-medium bottom-7"
+          className="text-accent-color hidden absolute font-medium bottom-7 sm:inline"
           // className="text-accent-color font-medium "
           href={`/news/${id}`}
         >

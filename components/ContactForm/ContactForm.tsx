@@ -7,7 +7,7 @@ import { MdEmail } from "react-icons/md";
 
 export default function ContactForm() {
   return (
-    <section id="ContactFormBlock" className='bg-sub-color text-white flex flex-col bg-[url("/bgPhoto.png")] bg-center bg-no-repeat bg-fixed bg-cover py-14 lg:py-28 lg:justify-center lg:flex-row lg:px-20'>
+    <section id="ContactFormBlock" className='bg-sub-color w-screen z-10 relative text-white flex flex-col bg-[url("/bgPhoto.png")] bg-center bg-no-repeat bg-fixed bg-cover py-14 lg:py-28 lg:justify-center lg:flex-row lg:px-20'>
       <div className="mb-14 lg:ml-7 flex flex-col items-center lg:w-1/3 lg:items-start lg:px-0 lg:pr-20">
         <h2 className="text-3xl mb-4 font-bol">Свяжитесь с нами</h2>
         <p className="opacity-70 text-center max-w-lg mb-6 lg:w-full lg:text-start">

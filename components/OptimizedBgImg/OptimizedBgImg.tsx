@@ -9,11 +9,14 @@ interface IImageProps {
 
 export default function OptimizedBgImg({
   imageProps,
+  addClassName
 }: {
   imageProps: IImageProps;
+  addClassName?: string
 }) {
   return (
     <div
+    className={addClassName}
       style={{
         position: "absolute",
         height: "100vh",
@@ -30,7 +33,8 @@ export default function OptimizedBgImg({
           top: "0",
         }}
       >
-        <div className="w-screen bg-black bg-opacity-40 h-screen fixed top-0 left-0 z-[1]"></div>
+        {/* bg-black */}
+        <div className="w-screen bg-opacity-40 h-screen fixed top-0 left-0 z-[1]"></div>
         <Image
           className="w-screen h-screen object-cover"
           {...imageProps}

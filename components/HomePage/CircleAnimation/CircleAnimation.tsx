@@ -3,29 +3,31 @@
 import React, { useEffect, useState } from 'react'
 import styles from './CircleAnimation.module.css'
 
+interface IState {
+    startMove: number,
+    endMove: number
+}
+
 export default function CircleAnimation() {
-    // useEffect(() => {
-    //     document.addEventListener('scroll', () => {
-    // console.log(document.body.getBoundingClientRect())
-    //     })
-    // })
 
     useEffect(() => {
         const circle = document.querySelector<HTMLDivElement>('.circle')
         const windowsClientHeight = document.documentElement.clientHeight
         const windowsclientWidth = document.documentElement.clientWidth
-        circle!.style.left = '73.1053%'
+        // circle!.style.left = '73.1053%'
 
         // clientWidth/clientHeight
         let count = 0
         let side = 'left'
         let deg = 0
         let prevTopStep = 0
-        let coeffDeg = 0
 
         const eventHandler = () => {
-                if((-529.7999877929688) > document.body.getBoundingClientRect().y && -4571.2001953125 < document.body.getBoundingClientRect().y) {
-                    const topStep = (-1 * document.body.getBoundingClientRect().y) + windowsClientHeight/2 - 162.4000244140625
+            // console.log(aboutUs,feedback)
+            const topStep = (-1 * document.body.getBoundingClientRect().y) + windowsClientHeight/3
+                // if((-529.7999877929688) > document.body.getBoundingClientRect().y && -4571.2001953125 < document.body.getBoundingClientRect().y) {
+                // if(topStep > startMove && topStep < endMove) {
+
                     circle!.style.top = `${topStep}px`
                     const percent = ((-1 * document.body.getBoundingClientRect().y / windowsClientHeight) * 100) % 100 - 0.00001
         
@@ -58,7 +60,7 @@ export default function CircleAnimation() {
                     }
         
                     prevTopStep = topStep
-                }
+                // }
         }
         document.addEventListener('scroll', eventHandler)
 
@@ -69,9 +71,9 @@ export default function CircleAnimation() {
 
 
   return (
-    <div className='circle absolute right-0 -m-[5px] w-[205px] h-[205px] z-[3] rounded-full duration-75'>
+    <div className='circle absolute right-0 -m-[5px] w-[150px] h-[150px] sm:w-[205px] sm:h-[205px] z-[3] rounded-full duration-75'>
         {/* <Image className='absolute shadow-md shadow-black rounded-full -m-[5px] w-full h-full' src={"/circle.png"} width={200} height={200} alt=''/> */}
-        <div className={`w-full ${styles['shadow-black']} bg-accent-color flex h-full overflow-hidden  absolute rounded-full`}>
+        <div className={`w-full ${styles['shadow-black']} bg-accent-color flex h-full overflow-hidden absolute rounded-full`}>
             <div className={`w-full h-full ${styles['shadow-white']} rounded-full shadow-white`}>
             </div>
         </div>

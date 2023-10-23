@@ -14,7 +14,6 @@ export default function HomePage() {
   return (
     <main>
       <FirstScreen/>
-      <div className="">
         <CircleAnimation/>
         <AboutUs/>
         <Services/>
@@ -23,7 +22,6 @@ export default function HomePage() {
         <Feedback/>
         <ContactForm/>
         <YandexMap/>
-      </div>
         <FeedbackModal/>
         <TestModal/>
     </main>
