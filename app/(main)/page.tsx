@@ -8,20 +8,24 @@ import Services from "@/components/HomePage/Services/Services";
 import YandexMap from "@/components/HomePage/YandexMap/YandexMap";
 import FeedbackModal from "@/components/Modals/FeedbackModal";
 import TestModal from "@/components/Modals/TestModal";
+import CircleAnimation from "@/components/HomePage/CircleAnimation/CircleAnimation";
 
 export default function HomePage() {
   return (
     <main>
       <FirstScreen/>
-      <AboutUs/>
-      <Services/>
-      <Advantages/>
-      <News/>
-      <Feedback/>
-      <ContactForm/>
-      <YandexMap/>
-      <FeedbackModal/>
-      <TestModal/>
+      <div className="">
+        <CircleAnimation/>
+        <AboutUs/>
+        <Services/>
+        <Advantages/>
+        <News/>
+        <Feedback/>
+        <ContactForm/>
+        <YandexMap/>
+      </div>
+        <FeedbackModal/>
+        <TestModal/>
     </main>
   )
 }

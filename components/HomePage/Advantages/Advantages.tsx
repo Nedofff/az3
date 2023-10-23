@@ -14,7 +14,7 @@ export default function Advantages() {
           width={853}
           height={1280}
           alt="Человек, работающий"
-          className="w-11/12 mt-16 self-center rounded-sm md:w-1/2 md:mt-0"
+          className="w-11/12 mt-16 self-center rounded-sm md:w-1/2 md:mt-0 z-10"
         ></Image>
         <ul className="w-full md:ml-5 lg:w-1/2">
           <li className="mb-7 flex flex-col text-center break-words hyphens-auto md:flex-row md:text-start md:items-center">

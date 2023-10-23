@@ -38,7 +38,7 @@ export default function ContactForm() {
             вас вопрос в поле комментарий
           </p>
         </div>
-        <form className="flex flex-col sm:w-4/5">
+        <form className="flex flex-col sm:w-4/5 zindex">
             <input id="name" name="name" className="bg-transparent border-b-[3px] mb-5 mx-10 lg:mx-2 px-2 py-5 outline-none focus:border-accent-color" type="text" placeholder="Имя" />
             <input id='surname' name="surname" className="bg-transparent border-b-[3px] mb-5 mx-10 lg:mx-2 px-2 py-5 outline-none focus:border-accent-color" type="text" placeholder="Фамилия" />
             <input id='phone' name="phone" className="bg-transparent border-b-[3px] mb-5 mx-10 lg:mx-2 px-2 py-5 outline-none focus:border-accent-color" type="text" placeholder="Телефон" />

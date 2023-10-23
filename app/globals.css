@@ -16,8 +16,16 @@
     font-display: block;
   }
 
+
+p, h1, h2, h3, figure, ul, a, article{
+    @apply z-10 relative;
+}
+
+.zindex {
+    z-index: 10;
+}
 .heading {
-    @apply text-sub-color text-center uppercase font-bold text-5xl mb-4 after:block after:w-3/4 after:-translate-x-1/2 after:left-1/2 after:relative after:box-border after:border-t-[2px] after:border-sub-color after:mt-4;
+    @apply text-sub-color relative z-10 text-center uppercase font-bold text-5xl mb-4 after:block after:w-3/4 after:-translate-x-1/2 after:left-1/2 after:relative after:box-border after:border-t-[2px] after:border-sub-color after:mt-4;
 }
 .separator{
     @apply bg-main-color pt-32;
