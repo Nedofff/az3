@@ -13,7 +13,7 @@ export default function CircleAnimation() {
     useEffect(() => {
         const circle = document.querySelector<HTMLDivElement>('.circle')
         const windowsClientHeight = document.documentElement.clientHeight
-        const windowsclientWidth = document.documentElement.clientWidth
+        let windowsclientWidth = document.documentElement.clientWidth
         // circle!.style.left = '73.1053%'
 
         // clientWidth/clientHeight
@@ -22,38 +22,40 @@ export default function CircleAnimation() {
         let deg = 0
         let prevTopStep = 0
 
-        const eventHandler = () => {
+        const scrollEventHandler = () => {
             // console.log(aboutUs,feedback)
             const topStep = (-1 * document.body.getBoundingClientRect().y) + windowsClientHeight/3
-                // if((-529.7999877929688) > document.body.getBoundingClientRect().y && -4571.2001953125 < document.body.getBoundingClientRect().y) {
-                // if(topStep > startMove && topStep < endMove) {
 
+            let coefPercent = 10
+            if (windowsclientWidth < 640) {
+                coefPercent = 0
+            }
                     circle!.style.top = `${topStep}px`
-                    const percent = ((-1 * document.body.getBoundingClientRect().y / windowsClientHeight) * 100) % 100 - 0.00001
+                    const percent = ((-1 * document.body.getBoundingClientRect().y / windowsClientHeight) * 100) % 100 + coefPercent
         
                     if (side === 'left') {
-                        if (percent <= 82) {
+                        if (percent <= 75) {
                             circle!.style.right = 'unset'
                             circle!.style.left = `${percent}%`
                             count += 1
                             const diffDeg = (prevTopStep - topStep)  * -1
                             circle!.style.transform = `rotate(${deg+=diffDeg}deg)`
                         }
-                        if (percent >= 98.7 && count >= 15) {
+                        if (percent >= 75 && count >= 15) {
                             side = 'right'
                             count = 0
                         }
         
                     }
                     if (side === 'right') {
-                        if (percent <= 82) {
+                        if (percent <= 75) {
                             circle!.style.left = 'unset'
                             circle!.style.right = `${percent}%`
                             count += 1
                             const diffDeg = (prevTopStep - topStep)
                             circle!.style.transform = `rotate(${deg+=diffDeg * 3}deg)`
                         }
-                        if (percent >= 98.7 && count >= 15) {
+                        if (percent >= 75 && count >= 15) {
                             side = 'left'
                             count = 0
                         }
@@ -62,10 +64,18 @@ export default function CircleAnimation() {
                     prevTopStep = topStep
                 // }
         }
-        document.addEventListener('scroll', eventHandler)
+        const resizeScrollHandler = () => {
+            windowsclientWidth = document.body.clientWidth
+        }
+        // document.querySelector('body')!.addEventListener('resize', resizeScrollHandler)
+        document.addEventListener('scroll', scrollEventHandler)
+        window!.addEventListener('resize', resizeScrollHandler)
+
+        
 
         return () => {
-            document.removeEventListener('scroll', eventHandler)
+            document.removeEventListener('scroll', scrollEventHandler)
+            document.removeEventListener('resize', resizeScrollHandler)
         }
     }, [])
 
