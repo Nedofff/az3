@@ -1,6 +1,7 @@
 import { StrictMode } from "react";
 import "./globals.css";
 import Providers from "@/components/Providers/Providers";
+import Preloader from "@/components/Preloader/Preloader";
 
 export default function RootLayout({
   children, 
@@ -12,6 +13,7 @@ export default function RootLayout({
       <body className="overflow-x-hidden">
         <StrictMode>
         <Providers>
+          <Preloader/>
         {children}
         </Providers>
         </StrictMode>
