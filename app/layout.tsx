@@ -9,7 +9,7 @@ export default function RootLayout({
 }) {
   return (
     <html className="overflow-x-hidden" lang="ru">
-      <body>
+      <body className="overflow-x-hidden">
         <StrictMode>
         <Providers>
         {children}
