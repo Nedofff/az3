@@ -102,22 +102,22 @@ export default function Header() {
   const styleLinkDesktop =
     "block py-6 h-[72px] whitespace-nowrap px-2 duration-300 hover:shadow-2xl hover:shadow-black active:text-sub-accent-color";
   const styleLinkMobile =
-    "duration-300 pt-3 pb-2 active:text-sub-accent-color border-b-2 border-sub-color border-opacity-0 hover:border-opacity-100 hover:border-white hover:duration-300";
+    "block w-fit duration-300 pt-3 pb-2 active:text-sub-accent-color border-b-2 border-sub-color border-opacity-0 hover:border-opacity-100 hover:border-white hover:duration-300";
 
   return (
     <header className="fixed z-20 bg-sub-color bg-opacity-95 w-screen flex items-center overflow-hidden">
       <div className="hidden lg:block w-full">
         <nav className="max-w-7xl duration-150 font-medium mx-auto flex justify-around items-center">
           <Link
-            className="p-3 duration-300 hover:shadow-2xl hover:shadow-black"
+            className="px-3 py-1 duration-300 hover:shadow-2xl hover:shadow-black"
             href="/"
           >
             <Image
-              className={`w-16`}
+              className={`w-28`}
               src={"/logo.png"}
               width={1000}
               height={1000}
-              alt="Логотип компании - Больлие буквы АП"
+              alt="Логотип компании - Большие буквы АП"
             />
           </Link>
           <div className="text-white flex">
@@ -207,15 +207,15 @@ export default function Header() {
       <div className="z-30  w-5/6 mx-auto md:w-1/2 lg:hidden">
         <div className="flex justify-between items-center">
           <Link
-            className="py-3 block duration-300 hover:shadow-2xl hover:shadow-black"
+            className="py-1 block duration-300 hover:shadow-2xl hover:shadow-black"
             href="/"
           >
             <Image
-              className={`w-16`}
+              className={`w-28`}
               src={"/logo.png"}
               width={1000}
               height={1000}
-              alt="Логотип компании - Больлие буквы АП"
+              alt="Логотип компании - Большие буквы АП"
             />
           </Link>
           <div className="rounded-full duration-300 hover:bg-slate-500 mr-[22px] hover:bg-opacity-40">
@@ -233,7 +233,7 @@ export default function Header() {
           ref={refCollapsed}
           className={`${styles.content} flex z-30 justify-between`}
         >
-          <nav className="text-white w-[120%] flex flex-col">
+          <nav className="text-white w-[40%] flex flex-col">
             {Boolean(path === "/") &&
               scrollingNavItems.map((link) => {
                 if (link.href === activeLink) {
@@ -314,7 +314,7 @@ export default function Header() {
           </nav>
           <address className="flex flex-col items-end">
             <a
-              className={`${styleLinkMobile} sm:whitespace-nowrap mb-5 text-white`}
+              className={`${styleLinkMobile} sm:whitespace-nowrap mb-5 text-sm text-white`}
               href="tel:+7 (391) 214-93-60"
             >
               +7 (391) 214-93-60

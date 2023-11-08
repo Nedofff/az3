@@ -24,7 +24,7 @@ export default function Dropdown({ children, label, className, mobileBoard = tru
   return (
       <div className={className}>
         <button className=" text-white outline-none duration-150 w-full py-2 bg-sub-color hover:bg-accent-color" onClick={toggle}>
-          {needHeading && <h2 className='text-xl text-white font-semibold mb-2'>{label}</h2>}
+          {needHeading && <h2 className='text-lg sm:text-xl text-white font-semibold mb-2'>{label}</h2>}
           
         </button>
         <div className='duration-300 overflow-hidden max-h-0' ref={refCollapsed}>

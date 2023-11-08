@@ -28,6 +28,7 @@ export default function TestModal() {
   };
 
   const onCloseModal = () => {
+    document.documentElement.style.overflowY = 'scroll'
     setSelectedItem(0);
     resetAnswer();
     closeModal();
@@ -36,7 +37,7 @@ export default function TestModal() {
   return (
     <>
       {isOpen && (
-        <DialogBaseModal onClose={onCloseModal} title={"Рассчет стоимости"}>
+        <DialogBaseModal onClose={onCloseModal} title={"Расчет стоимости"}>
           <div className="w-full flex justify-center mb-3">
             <div className="h-4 w-2/3 relative rounded-2xl border-2 overflow-hidden">
               <div
@@ -83,17 +84,6 @@ export default function TestModal() {
               />
             ))}
           </Carousel>
-          {/* <div>
-            <button
-              onClick={() => nextSlide()}
-              className="bg-black text-white"
-            >
-              Дальше
-            </button>
-            <button className="bg-black text-white" onClick={resetHandler}>
-              Сбросить
-            </button>
-          </div> */}
         </DialogBaseModal>
       )}
     </>

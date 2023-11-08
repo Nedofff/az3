@@ -9,7 +9,7 @@ export default function FirstScreen() {
       className={` bg-blend-overlay relative bg-black bg-opacity-40 lg:bg-[#23241F] lg:bg-opacity-100 z-10 flex items-center w-full h-screen bg-center bg-no-repeat bg-cover justify-center`}
     >
       <OptimizedBgImg addClassName="block lg:hidden" imageProps={{ src: "/firstScreen.png", width: 1920, height: 1920 }}/>
-      <video src="/firstScreen.mp4" autoPlay loop muted className={`videoFS absolute hidden w-screen h-screen ${styles.video} lg:block`}></video>
+      <video src="/firstScreen.mp4" autoPlay loop muted className={`videoFS absolute  w-screen h-screen ${styles.video} lg:block`}></video>
       <div className=" text-white px-3 md:w-1/3 md:p-0 z-[1]">
         <p className="font-bold text-xl mb-5 md:text-2xl">
           Аудиторская группа

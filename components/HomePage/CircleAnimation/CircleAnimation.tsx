@@ -79,11 +79,11 @@ export default function CircleAnimation() {
         }
     }, [])
 
-
+    // -m-[5px]
   return (
-    <div className='circle absolute right-0 -m-[5px] w-[150px] h-[150px] sm:w-[205px] sm:h-[205px] z-[3] rounded-full duration-75'>
+    <div className='circle absolute right-0 w-[150px] h-[150px] sm:w-[205px] sm:h-[205px] z-[3] rounded-full duration-75'>
         {/* <Image className='absolute shadow-md shadow-black rounded-full -m-[5px] w-full h-full' src={"/circle.png"} width={200} height={200} alt=''/> */}
-        <div className={`w-full ${styles['shadow-black']} bg-accent-color flex h-full overflow-hidden absolute rounded-full`}>
+        <div className={`w-full ${styles['shadow-black']} bg-accent-color bg-opacity-50 flex h-full overflow-hidden absolute rounded-full`}>
             <div className={`w-full h-full ${styles['shadow-white']} rounded-full shadow-white`}>
             </div>
         </div>

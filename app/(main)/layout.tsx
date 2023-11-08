@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Header from "@/components/Header/Header";
 import Footer from "@/components/Footer/Footer";
-import Preloader from "@/components/Preloader/Preloader";
 
 export const metadata: Metadata = {
   title: 'Аудиторская группа "Аземша и партнеры"',
@@ -15,7 +14,6 @@ export default function MainLayout({
 }) {
   return (
         <>
-      {/* <Preloader/> */}
         <Header />
         {children}
         <Footer />

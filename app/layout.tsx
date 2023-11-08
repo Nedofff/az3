@@ -1,7 +1,16 @@
 import { StrictMode } from "react";
 import "./globals.css";
 import Providers from "@/components/Providers/Providers";
-import Preloader from "@/components/Preloader/Preloader";
+
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  viewport: {
+    width: "device-width",
+    initialScale: 1,
+    maximumScale: 1,
+  }
+};
 
 export default function RootLayout({
   children, 
@@ -13,7 +22,6 @@ export default function RootLayout({
       <body className="overflow-x-hidden">
         <StrictMode>
         <Providers>
-          <Preloader/>
         {children}
         </Providers>
         </StrictMode>

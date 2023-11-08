@@ -1,10 +1,12 @@
-import ScalingImage from "@/components/ScalingImage/ScalingImage";
 import InfoSection from "@/components/InfoPage/InfoSection";
 import React from "react";
+import ScalingImages from "@/components/InfoPage/ScalingImages";
 
+// TODO: Разделить на абзацы
 export default function InfoPage() {
   const imagesData = [
     {
+      key: 0,
       name: "img1",
       src: "/infoPage/img1.png",
       width: 200,
@@ -12,6 +14,7 @@ export default function InfoPage() {
       alt: "",
     },
     {
+      key: 1,
       name: "img2",
       src: "/infoPage/img2.png",
       width: 200,
@@ -19,6 +22,7 @@ export default function InfoPage() {
       alt: "",
     },
     {
+      key: 2,
       name: "img3",
       src: "/infoPage/img3.png",
       width: 200,
@@ -26,6 +30,7 @@ export default function InfoPage() {
       alt: "",
     },
     {
+      key: 3,
       name: "img4",
       src: "/infoPage/img4.png",
       width: 200,
@@ -58,16 +63,7 @@ export default function InfoPage() {
               </p>
             </div>
             <div className="flex">
-              {imagesData.map((img) => (
-                <ScalingImage
-                  className="w-1/4 h-auto"
-                  alt={img.alt}
-                  key={img.name}
-                  src={img.src}
-                  width={img.width}
-                  height={img.height}
-                />
-              ))}
+              <ScalingImages imagesData={imagesData}/>
             </div>
           </div>
         </InfoSection>
@@ -128,6 +124,7 @@ export default function InfoPage() {
             Генеральный директор Аземша Екатерина Александровна
           </p>
         </InfoSection>
+        {/* TODO: сделать таблицу для (НИЖЕ) 3. Информация о лицах, связанных с аудиторской организацией*/}
         <InfoSection label="3. Информация о лицах, связанных с аудиторской организацией">
           <div className="grid grid-rows-[8] grid-cols-2">
             <p className="block">1. Перечень филиалов и представительств; </p>
@@ -411,6 +408,7 @@ export default function InfoPage() {
             Меры дисциплинарного и иного воздействия не применялись.
           </p>
         </InfoSection>
+        {/* TODO: Сделать нормальную таблицу (НИЖЕ) 6. Информация об аудиторах, работающих в аудиторской организации по трудовому договору*/}
         <InfoSection label="6. Информация об аудиторах, работающих в аудиторской организации по трудовому договору">
           <p>
             Численность работающих в аудиторской организации по основному месту
@@ -564,6 +562,7 @@ export default function InfoPage() {
         </InfoSection>
         <InfoSection label="8. Отчёты о деятельности ООО «Аудиторская группа «Аземша и партнёры»">
           {/* TODO: сделать тут соединение с БД */}
+          {/* TODO: разделить на строки и выделить, чтоб было понятно, что это ссылка*/}
           <a href="#">
             Отчет о деятельности ООО «Аудиторская группа «Аземша и партнёры» за
             2022 год

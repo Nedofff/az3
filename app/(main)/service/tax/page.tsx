@@ -10,7 +10,7 @@ export default function TaxPage() {
   const heading2Style = "text-xl text-sub-color font-semibold mb-5";
   return (
     <main className="flex flex-col bg-main-color items-center pt-28">
-      <h1 className="text-4xl text-sub-color font-bold">
+      <h1 className="text-4xl text-center text-sub-color font-bold">
         Налоговый консалтинг
       </h1>
       <section className="separator-min w-4/5 flex flex-col sm:flex-row sm:w-full sm:items-center md:px-28 lg:w-3/5">
@@ -98,8 +98,8 @@ export default function TaxPage() {
           </div>
         </div>
         <div className="sm:w-2/3 md:w-4/5 lg:hidden">
-          <Dropdown className="" label="Сопровождение налоговых проверок">
-            <ul className="space-y-1 px-3">
+          <Dropdown needHeading className="" label="Сопровождение налоговых проверок">
+            <ul className="space-y-1 px-3 list-disc pl-6">
               <li>Предварительный налоговый аудит</li>
               <li>
                 Проверка документов, подготовленных для представления по
@@ -115,8 +115,8 @@ export default function TaxPage() {
               <li>Оценка перспектив разрешения спора и выдача рекомендаций</li>
             </ul>
           </Dropdown>
-          <Dropdown className="" label="Досудебная защита">
-            <ul className="space-y-1 px-3">
+          <Dropdown needHeading className="" label="Досудебная защита">
+            <ul className="space-y-1 px-3 list-disc pl-6">
               <li>Анализ акта налоговой проверки</li>
               <li>Подготовка возражений на акт налоговой проверки</li>
               <li>
@@ -134,8 +134,8 @@ export default function TaxPage() {
               </li>
             </ul>
           </Dropdown>
-          <Dropdown className="" label="Судебное представительство">
-            <ul className="space-y-1 px-3">
+          <Dropdown needHeading className="" label="Судебное представительство">
+            <ul className="space-y-1 px-3 list-disc pl-6">
               <li>Разработка стратегии ведения дела</li>
               <li>Сбор необходимых доказательств</li>
               <li>Подготовка процессуальных документов</li>

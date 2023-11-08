@@ -4,7 +4,7 @@
 
 
 .marker-for-list {
-    @apply mr-5 text-xl box-content font-semibold text-sub-color border-sub-color border-2 py-2 rounded-full;
+    @apply mr-2 sm:mr-5 text-xl box-content font-semibold text-sub-color border-sub-color border-2 py-2 rounded-full;
 }
 /* .marker-for-list:first-child{
     @apply px-0;

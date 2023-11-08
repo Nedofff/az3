@@ -16,6 +16,9 @@
     font-display: block;
   }
 
+  body{
+    @apply bg-main-color;
+  }
 
 p, h1, h2, h3, figure, ul, a, article{
     @apply z-10 relative;

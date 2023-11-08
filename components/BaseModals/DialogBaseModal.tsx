@@ -1,18 +1,26 @@
 'use client'
-import React from "react";
+import React, {useEffect} from "react";
 import {createPortal} from "react-dom";
 import styles from './DialogModal.module.css'
 
 const ModalWindow = ({children, title, onClose }:{children:React.ReactNode, title:React.ReactNode, onClose:()=>void}) => {
+  useEffect(()=>{
+    document.documentElement.style.overflowY = 'hidden'
+  }, [])
+
+  const onCloseModal = () => {
+    onClose()
+    document.documentElement.style.overflowY = 'scroll'
+  }
 
   return (
-    <div onClick={onClose} role="dialog" className="w-screen sm:p-5 p-0 h-screen fixed overflow-y-scroll top-0 bg-opacity-70 flex items-center justify-center left-0 z-50 bg-black">
-      <div onClick={e => e.stopPropagation()} className="bg-white py-5 rounded-sm px-10 h-screen w-screen sm:h-auto sm:w-3/4">
+    <div onClick={onCloseModal} role="dialog" className="w-screen sm:p-5 p-0 overflow-hidden h-screen fixed top-0 bg-opacity-70 flex items-center justify-center left-0 z-50 bg-black">
+      <div onClick={e => e.stopPropagation()} className="bg-white overflow-hidden py-5 rounded-sm px-2 sm:px-10 h-screen w-screen sm:h-[95%] sm:w-3/4">
         <div className="flex justify-between pb-2 space-x-4">
         <h3 className="font-bold text-xl text-sub-color">{title}</h3>
-        <button onClick={onClose} className={styles.close}><span></span></button>
+        <button onClick={onCloseModal} className={styles.close}><span></span></button>
         </div>
-        <div>
+        <div className="h-full overflow-y-auto pb-5">
         {children}
         </div>
       </div>

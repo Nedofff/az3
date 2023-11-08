@@ -3,7 +3,7 @@ import React, { useLayoutEffect, useRef } from "react";
 import { createPortal } from "react-dom";
 import styles from "./ImgScaleBaseModal.module.css";
 import Image from "next/image";
-
+// TODO: починить скейлинг картинки, лучше всего заметно на странице service/audit/#Порядок взаимодействия
 const ModalWindow = ({
   src,
   width,
@@ -38,7 +38,7 @@ const ModalWindow = ({
             <span></span>
           </button>
           <Image
-            className="w-auto h-4/5 cursor-zoom-out"
+            className="w-full h-4/5 cursor-zoom-out"
             src={src}
             width={width}
             height={height}

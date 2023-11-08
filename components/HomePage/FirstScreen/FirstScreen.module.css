@@ -1,6 +1,7 @@
 
 
 .video {
--webkit-transform: scaleX(1.4); 
-  -moz-transform: scaleX(1.61);
+/* -webkit-transform: scaleX(1.4); 
+  -moz-transform: scaleX(1.61); */
+  object-fit: cover;
 }

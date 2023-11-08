@@ -28,8 +28,6 @@ export const modalTestSlice = createSlice({
             state.answers[actions.payload.id] = actions.payload.value
             state.countAnswers = Object.keys(state.answers).length
 
-            console.log('4, 9, 15, 18, 24')
-            console.log(Object.keys(state.answers).length)
             // if (Object.keys(state.answers).length === 5) {
             //     state.countAnswers = true
             // }

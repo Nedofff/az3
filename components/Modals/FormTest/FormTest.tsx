@@ -23,7 +23,7 @@ export default function FormTest({
     <div className="flex flex-col items-center">
       <div className="w-2/3 flex flex-col items-start" key={theme.id}>
           <h4 className="text-xl">{theme.title}</h4>
-        <div className="h-[500px] py-10 w-full flex flex-col content-start overflow-y-auto">
+        <div className="h-[350px] py-10 w-full flex flex-col content-start overflow-y-auto">
           {theme.questions.map((question: any) => (
             <Question key={question.id} question={question} />
           ))}

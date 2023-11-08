@@ -48,7 +48,7 @@ export default async function Page({ params }: IProps) {
     >
       <OptimizedBgImg imageProps={forImg}/>
       <div className=" text-white px-3 md:w-1/2 md:p-0 z-[1]">
-        <h1 className="font-bold text-3xl uppercase md:text-6xl md:mb-2">{title}</h1>
+        <h1 className="font-bold text-lg sm:text-3xl uppercase md:text-6xl md:mb-2">{title}</h1>
       </div>
         <div className="hidden w-1/6 md:block"></div>
     </section>

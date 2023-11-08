@@ -1,6 +1,6 @@
 'use client'
 
-import React from "react";
+import React, { useEffect } from "react";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css"
 import Recall from "./Recall/Recall";
@@ -36,8 +36,12 @@ export default function Feedback() {
     margin: '0 14px',
     borderRadius: '9999px',
     position:'relative',
-    bottom: '-2%'
+    bottom: '-50px'
 };
+  useEffect(()=>{
+    document.querySelector<HTMLDivElement>('.carousel-slider')!.style.overflow='visible'
+  })
+
   return (
     <section id='Feedback' className="separator pb-14">
       <h2 className="heading">Отзывы клиентов</h2>
@@ -46,8 +50,7 @@ export default function Feedback() {
           <Recall key={AFeedback.id} {...AFeedback} />
         ))}
       </div>
-
-        <Carousel className="block md:hidden" useKeyboardArrows infiniteLoop dynamicHeight showThumbs={false} showArrows showStatus={false} renderIndicator={(onClickHandler, isSelected, index, label) => {
+        <Carousel className="block md:hidden" useKeyboardArrows infiniteLoop  showThumbs={false} showArrows showStatus={false} renderIndicator={(onClickHandler, isSelected, index, label) => {
                 if (isSelected) {
                     return (
                         <li

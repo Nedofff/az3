@@ -13,14 +13,14 @@ enum ENormType {
 export default function MustBeAuditedToggle() {
   const [normType, setNormType] = useState<ENormType>(ENormType.idle);
   const [isFirst, setIsFirst] = useState(true)
-
+  const styleForButtons = ''
   switch (normType) {
     case ENormType.ifrs:
-      return <Ifrs onClick={setNormType} styleForButtons='bg-sub-color mt-5 text-white text-start rounded-xl py-2 px-14 mb-5 shadow-sm duration-300 hover:bg-accent-color active:scale-95'/>;
+      return <Ifrs onClick={setNormType} styleForButtons='bg-sub-color mt-5 text-white text-start rounded-xl py-2 px-5 sm:px-14 mb-5 shadow-sm duration-300 hover:bg-accent-color active:scale-95'/>;
     case ENormType.ras:
-      return <Ras onClick={setNormType} styleForButtons='bg-sub-color mt-5 text-white text-start rounded-xl py-2 px-14 mb-5 shadow-sm duration-300 hover:bg-accent-color active:scale-95'/>;
+      return <Ras onClick={setNormType} styleForButtons='bg-sub-color mt-5 text-white text-start rounded-xl py-2 px-5 sm:px-14 mb-5 shadow-sm duration-300 hover:bg-accent-color active:scale-95'/>;
     default:
-      return <NormSelection isFirst={isFirst} setIsFirst={setIsFirst} onClick={setNormType} styleForButtons='text-xl font-semibold bg-white text-start rounded-xl py-10 px-16 mb-5 w-full sm:w-4/5 lg:w-1/2 shadow-lg duration-500 hover:duration-500 active:duration-150 hover:shadow-2xl active:scale-95'/>;
+      return <NormSelection isFirst={isFirst} setIsFirst={setIsFirst} onClick={setNormType} styleForButtons='text-xl font-semibold bg-white text-start rounded-xl py-10 px-5 sm:px-16 mb-5 w-full sm:w-4/5 lg:w-1/2 shadow-lg duration-500 hover:duration-500 active:duration-150 hover:shadow-2xl active:scale-95'/>;
   }
 }
 
@@ -44,8 +44,8 @@ const clickHandler = (type:ENormType) => {
     }, 300)
 }
   return (
-    <section id="mustBeAudited" className="separator-min w-full flex flex-col items-center sm:items-start md:items-center">
-      <h2 className="text-lg text-sub-color font-semibold mb-5">
+    <section id="mustBeAudited" className="bg-main-color pt-6 sm:pt-16 px-3 sm:px-28 md:px-3 w-full flex flex-col items-center sm:items-start md:items-center">
+      <h2 className="text-lg px-1 text-sub-color font-semibold mb-5">
         Кому обязательно проходить аудит по МСФО?
       </h2>
       <ul className="space-y-7 md:space-y-0 md:flex md:flex-wrap lg:w-2/3">
@@ -89,8 +89,8 @@ function Ras({ onClick, styleForButtons }: { onClick: Dispatch<SetStateAction<EN
     }
 
   return (
-    <section id="mustBeAudited" className="separator-min w-full flex flex-col items-center sm:items-start md:items-center ">
-      <h2 className="text-lg text-sub-color font-semibold mb-5">
+    <section id="mustBeAudited" className="bg-main-color pt-6 sm:pt-16 w-full flex flex-col items-center sm:items-start md:items-center ">
+      <h2 className="text-lg px-1 text-sub-color font-semibold mb-5">
         Кому обязательно проходить аудит по РСБУ?
       </h2>
       <ul className="space-y-7 md:space-y-0 md:flex md:flex-wrap lg:w-2/3">
@@ -147,9 +147,9 @@ function NormSelection({onClick, styleForButtons, isFirst, setIsFirst}: {
 
     
   return (
-    <section id="mustBeAudited" className=" separator-min w-full flex flex-col items-center sm:items-start md:items-center ">
-      <h2 className="text-lg text-sub-color font-semibold mb-5">Кому обязательно проходить аудит по ...?</h2>
-      <div className="flex space-x-16 py-10">
+    <section id="mustBeAudited" className="bg-main-color pt-6 sm:pt-16 w-full flex flex-col items-center sm:items-start md:items-center ">
+      <h2 className="text-lg px-1 text-sub-color font-semibold mb-5">Кому обязательно проходить аудит по...</h2>
+      <div className="flex space-x-5 sm:space-x-16 py-10">
         <button onClick={() => clickHandler(ENormType.ras)} className={styleForButtons}>РСБУ</button>
         <button onClick={() => clickHandler(ENormType.ifrs)} className={styleForButtons}>МСФО</button>
       </div>

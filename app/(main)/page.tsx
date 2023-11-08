@@ -9,21 +9,23 @@ import YandexMap from "@/components/HomePage/YandexMap/YandexMap";
 import FeedbackModal from "@/components/Modals/FeedbackModal";
 import TestModal from "@/components/Modals/TestModal";
 import CircleAnimation from "@/components/HomePage/CircleAnimation/CircleAnimation";
+import Preloader from "@/components/Preloader/Preloader";
 
 export default function HomePage() {
   return (
     <main>
-      <FirstScreen/>
-        <CircleAnimation/>
-        <AboutUs/>
-        <Services/>
-        <Advantages/>
-        <News/>
-        <Feedback/>
-        <ContactForm/>
-        <YandexMap/>
-        <FeedbackModal/>
-        <TestModal/>
+      <Preloader />
+      <FirstScreen />
+      <CircleAnimation />
+      <AboutUs />
+      <Services />
+      <Advantages />
+      <News />
+      <Feedback />
+      <ContactForm />
+      <YandexMap />
+      <FeedbackModal />
+      <TestModal />
     </main>
-  )
+  );
 }
