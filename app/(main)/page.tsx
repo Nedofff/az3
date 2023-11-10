@@ -1,6 +1,6 @@
 import AboutUs from "@/components/HomePage/AboutUs/AboutUs";
 import Advantages from "@/components/HomePage/Advantages/Advantages";
-import ContactForm from "@/components/ContactForm/ContactForm";
+import ContactBlock from "@/components/ContactBlock/ContactBlock";
 import Feedback from "@/components/HomePage/Feedback/Feedback";
 import FirstScreen from "@/components/HomePage/FirstScreen/FirstScreen";
 import News from "@/components/HomePage/News/News";
@@ -22,7 +22,7 @@ export default function HomePage() {
       <Advantages />
       <News />
       <Feedback />
-      <ContactForm />
+      <ContactBlock />
       <YandexMap />
       <FeedbackModal />
       <TestModal />

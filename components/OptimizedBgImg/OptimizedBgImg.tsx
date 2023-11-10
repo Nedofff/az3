@@ -8,9 +8,11 @@ interface IImageProps {
 }
 
 export default function OptimizedBgImg({
+  isNeedDark,
   imageProps,
   addClassName
 }: {
+  isNeedDark?:boolean,
   imageProps: IImageProps;
   addClassName?: string
 }) {
@@ -34,7 +36,7 @@ export default function OptimizedBgImg({
         }}
       >
         {/* bg-black */}
-        <div className="w-screen bg-opacity-40 h-screen fixed top-0 left-0 z-[1]"></div>
+        <div className={`w-screen bg-opacity-40 h-screen fixed top-0 left-0 z-[1] ${isNeedDark && "bg-black"}`}></div>
         <Image
           className="w-screen h-screen object-cover"
           {...imageProps}

@@ -22,7 +22,7 @@ export default function NewsPage() {
   })
 
   const onSearch = async (queryParams:string) => {
-    let url = 'http://localhost:3000/api/news'
+    let url = '/api/news'
 
     if (queryParams !== '') {
       url += `?q=${queryParams}`

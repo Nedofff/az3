@@ -14,9 +14,9 @@ export default function Footer() {
             <a className="hover:text-accent-color duration-300" href="mailto:info@ap-audit.ru">info@ap-audit.ru</a>
           </p>
         </address>
-        <address className="not-italic px-2">
+        <address className="not-italic px-2 mr-2">
           <span className="text-base font-semibold block mb-2">Адрес</span>
-          г. Красноярск, пр. Мира д.7г
+          г. Красноярск, пр. Мира 7Г, офис 68
           <Messengers className="mt-5 w-full"/>
         </address>
       </div>

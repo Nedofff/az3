@@ -12,3 +12,21 @@ interface IFeedback {
   company: string;
   text: string;
 }
+
+
+interface IAuditeesAndRevenue {
+  year: string;
+  listOrganization?: {
+    id: string,
+    name: string
+  }[];
+  moneyOZO: string;
+  moneyAll: string;
+  moneyAudit: string;
+  moneyOther: string;
+}
+
+interface IReport{
+  year: string
+  link: string
+}

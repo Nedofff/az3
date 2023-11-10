@@ -61,20 +61,23 @@ export default function FeedbackModal() {
           onClose={closeModal}
         >
           <h4 className="text-black text-opacity-40">{currentFeedback.subTitle}</h4>
-          <div className="flex mt-3 justify-between space-x-3">
-            <div className="w-2/3 overflow-scroll h-[400px]">
+          {/* <div className="flex mt-3 justify-between space-x-3"> */}
+          <div className="flex flex-col-reverse mt-3 justify-between space-x-3">
+            {/* <div className="w-2/3 overflow-scroll h-[400px]">
               {currentFeedback.content.map((oneP) => (
                 <p className="break-words mb-2" key={oneP.id}>{oneP.text}</p>
               ))}
-            </div>
-            <div className="w-1/3">
-              <a download href={currentFeedback.srcPdf} className="font-thin mb-4 sm:mb-2">Скачать рекомендательное письмо</a>
-            <a target='_blank' href={currentFeedback.srcPdf} className="h-min relative block border-2 border-black rounded-md">
+            </div> */}
+            <iframe className="w-full overflow-scroll h-[400px]" src={`${currentFeedback.srcPdf}`} width={"100%"} height={"100%"}></iframe>
+            <div className="w-full flex flex-col">
+              <a download href={currentFeedback.srcPdf} className="block break-words text-sub-accent-color font-thin mb-4 sm:mb-2">Скачать рекомендательное письмо</a>
+              <a target="_blank" href={currentFeedback.srcPdf} className="block break-words text-sub-accent-color font-thin mb-4 sm:mb-2">Открыть отдельную страницу с письмом</a>
+            {/* <a target='_blank' href={currentFeedback.srcPdf} className="h-min relative block border-2 border-black rounded-md">
                 <div className="absolute z-10 w-full h-full bg-opacity-50 bg-sub-color flex items-center justify-center">
                   <BsEyeFill className='text-6xl text-white'/>
                 </div>
               <Image className="rounded-md" src={currentFeedback.srcImg} alt="" width={300} height={300} />
-            </a>
+            </a> */}
             </div>
           </div>
         </DialogBaseModal>

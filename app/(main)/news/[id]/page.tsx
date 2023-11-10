@@ -2,6 +2,7 @@ import React from "react";
 import type { Metadata, ResolvingMetadata } from "next";
 import { parser } from "@/service/jsonToHtml";
 import OptimizedBgImg from "@/components/OptimizedBgImg/OptimizedBgImg";
+import { env } from "process";
 
 interface IProps {
   params: {
@@ -34,8 +35,8 @@ interface IOneNews {
 
 
 export default async function Page({ params }: IProps) {
-  const response = await fetch(`http://localhost:3000/api/news/${params.id}`, {
-    cache: "no-store",
+  const response = await fetch(`${env.NEXTAUTH_URL}/api/news/${params.id}`, {
+    // cache: "no-store",
   });
 
   if (response.ok) {
@@ -46,7 +47,7 @@ export default async function Page({ params }: IProps) {
         <section
       className={` bg-blend-overlay relative bg-black bg-opacity-40 flex items-center w-full h-screen bg-center bg-no-repeat bg-cover justify-center`}
     >
-      <OptimizedBgImg imageProps={forImg}/>
+      <OptimizedBgImg isNeedDark imageProps={forImg}/>
       <div className=" text-white px-3 md:w-1/2 md:p-0 z-[1]">
         <h1 className="font-bold text-lg sm:text-3xl uppercase md:text-6xl md:mb-2">{title}</h1>
       </div>

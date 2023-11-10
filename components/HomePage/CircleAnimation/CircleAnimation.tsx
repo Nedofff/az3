@@ -3,11 +3,6 @@
 import React, { useEffect, useState } from 'react'
 import styles from './CircleAnimation.module.css'
 
-interface IState {
-    startMove: number,
-    endMove: number
-}
-
 export default function CircleAnimation() {
 
     useEffect(() => {
@@ -21,9 +16,8 @@ export default function CircleAnimation() {
         let side = 'left'
         let deg = 0
         let prevTopStep = 0
-
+        const controlValue = 80
         const scrollEventHandler = () => {
-            // console.log(aboutUs,feedback)
             const topStep = (-1 * document.body.getBoundingClientRect().y) + windowsClientHeight/3
 
             let coefPercent = 10
@@ -34,28 +28,28 @@ export default function CircleAnimation() {
                     const percent = ((-1 * document.body.getBoundingClientRect().y / windowsClientHeight) * 100) % 100 + coefPercent
         
                     if (side === 'left') {
-                        if (percent <= 75) {
+                        if (percent <= controlValue) {
                             circle!.style.right = 'unset'
                             circle!.style.left = `${percent}%`
                             count += 1
                             const diffDeg = (prevTopStep - topStep)  * -1
                             circle!.style.transform = `rotate(${deg+=diffDeg}deg)`
                         }
-                        if (percent >= 75 && count >= 15) {
+                        if (percent >= controlValue && count >= 15) {
                             side = 'right'
                             count = 0
                         }
         
                     }
                     if (side === 'right') {
-                        if (percent <= 75) {
+                        if (percent <= controlValue) {
                             circle!.style.left = 'unset'
                             circle!.style.right = `${percent}%`
                             count += 1
                             const diffDeg = (prevTopStep - topStep)
                             circle!.style.transform = `rotate(${deg+=diffDeg * 3}deg)`
                         }
-                        if (percent >= 75 && count >= 15) {
+                        if (percent >= controlValue && count >= 15) {
                             side = 'left'
                             count = 0
                         }
@@ -81,10 +75,10 @@ export default function CircleAnimation() {
 
     // -m-[5px]
   return (
-    <div className='circle absolute right-0 w-[150px] h-[150px] sm:w-[205px] sm:h-[205px] z-[3] rounded-full duration-75'>
+    <div className='circle absolute right-0 w-[100px] h-[100px] sm:w-[150px] sm:h-[150px] z-[3] rounded-full duration-75'>
         {/* <Image className='absolute shadow-md shadow-black rounded-full -m-[5px] w-full h-full' src={"/circle.png"} width={200} height={200} alt=''/> */}
         <div className={`w-full ${styles['shadow-black']} bg-accent-color bg-opacity-50 flex h-full overflow-hidden absolute rounded-full`}>
-            <div className={`w-full h-full ${styles['shadow-white']} rounded-full shadow-white`}>
+            <div className={`w-full h-full ${styles['gradien-inner']} ${styles['shadow-white']} rounded-full shadow-white flex items-center justify-center`}>
             </div>
         </div>
     </div>

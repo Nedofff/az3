@@ -4,7 +4,7 @@ import {GiLightBulb} from "react-icons/gi";
 import {SlNotebook} from "react-icons/sl";
 import styles from "./tax.module.css";
 import Dropdown from "@/components/Dropdown/Dropdown";
-import ContactForm from "@/components/ContactForm/ContactForm";
+import ContactBlock from "@/components/ContactBlock/ContactBlock";
 
 export default function TaxPage() {
   const heading2Style = "text-xl text-sub-color font-semibold mb-5";
@@ -167,7 +167,7 @@ export default function TaxPage() {
         </div>
         </div>
       </section>
-      <ContactForm/>
+      <ContactBlock/>
     </main>
   );
 }

@@ -19,6 +19,8 @@ export default function FormTest({
     return <EndTest reset={reset} prevSlide={prevSlide}/>;
   }
 
+  const buttonStyle = 'bg-black text-sm bg-opacity-60 p-2 sm:py-3 sm:px-5 rounded-xl text-white duration-300 active:scale-95'
+
   return (
     <div className="flex flex-col items-center">
       <div className="w-2/3 flex flex-col items-start" key={theme.id}>
@@ -29,14 +31,14 @@ export default function FormTest({
           ))}
         </div>
       </div>
-      <div className="mt-5 w-2/3 flex justify-between">
-        {theme.id !== '1' && <button className="bg-black bg-opacity-60 py-3 px-5 rounded-xl text-white duration-300 hover:bg-sub-color" onClick={prevSlide}>
+      <div className="mt-5 sm:w-2/3 flex justify-between">
+        {theme.id !== '1' && <button className={`${buttonStyle} hover:bg-sub-color`} onClick={prevSlide}>
           Назад
         </button>}
-        <button className="bg-black bg-opacity-60 py-3 px-5 rounded-xl text-white duration-300 hover:bg-red-600" onClick={reset}>
+        <button className={`${buttonStyle} hover:bg-red-600 mx-1`} onClick={reset}>
           Закрыть
         </button>
-        <button onClick={() => nextSlide(themeIndex)} className="bg-black bg-opacity-60 py-3 px-5 rounded-xl text-white duration-300 hover:bg-sub-color">
+        <button onClick={() => nextSlide(themeIndex)} className={`${buttonStyle} hover:bg-sub-color`}>
           Дальше
         </button>
       </div>

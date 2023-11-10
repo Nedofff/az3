@@ -100,7 +100,7 @@ export default function Header() {
   }, [burgerIsActive, clickOnBurgerHandler]);
 
   const styleLinkDesktop =
-    "block py-6 h-[72px] whitespace-nowrap px-2 duration-300 hover:shadow-2xl hover:shadow-black active:text-sub-accent-color";
+    "block py-8 h-[82px] whitespace-nowrap px-2 duration-300 hover:shadow-2xl hover:shadow-black active:text-sub-accent-color";
   const styleLinkMobile =
     "block w-fit duration-300 pt-3 pb-2 active:text-sub-accent-color border-b-2 border-sub-color border-opacity-0 hover:border-opacity-100 hover:border-white hover:duration-300";
 

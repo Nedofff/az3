@@ -2,7 +2,7 @@ import React from "react";
 import Image from "next/image";
 import Methodic from "@/components/AuditPage/Methodic/Methodic";
 import MustBeAuditedToggle from "@/components/AuditPage/MustBeAuditedToggle/MustBeAuditedToggle";
-import ContactForm from "@/components/ContactForm/ContactForm";
+import ContactBlock from "@/components/ContactBlock/ContactBlock";
 import LiWithMark from "@/components/LiWithMark/LiWithMark";
 import ScalingImage from "@/components/ScallingImage/ScallingImage";
 
@@ -59,7 +59,7 @@ export default function AuditPage() {
         </h2>
         <ScalingImage img={{src: '/6screen__img.png', width: 700, height: 700, alt: ''}}/>
       </section>
-      <ContactForm/>
+      <ContactBlock/>
     </main>
   );
 }
