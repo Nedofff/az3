@@ -2,11 +2,13 @@ import React from "react";
 import Image from "next/image";
 import { FaChartLine, FaBusinessTime } from "react-icons/fa";
 import { BsFillPeopleFill } from "react-icons/bs";
+import AnimationShift from "@/components/Animation/AnimationShift/AnimationShift";
 
 export default function AboutUs() {
   return (
     <div id='AboutUs' className="separator flex items-center flex-col md:flex-row md:justify-center md:items-start">
-      <div className="w-full flex flex-col mb-5 px-5 md:w-1/3 md:mr-10 md:max-w-lg md:p-0">
+      <AnimationShift id="a12" amount={.1} transition={{delay:0, duration: 300}} side="left" className="w-full flex flex-col mb-5 px-5 md:w-1/3 md:mr-10 md:max-w-lg md:p-0">
+      {/* <div className=""> */}
         <h2 className="heading">О нас</h2>
         <p className="mb-7 break-word hyphens-auto">
           Наша компания занимается аудиторскими услугами по всей России уже
@@ -37,8 +39,10 @@ export default function AboutUs() {
             высококвалифицированных аудиторов
           </li>
         </ul>
-      </div>
-      <figure className="w-full px-2 md:w-1/3 md:max-w-md sm:w-1/2 sm:px-0">
+      {/* </div> */}
+      </AnimationShift>
+      <AnimationShift id="a123" amount={.3} transition={{delay:0, duration: 450}} side="right" className="w-full px-2 md:w-1/3 md:max-w-md sm:w-1/2 sm:px-0">
+      <figure>
         <Image
           className="rounded-sm w-full"
           width={853}
@@ -51,6 +55,7 @@ export default function AboutUs() {
           Аземша
         </figcaption>
       </figure>
+      </AnimationShift>
     </div>
   );
 }

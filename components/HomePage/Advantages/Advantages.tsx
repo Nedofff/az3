@@ -3,19 +3,22 @@ import Image from "next/image";
 import { BsFillPersonFill } from "react-icons/bs";
 import { TbChartHistogram } from "react-icons/tb";
 import { FaAward, FaComments } from "react-icons/fa6";
+import AnimationShift from "@/components/Animation/AnimationShift/AnimationShift";
 
 export default function Advantages() {
   return (
     <section id='Advantages' className="separator">
       <h2 className="heading">ВЫбирайте нас</h2>
       <div className="flex mt-10 flex-col-reverse px-5 md:flex-row md:justify-center lg:w-3/4 lg:mx-auto">
+        <AnimationShift id="a32" amount={.1} transition={{delay:0, duration: 300}} side="left" className="w-11/12 mt-16 self-center rounded-sm md:w-1/2 md:mt-0 z-10">
         <Image
           src="/secondFace.jpg"
           width={853}
           height={1280}
           alt="Человек, работающий"
-          className="w-11/12 mt-16 self-center rounded-sm md:w-1/2 md:mt-0 z-10"
+          className=""
         ></Image>
+        </AnimationShift>
         <ul className="w-full md:ml-5 lg:w-1/2">
           <li className="mb-7 flex flex-col text-center break-words hyphens-auto md:flex-row md:text-start md:items-center">
             <div className="self-center">

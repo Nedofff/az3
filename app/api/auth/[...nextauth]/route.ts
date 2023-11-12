@@ -12,7 +12,7 @@ const authConfig: AuthOptions = {
   providers: [
     Credentials({
       credentials: {
-        name: { label: "login", type: "login" },
+        name: { label: "login", type: "name" },
         password: { label: "password", type: "password" },
       },
       async authorize(credentials) {

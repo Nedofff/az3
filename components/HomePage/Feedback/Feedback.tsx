@@ -4,6 +4,7 @@ import React, { useEffect } from "react";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css"
 import Recall from "./Recall/Recall";
+import AnimationOpacity from "@/components/Animation/AnimationOpacity/AnimationOpacity";
 
 
 export default function Feedback() {
@@ -44,6 +45,7 @@ export default function Feedback() {
 
   return (
     <section id='Feedback' className="separator pb-14">
+      <AnimationOpacity id="feedbacksOpacity" transition={{delay:0, duration: 450}} className="w-full h-full">
       <h2 className="heading">Отзывы клиентов</h2>
       <div className="items-between hidden md:flex mt-10">
       {feedbacks.map((AFeedback) => (
@@ -78,6 +80,7 @@ export default function Feedback() {
           <Recall key={AFeedback.id} {...AFeedback} />
         ))}
         </Carousel>
+        </AnimationOpacity>
     </section>
   );
 }

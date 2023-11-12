@@ -14,7 +14,7 @@ import Preloader from "@/components/Preloader/Preloader";
 export default function HomePage() {
   return (
     <main>
-      <Preloader />
+      {/* <Preloader /> */}
       <FirstScreen />
       <CircleAnimation />
       <AboutUs />

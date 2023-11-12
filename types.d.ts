@@ -13,7 +13,6 @@ interface IFeedback {
   text: string;
 }
 
-
 interface IAuditeesAndRevenue {
   year: string;
   listOrganization?: {
@@ -29,4 +28,14 @@ interface IAuditeesAndRevenue {
 interface IReport{
   year: string
   link: string
+}
+
+interface IFormInputAddReport {
+  year: string;               // год
+  listSSO: string;           // Перечень ОЗО
+  revenueSSO: string;       // Выручка от ОЗО
+  revenueAll: string;      // Выручка всего
+  revenueAudit: string;   // Выручка от аудита
+  revenueOther: number;  // Выручка прочая
+  reportFile: File      // файл Отчета
 }

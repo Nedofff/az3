@@ -27,15 +27,20 @@ export default function ContactForm({className}:{className?:string}) {
           });
 
           e.currentTarget.reset()
+          setNameValue('')
+          setSurnameValue('')
+          setPhoneValue('')
+          setEmailValue('')
+          setCommentValue('')
     }
 
   return (
     <form className={className} onSubmit={submitHandler}>
-            <input required onChange={(e) => setNameValue(e.target.value)} id="name" name="name" className="bg-transparent border-b-[3px] mb-5 mx-10 lg:mx-2 px-2 py-5 outline-none focus:border-accent-color" type="text" placeholder="Имя" />
-            <input required onChange={(e) => setSurnameValue(e.target.value)} id='surname' name="surname" className="bg-transparent border-b-[3px] mb-5 mx-10 lg:mx-2 px-2 py-5 outline-none focus:border-accent-color" type="text" placeholder="Фамилия" />
-            <input required onChange={(e) => setPhoneValue(e.target.value)} id='phone' name="phone" className="bg-transparent border-b-[3px] mb-5 mx-10 lg:mx-2 px-2 py-5 outline-none focus:border-accent-color" type="text" placeholder="Телефон" />
-            <input required onChange={(e) => setEmailValue(e.target.value)} id='email' name="email" className="bg-transparent border-b-[3px] mb-5 mx-10 lg:mx-2 px-2 py-5 outline-none focus:border-accent-color" type="text" placeholder="E-mail" />
-            <input onChange={(e) => setCommentValue(e.target.value)} id='comment' name="comment" className="bg-transparent border-b-[3px] mb-5 mx-10 lg:mx-2 px-2 py-5 outline-none focus:border-accent-color" type="text" placeholder="Комментарий" />
+            <input required value={nameValue} onChange={(e) => setNameValue(e.target.value)} id="name" name="name" className="bg-transparent border-b-[3px] mb-5 mx-10 lg:mx-2 px-2 py-5 outline-none focus:border-accent-color" type="text" placeholder="Имя" />
+            <input required value={surnameValue} onChange={(e) => setSurnameValue(e.target.value)} id='surname' name="surname" className="bg-transparent border-b-[3px] mb-5 mx-10 lg:mx-2 px-2 py-5 outline-none focus:border-accent-color" type="text" placeholder="Фамилия" />
+            <input required value={phoneValue} onChange={(e) => setPhoneValue(e.target.value)} id='phone' name="phone" className="bg-transparent border-b-[3px] mb-5 mx-10 lg:mx-2 px-2 py-5 outline-none focus:border-accent-color" type="text" placeholder="Телефон" />
+            <input required value={emailValue} onChange={(e) => setEmailValue(e.target.value)} id='email' name="email" className="bg-transparent border-b-[3px] mb-5 mx-10 lg:mx-2 px-2 py-5 outline-none focus:border-accent-color" type="text" placeholder="E-mail" />
+            <input value={commentValue} onChange={(e) => setCommentValue(e.target.value)} id='comment' name="comment" className="bg-transparent border-b-[3px] mb-5 mx-10 lg:mx-2 px-2 py-5 outline-none focus:border-accent-color" type="text" placeholder="Комментарий" />
             <label className= "flex items-start mx-10 lg:mx-0">
             <input required type="checkbox"  className="mt-0.5 mr-1" />
             <p className="inline text-[11px] opacity-70">

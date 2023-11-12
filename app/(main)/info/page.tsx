@@ -6,7 +6,6 @@ import styles from './InfoPage.module.css'
 import AuditeesAndRevenue from "@/components/InfoPage/AuditeesAndRevenue/AuditeesAndRevenue";
 import ReportsBlock from "@/components/InfoPage/ReportsBlock/ReportsBlock";
 
-// TODO: Разделить на абзацы
 export default function InfoPage() {
   const imagesData = [
     {
@@ -445,7 +444,6 @@ export default function InfoPage() {
             </p>
           </WrapperForText>
         </InfoSection>
-        {/* TODO: Сделать нормальную таблицу (НИЖЕ) 6. Информация об аудиторах, работающих в аудиторской организации по трудовому договору*/}
         <InfoSection label="6. Информация об аудиторах, работающих в аудиторской организации по трудовому договору">
           <WrapperForText>
             <p>
@@ -696,14 +694,12 @@ export default function InfoPage() {
           </WrapperForText>
         </InfoSection>
         <InfoSection label="7. Информация об аудируемых лицах и величине выручки от оказанных аудиторской организацией услуг">
-          {/* TODO: сделать компонент для этой части, чтоб можно было в админке добавлять */}
+          {/* TODO: сделать тут соединение с БД */}
           <WrapperForText>
             <AuditeesAndRevenue/>
           </WrapperForText>
         </InfoSection>
         <InfoSection label="8. Отчёты о деятельности ООО «Аудиторская группа «Аземша и партнёры»">
-          {/* TODO: сделать тут соединение с БД */}
-          {/* TODO: разделить на строки и выделить, чтоб было понятно, что это ссылка*/}
           <WrapperForText>
             
             <ReportsBlock/>
