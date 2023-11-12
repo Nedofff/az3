@@ -1,13 +1,20 @@
+'use client'
 
 import OneNewsForEdit from '@/components/AdminPage/OneNewsForEdit/OneNewsForEdit'
 import Link from 'next/link'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
-
-
-export default async function page() {
-    const response = await fetch(`${process.env.NEXTAUTH_URL}/api/admin/news/list`)
+export default function Page() {
+  const [news, setNews] = useState<{id: string, title:string}[]>()
+    
+  useEffect(()=>{
+    const getNews = async () => {
+      const response = await fetch(`/api/admin/news/list/`)
     const news = await response.json() as {id: string, title:string}[]
+    setNews(news)
+    }
+    getNews()
+  },[])
 
   return (
     <div className='bg-accent-color p-10 rounded-lg w-3/4'>
@@ -16,7 +23,7 @@ export default async function page() {
         <Link className='bg-main-color mr-1 px-5 py-2 text-black rounded-md hover:bg-opacity-50 duration-200 text-center' href={'/admin/news'}>Назад</Link>
         </div>
         <div className='space-y-2'>
-        {news.map(item => (
+        {Boolean(news) && news!.map(item => (
             <OneNewsForEdit key={item.id} id={item.id} title={item.title}/>
         ))}
         </div>
