@@ -23,11 +23,17 @@ export default function AnimationShift({id, side, transition={delay:0, duration:
         const heightElem = element.clientHeight
         const clientHeight = document.documentElement.clientHeight
         setClientWidth(document.documentElement.clientWidth)
+
+        if (document.querySelector(`#${id}`)!.getBoundingClientRect().y - clientHeight + heightElem * amount <= 0) {
+            element.style.transform = 'translateX(0)'
+            element.style.opacity = '1'
+        }
+
         const scrollHandler = () => {
             if (document.querySelector(`#${id}`)!.getBoundingClientRect().y - clientHeight + heightElem * amount <= 0) {
                 element.style.transform = 'translateX(0)'
                 element.style.opacity = '1'
-                // document.removeEventListener('scroll', scrollHandler)
+                document.removeEventListener('scroll', scrollHandler)
             }
         }
 

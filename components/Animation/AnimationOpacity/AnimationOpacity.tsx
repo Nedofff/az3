@@ -20,10 +20,15 @@ export default function AnimationOpacity({id, transition={delay:0, duration: 0},
         const element = document.querySelector<HTMLDivElement>(`#${id}`)!
         const heightElem = element.clientHeight
         const clientHeight = document.documentElement.clientHeight
+
+        if (document.querySelector(`#${id}`)!.getBoundingClientRect().y - clientHeight + heightElem * amount <= 0) {
+            element.style.opacity = '1'
+        }
+
         const scrollHandler = () => {
             if (document.querySelector(`#${id}`)!.getBoundingClientRect().y - clientHeight + heightElem * amount <= 0) {
                 element.style.opacity = '1'
-                // document.removeEventListener('scroll', scrollHandler)
+                document.removeEventListener('scroll', scrollHandler)
             }
         }
 
