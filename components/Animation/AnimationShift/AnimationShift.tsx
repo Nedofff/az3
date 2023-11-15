@@ -23,18 +23,28 @@ export default function AnimationShift({id, side, transition={delay:0, duration:
         const heightElem = element.clientHeight
         const clientHeight = document.documentElement.clientHeight
         setClientWidth(document.documentElement.clientWidth)
-
+        try {
         if (document.querySelector(`#${id}`)!.getBoundingClientRect().y - clientHeight + heightElem * amount <= 0) {
-            element.style.transform = 'translateX(0)'
-            element.style.opacity = '1'
+            setTimeout(() => {
+                element.style.transform = 'translateX(0)'
+                element.style.opacity = '1'
+            }, 100)
         }
+    } catch (error) {
+            
+    }
+        
 
         const scrollHandler = () => {
+            try {
             if (document.querySelector(`#${id}`)!.getBoundingClientRect().y - clientHeight + heightElem * amount <= 0) {
                 element.style.transform = 'translateX(0)'
                 element.style.opacity = '1'
                 // document.removeEventListener('scroll', scrollHandler)
             }
+        } catch (error) {
+                
+        }
         }
 
         document.addEventListener('scroll', scrollHandler)
