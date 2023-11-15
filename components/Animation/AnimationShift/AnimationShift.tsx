@@ -42,7 +42,7 @@ export default function AnimationShift({id, side, transition={delay:0, duration:
     }, [])
 
   return (
-    <div className={`${className}`} style={{
+    <div className={`${className} zindex`} style={{
         transform: `translateX(${side === 'left' ? '-' : '+'}${clientWidth * 0.6}px)`,
         transition: `all ${transition.duration}ms ${transition.delay}ms ease-in-out`,
         opacity: .5

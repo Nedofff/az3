@@ -42,9 +42,9 @@ export default function AboutUs() {
       {/* </div> */}
       </AnimationShift>
       <AnimationShift id="a123" amount={.3} transition={{delay:0, duration: 450}} side="right" className="w-full px-2 md:w-1/3 md:max-w-md sm:w-1/2 sm:px-0">
-      <figure>
+      <figure className="zindex">
         <Image
-          className="rounded-sm w-full"
+          className="rounded-sm w-full zindex"
           width={853}
           height={1280}
           src={"/mainFace.jpg"}

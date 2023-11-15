@@ -16,7 +16,7 @@ export default function CircleAnimation() {
         let side = 'left'
         let deg = 0
         let prevTopStep = 0
-        const controlValue = 80
+        const controlValue = 87
         const scrollEventHandler = () => {
             const topStep = (-1 * document.body.getBoundingClientRect().y) + windowsClientHeight/3
 
@@ -73,11 +73,11 @@ export default function CircleAnimation() {
         }
     }, [])
 
-    // -m-[5px]
+    // -m-[5px] w-[100px] h-[100px]
   return (
-    <div className='circle absolute right-0 w-[100px] h-[100px] sm:w-[150px] sm:h-[150px] z-[3] rounded-full duration-75'>
+    <div className='circle absolute right-0 w-[70px] h-[70px] sm:w-[120px] sm:h-[120px] z-[3] rounded-full duration-75'>
         {/* <Image className='absolute shadow-md shadow-black rounded-full -m-[5px] w-full h-full' src={"/circle.png"} width={200} height={200} alt=''/> */}
-        <div className={`w-full ${styles['shadow-black']} bg-accent-color bg-opacity-50 flex h-full overflow-hidden absolute rounded-full`}>
+        <div className={`w-full ${styles['shadow-black']} bg-[#64615c] bg-opacity-20 flex h-full overflow-hidden absolute rounded-full`}>
             <div className={`w-full h-full ${styles['gradien-inner']} ${styles['shadow-white']} rounded-full shadow-white flex items-center justify-center`}>
             </div>
         </div>
