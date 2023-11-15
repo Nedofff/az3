@@ -28,7 +28,7 @@ export default function AnimationOpacity({id, transition={delay:0, duration: 0},
         const scrollHandler = () => {
             if (document.querySelector(`#${id}`)!.getBoundingClientRect().y - clientHeight + heightElem * amount <= 0) {
                 element.style.opacity = '1'
-                document.removeEventListener('scroll', scrollHandler)
+                // document.removeEventListener('scroll', scrollHandler)
             }
         }
 
