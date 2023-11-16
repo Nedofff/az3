@@ -22,6 +22,7 @@ export default function AnimationShift({id, side, transition={delay:0, duration:
         const element = document.querySelector<HTMLDivElement>(`#${id}`)!
         const heightElem = element.clientHeight
         const clientHeight = document.documentElement.clientHeight
+        const clientWidth = document.documentElement.clientWidth
         setClientWidth(document.documentElement.clientWidth)
         try {
         if (document.querySelector(`#${id}`)!.getBoundingClientRect().y - clientHeight + heightElem * amount <= 0) {
@@ -59,7 +60,7 @@ export default function AnimationShift({id, side, transition={delay:0, duration:
 
   return (
     <div className={`${className} zindex`} style={{
-        transform: `translateX(${side === 'left' ? '-' : '+'}${clientWidth * 0.6}px)`,
+        transform: `translateX(${side === 'left' ? '-' : '+'}${clientWidth * (clientWidth >= 640 ? 0.6 : 1.1)}px)`,
         transition: `all ${transition.duration}ms ${transition.delay}ms ease-in-out`,
         opacity: .5
     }} id={id}>
