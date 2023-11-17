@@ -31,6 +31,7 @@ export default function FirstScreen() {
             className={`w-screen bg-opacity-40 h-screen fixed top-0 left-0 z-[1] "bg-black"`}
           ></div>
           <video
+            playsInline
             autoPlay
             loop
             muted

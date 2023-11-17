@@ -65,7 +65,7 @@ export default function InfoPage() {
                 России №23 по Красноярскому краю 09.08.2022 года.
               </p>
             </div>
-            <div className="flex">
+            <div className="flex h-[200px] md:h-[400px]">
               <ScalingImages imagesData={imagesData} />
             </div>
           </div>
