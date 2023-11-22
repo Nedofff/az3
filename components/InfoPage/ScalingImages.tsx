@@ -7,7 +7,7 @@ import Image from 'next/image'
 import "yet-another-react-lightbox/styles.css";
 import NextJsImage from '../RenderLightzom/RenderLightzom';
 
-export default function ScalingImages({imagesData}:{imagesData:any[]}) {
+export default function ScalingImages({imagesData, className=''}:{imagesData:IImage[], className?:string}) {
     const [isOpen, setIsOpen] = useState(false)
     const [index, setIndex] = useState(0)
 
@@ -18,7 +18,7 @@ export default function ScalingImages({imagesData}:{imagesData:any[]}) {
   return (
     <>
     {imagesData.map((img) => (
-        <button key={img.key} className={`w-1/4 h-autocursor-zoom-in`} onClick={() => openImg(img.key)}>
+        <button key={img.key} className={`w-1/4 h-autocursor-zoom-in ${className}`} onClick={() => openImg(img.key)}>
         <Image className='w-full h-auto' src={img.src} width={img.width} height={img.height} alt={img.alt}/>
         </button>
     ))}

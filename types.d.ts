@@ -39,3 +39,28 @@ interface IFormInputAddReport {
   revenueOther: number;  // Выручка прочая
   reportFile: File      // файл Отчета
 }
+
+interface IImage {
+    key: number,
+    name: string,
+    src: string,
+    width: number,
+    height: number,
+    alt: string,
+}
+
+interface IPerson {
+    id: number,
+    name: string,
+    fullName: string,
+    width: number,
+    height: number,
+    // text: (string | string[])[]
+    text: [
+      string,
+      string,
+      string,
+      string[]
+    ],
+    certificates?: IImage[]
+}

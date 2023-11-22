@@ -21,7 +21,7 @@ export default function Header() {
     { href: "#ContactFormBlock", label: "Контакты" },
   ];
   const notScrollingNavItems = [
-    // { href: "/team", label: "Команда" },
+    { href: "/team", label: "Команда" },
     { href: "/info", label: "Раскрытие информации" },
   ];
   const allLinks = [

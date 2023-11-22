@@ -52,7 +52,7 @@ export default function Feedback() {
           <Recall key={AFeedback.id} {...AFeedback} />
         ))}
       </div>
-        <Carousel className="block md:hidden" useKeyboardArrows infiniteLoop  showThumbs={false} showArrows showStatus={false} renderIndicator={(onClickHandler, isSelected, index, label) => {
+        <Carousel className="block md:hidden" useKeyboardArrows infiniteLoop showThumbs={false} showArrows swipeable showStatus={false} renderIndicator={(onClickHandler, isSelected, index, label) => {
                 if (isSelected) {
                     return (
                         <li

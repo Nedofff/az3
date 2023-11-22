@@ -1,0 +1,17 @@
+
+
+.grid{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto auto auto;
+    row-gap: 10px;   
+    column-gap: 15px;
+}
+.grid p {
+    word-break: break-word;
+    hyphens: auto;
+}
+
+.grid-item{
+    grid-column: span 2;
+}
