@@ -18,7 +18,7 @@ export default function ScalingImages({imagesData, className=''}:{imagesData:IIm
   return (
     <>
     {imagesData.map((img) => (
-        <button key={img.key} className={`w-1/4 h-autocursor-zoom-in ${className}`} onClick={() => openImg(img.key)}>
+        <button key={img.key} className={`h-autocursor-zoom-in ${className ? className : 'w-1/4'}`} onClick={() => openImg(img.key)}>
         <Image className='w-full h-auto' src={img.src} width={img.width} height={img.height} alt={img.alt}/>
         </button>
     ))}

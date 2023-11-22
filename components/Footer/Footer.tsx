@@ -4,7 +4,7 @@ import Messengers from "../Messengers/Messengers";
 export default function Footer() {
   return (
     <footer className="px-2 zindex pt-16 pb-28 z-10 relative text-white w-screen bg-[#242424] lg:px-20 ">
-      <div className="flex mx-auto text-sm justify-between p-0 sm:px-10 sm:text-base">
+      <div className="flex flex-col xs:flex-row mx-auto text-sm justify-between p-0 sm:px-10 sm:text-base">
         <address className="not-italic px-2">
           <span className="text-base font-semibold block mb-2">Контакты</span>
           <p className="mb-1">

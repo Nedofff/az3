@@ -1,4 +1,5 @@
 import type { Config } from 'tailwindcss'
+import defaultTheme from 'tailwindcss/defaultTheme'
 
 const config: Config = {
   future: {
@@ -18,6 +19,10 @@ const config: Config = {
         'sub-accent-color': '#374699'
       }
     },
+    screens: {
+      'xs': '254px',
+      ...defaultTheme.screens
+    }
   },
   plugins: [],
 }

@@ -32,7 +32,7 @@ export default function page({ params: { id } }: { params: { id: number } }) {
             <p className="italic">{person.text[0]}</p>
             <p>{person.text[1]}</p>
             <p>{person.text[2]}</p>
-            <div className="space-y-2 text-sm">
+            <div className="space-y-1 text-xs font-thin">
               {person.text[3].map((item, index) => {
                 return <p key={index}>{item}</p>;
               })}
@@ -43,7 +43,6 @@ export default function page({ params: { id } }: { params: { id: number } }) {
         <div className="flex flex-wrap mt-5 sm:mt-12">
           <ScalingImages className="w-1/2" imagesData={person.certificates!}/>
         </div>}
-        {/* 0 1 2 3[] */}
       </div>
     </main>
   );
