@@ -9,7 +9,7 @@ import { Carousel } from "react-responsive-carousel";
 import styles from "./TeamSlider.module.css";
 
 export default function TeamSlider({ teamData }: { teamData: Omit<IPerson, 'fullName'>[] }) {
-  const [activeId, setActiveId] = useState(1);
+  const [activeId, setActiveId] = useState(5);
   const lenghtData = teamData.length
 
   const next = () => {
@@ -78,6 +78,8 @@ export default function TeamSlider({ teamData }: { teamData: Omit<IPerson, 'full
       </div>
     </div>
     <Carousel className="sm:hidden pb-10" 
+    selectedItem={activeId-1}
+    infiniteLoop
     swipeable showIndicators={false} showStatus={false}
     renderArrowPrev={(onClickHandler, hasPrev, label) =>
         <button type="button" title={label} className={`text-3xl absolute top-[40%] ml-4 z-30 text-main-color rounded-full py-3 pl-2 pr-3 flex items-center justify-center bg-accent-color  ${!hasPrev ? 'bg-opacity-50' : 'hover:bg-sub-accent-color'}`}
