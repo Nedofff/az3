@@ -13,31 +13,31 @@ export default function Header() {
   const [activeLink, setActiveLink] = useState("");
   const [burgerIsActive, setBurgerIsActive] = useState(false);
   const refCollapsed = useRef<HTMLDivElement>(null);
-  const scrollingNavItems = [
-    { href: "#Services", label: "Услуги" },
-    { href: "#AboutUs", label: "О нас" },
-    { href: "#News", label: "Новости" },
-    { href: "#Feedback", label: "Отзывы" },
-    { href: "#ContactFormBlock", label: "Контакты" },
-  ];
-  const notScrollingNavItems = [
-    { href: "/team", label: "Команда" },
-    { href: "/info", label: "Раскрытие информации" },
-  ];
-  const allLinks = [
-    ...scrollingNavItems.map((navItem) => ({
-      ...navItem,
-      href: `/${navItem.href}`,
-    })),
-    ...notScrollingNavItems,
-  ];
+
+  const links = [
+    { href: "#Services", label: "Услуги", isScrolling: true },
+    { href: "#AboutUs", label: "О нас", isScrolling: true },
+    { href: "/team", label: "Команда", isScrolling: false },
+    { href: "#News", label: "Новости", isScrolling: true },
+    { href: "#Feedback", label: "Отзывы", isScrolling: true },
+    { href: "/info", label: "Раскрытие информации", isScrollsing: false },
+    { href: "#ContactFormBlock", label: "Контакты", isScrolling: true },
+  ]
+
+  const linksInOrderPage = [
+    { href: "#Services", label: "Услуги", isScrolling: true },
+    { href: "#AboutUs", label: "О нас", isScrolling: true },
+    { href: "#News", label: "Новости", isScrolling: true },
+    { href: "#Feedback", label: "Отзывы", isScrolling: true },
+    { href: "#ContactFormBlock", label: "Контакты", isScrolling: true },
+  ]
 
   const path = usePathname();
   useEffect(() => {
     const stylizeActiveAnchorLink = () => {
       let activeLink: string = "";
 
-      for (const navItem of scrollingNavItems) {
+      for (const navItem of linksInOrderPage) {
         const link = navItem.href;
         const linkElement = document.querySelector(link)
         if ( linkElement &&
@@ -60,7 +60,11 @@ export default function Header() {
       setActiveLink('');
       document.addEventListener("scroll", throtlingStylizeActiveAnchorLink);
     } else {
-      setActiveLink(path);
+      if (path === '/news') {
+      setActiveLink('#News');
+      } else {
+        setActiveLink(path);
+      }
     }
 
     return () => {
@@ -120,78 +124,43 @@ export default function Header() {
               alt="Логотип компании - Большие буквы АП"
             />
           </Link>
-          <div className="text-white flex">
-            {Boolean(path === "/") &&
-              scrollingNavItems.map((link) => {
-                if (link.href === activeLink) {
-                  return (
-                    <ScrollLink
-                      className={`text-sub-accent-color ${styleLinkDesktop}`}
-                      key={link.label}
-                      href={link.href}
-                    >
-                      {link.label}
-                    </ScrollLink>
-                  );
-                } else {
-                  return (
-                    <ScrollLink
-                      className={styleLinkDesktop}
-                      key={link.label}
-                      href={link.href}
-                    >
-                      {link.label}
-                    </ScrollLink>
-                  );
+          <div className="text-white flex justify-between ">
+                { Boolean(path === "/") ? (
+                    links.map(link => {
+                      if (link.isScrolling) {
+                        return (
+                          <ScrollLink
+                            className={`${Boolean(activeLink===link.href) ? 'text-sub-accent-color':''} ${styleLinkDesktop}`}
+                            key={link.label}
+                            href={link.href}
+                          >
+                            {link.label}
+                          </ScrollLink>
+                        )
+                      } else {
+                        return (
+                          <Link
+                            href={link.href}
+                            className={`${Boolean(activeLink===link.href) ? 'text-sub-accent-color':''} ${styleLinkDesktop}`}
+                            key={link.label}
+                           >
+                            {link.label}
+                           </Link>
+                        )
+                      }
+                    })
+                  ) : (
+                    links.map(link => (
+                      <Link
+                            href={link.isScrolling ? `/${link.href}` : `${link.href}`}
+                            className={`${Boolean(activeLink===link.href) ? 'text-sub-accent-color':''} ${styleLinkDesktop}`}
+                            key={link.label}
+                           >
+                            {link.label}
+                           </Link>
+                    ))
+                  )
                 }
-              })}
-            {Boolean(path === "/")
-              ? notScrollingNavItems.map((link) => {
-                  if (link.href === activeLink) {
-                    return (
-                      <Link
-                        className={`text-sub-accent-color ${styleLinkDesktop}`}
-                        key={link.label}
-                        href={link.href}
-                      >
-                        {link.label}
-                      </Link>
-                    );
-                  } else {
-                    return (
-                      <Link
-                        className={styleLinkDesktop}
-                        key={link.label}
-                        href={link.href}
-                      >
-                        {link.label}
-                      </Link>
-                    );
-                  }
-                })
-              : allLinks.map((link) => {
-                  if (link.href === activeLink) {
-                    return (
-                      <Link
-                        className={`text-sub-accent-color ${styleLinkDesktop}`}
-                        key={link.label}
-                        href={link.href}
-                      >
-                        {link.label}
-                      </Link>
-                    );
-                  } else {
-                    return (
-                      <Link
-                        className={styleLinkDesktop}
-                        key={link.label}
-                        href={link.href}
-                      >
-                        {link.label}
-                      </Link>
-                    );
-                  }
-                })}
           </div>
           <address className="flex items-center mr-8 not-italic">
             <a
@@ -204,7 +173,7 @@ export default function Header() {
           </address>
         </nav>
       </div>
-      <div className="z-30  w-5/6 mx-auto md:w-1/2 lg:hidden">
+      <div className="z-30 w-5/6 mx-auto md:w-1/2 lg:hidden">
         <div className="flex justify-between items-center">
           <Link
             className="py-1 block duration-300 hover:shadow-2xl hover:shadow-black"
@@ -234,83 +203,47 @@ export default function Header() {
           className={`${styles.content} flex z-30 justify-between`}
         >
           <nav className="text-white w-[40%] flex flex-col">
-            {Boolean(path === "/") &&
-              scrollingNavItems.map((link) => {
-                if (link.href === activeLink) {
-                  return (
-                    <ScrollLink
-                      className={`text-sub-accent-color ${styleLinkMobile}`}
-                      key={link.label}
-                      href={link.href}
+                { Boolean(path === "/") ? (
+                    links.map(link => {
+                      if (link.isScrolling) {
+                        return (
+                          <ScrollLink
+                            className={`${Boolean(activeLink===link.href) ? 'text-sub-accent-color':''} ${styleLinkMobile}`}
+                            key={link.label}
                       onClick={clickOnBurgerHandler}
-                    >
-                      {link.label}
-                    </ScrollLink>
-                  );
-                } else {
-                  return (
-                    <ScrollLink
-                      className={styleLinkMobile}
-                      key={link.label}
-                      href={link.href}
+
+                            href={link.href}
+                          >
+                            {link.label}
+                          </ScrollLink>
+                        )
+                      } else {
+                        return (
+                          <Link
+                            href={link.href}
+                            className={`${Boolean(activeLink===link.href) ? 'text-sub-accent-color':''} ${styleLinkMobile}`}
+                            key={link.label}
                       onClick={clickOnBurgerHandler}
-                    >
-                      {link.label}
-                    </ScrollLink>
-                  );
+
+                           >
+                            {link.label}
+                           </Link>
+                        )
+                      }
+                    })
+                  ) : (
+                    links.map(link => (
+                      <Link
+                            href={link.isScrolling ? `/${link.href}` : `${link.href}`}
+                            className={`${Boolean(activeLink===link.href) ? 'text-sub-accent-color':''} ${styleLinkMobile}`}
+                            key={link.label}
+                      onClick={clickOnBurgerHandler}
+                           >
+                            {link.label}
+                           </Link>
+                    ))
+                  )
                 }
-              })}
-            {Boolean(path === "/")
-              ? notScrollingNavItems.map((link) => {
-                  if (link.href === activeLink) {
-                    return (
-                      <Link
-                        className={`text-sub-accent-color ${styleLinkMobile}`}
-                        key={link.label}
-                        href={link.href}
-                        onClick={clickOnBurgerHandler}
-                      >
-                        {link.label}
-                      </Link>
-                    );
-                  } else {
-                    return (
-                      <Link
-                        className={styleLinkMobile}
-                        key={link.label}
-                        href={link.href}
-                        onClick={clickOnBurgerHandler}
-                      >
-                        {link.label}
-                      </Link>
-                    );
-                  }
-                })
-              : allLinks.map((link) => {
-                  if (link.href === activeLink) {
-                    return (
-                      <Link
-                        className={`text-sub-accent-color ${styleLinkMobile}`}
-                        key={link.label}
-                        href={link.href}
-                        onClick={clickOnBurgerHandler}
-                      >
-                        {link.label}
-                      </Link>
-                    );
-                  } else {
-                    return (
-                      <Link
-                        className={styleLinkMobile}
-                        key={link.label}
-                        href={link.href}
-                        onClick={clickOnBurgerHandler}
-                      >
-                        {link.label}
-                      </Link>
-                    );
-                  }
-                })}
           </nav>
           <address className="flex flex-col items-end">
             <a
@@ -326,3 +259,5 @@ export default function Header() {
     </header>
   );
 }
+
+
