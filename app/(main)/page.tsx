@@ -17,8 +17,8 @@ export default function HomePage() {
       {/* <Preloader /> */}
       <FirstScreen />
       <CircleAnimation />
-      <AboutUs />
       <Services />
+      <AboutUs />
       <Advantages />
       <News />
       <Feedback />

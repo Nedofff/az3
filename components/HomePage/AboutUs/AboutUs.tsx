@@ -3,10 +3,12 @@ import Image from "next/image";
 import { FaChartLine, FaBusinessTime } from "react-icons/fa";
 import { BsFillPeopleFill } from "react-icons/bs";
 import AnimationShift from "@/components/Animation/AnimationShift/AnimationShift";
+import Link from "next/link";
 
 export default function AboutUs() {
   return (
-    <div id='AboutUs' className="separator flex items-center flex-col md:flex-row md:justify-center md:items-start">
+    <div id='AboutUs' className="separator flex flex-col items-center">
+      <div className="flex w-full items-center flex-col md:flex-row md:justify-center md:items-start">
       <AnimationShift id="a12" amount={.1} transition={{delay:0, duration: 300}} side="left" className="w-full flex flex-col mb-5 px-5 md:w-1/3 md:mr-10 md:max-w-lg md:p-0">
       {/* <div className=""> */}
         <h2 className="heading">О нас</h2>
@@ -56,6 +58,10 @@ export default function AboutUs() {
         </figcaption>
       </figure>
       </AnimationShift>
+      </div>
+      <div className="mt-7">
+      <Link href="/team" className="mt-10 text-white bg-sub-color outline-none font-bold uppercase tracking-wider rounded-sm px-8 py-2 hover:bg-accent-color duration-300 active:scale-95">Наша команда</Link>
+      </div>
     </div>
   );
 }

@@ -1,13 +1,21 @@
 import React from "react";
-import TeamSlider from "@/components/TeamPage/TeamSlider/TeamSlider";
+// import TeamSlider from "@/components/TeamPage/TeamSlider/TeamSlider";
 import { teamData } from "./teamPerson.data";
 import styles from "./page.module.css";
+import dynamic from "next/dynamic";
+import TeamLoading from "@/components/TeamPage/TeamLoading/TeamLoading";
+
+const TeamSliderDynamic = dynamic(() => import('@/components/TeamPage/TeamSlider/TeamSlider'), {
+  ssr: false, 
+  loading: () => <div className="flex justify-center items-center h-[474px]"><TeamLoading/></div>,
+} )
+
 
 export default function TeamPage() {
   return (
     <main className="separator pb-14 bg-main-color">
       <h1 className="heading">Наша команда</h1>
-      <TeamSlider teamData={teamData} />
+      <TeamSliderDynamic teamData={teamData}/>
       <div className="w-[90vw] mx-auto mt-12">
         <h2 className="font-bold text-xl mb-5">
           Также нашими сотрудниками являются:

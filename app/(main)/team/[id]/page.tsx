@@ -4,8 +4,6 @@ import { redirect } from "next/navigation";
 import Image from "next/image";
 import ScalingImages from "@/components/InfoPage/ScalingImages";
 
-const textBlocks = [];
-
 export default function page({ params: { id } }: { params: { id: number } }) {
   const person: IPerson | undefined = teamData.find((item) => item.id == id);
   if (!person) {
