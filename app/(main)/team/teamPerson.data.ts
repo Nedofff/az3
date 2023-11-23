@@ -199,14 +199,6 @@ export const teamData: IPerson[] = [
         height: 200,
         alt: "",
       },
-      {
-        key: 4,
-        name: "img5",
-        src: "/teamPage/certificates/team5/5.jpg",
-        width: 200,
-        height: 200,
-        alt: "",
-      },
     ]
   },
   

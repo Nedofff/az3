@@ -3,6 +3,7 @@ import { teamData } from "../teamPerson.data";
 import { redirect } from "next/navigation";
 import Image from "next/image";
 import ScalingImages from "@/components/InfoPage/ScalingImages";
+import Link from "next/link";
 
 export default function page({ params: { id } }: { params: { id: number } }) {
   const person: IPerson | undefined = teamData.find((item) => item.id == id);
@@ -12,6 +13,7 @@ export default function page({ params: { id } }: { params: { id: number } }) {
   return (
     <main className={`px-1 sm:px-14 flex justify-center relative pb-10`}>
       <div className="sticky w-1/2 pt-24 top-0 h-min mr-1 sm:mx-2 sm:ml-14">
+      <div className="relative">
         <Image
           className="rounded-lg shadow-xl w-full max-w-[300px]"
           src={`/teamPage/team${id}.jpg`}
@@ -22,6 +24,8 @@ export default function page({ params: { id } }: { params: { id: number } }) {
         <p className="absolute bg-white bg-opacity-80 p-1 rounded-lg text-opacity-60 bottom-0 text-sm sm:text-base leading-none sm:leading-normal mb-1 ml-1">
           {person.fullName}
         </p>
+      </div>
+        <Link className="block mt-4 bg-accent-color text-white px-5 py-2 rounded-md hover:bg-opacity-50 duration-200 text-center" href={'/team'}>Назад</Link>
       </div>
       <div className="w-5/6 sm:px-5 mt-24">
         <div>
