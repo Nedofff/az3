@@ -14,8 +14,8 @@ export default function Header() {
   const [burgerIsActive, setBurgerIsActive] = useState(false);
   const refCollapsed = useRef<HTMLDivElement>(null);
   const scrollingNavItems = [
-    { href: "#AboutUs", label: "О нас" },
     { href: "#Services", label: "Услуги" },
+    { href: "#AboutUs", label: "О нас" },
     { href: "#News", label: "Новости" },
     { href: "#Feedback", label: "Отзывы" },
     { href: "#ContactFormBlock", label: "Контакты" },
