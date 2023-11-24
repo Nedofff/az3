@@ -53,6 +53,7 @@ interface IPerson {
     id: number,
     name: string,
     fullName: string,
+    hasSecondImg?: boolean,
     width: number,
     height: number,
     // text: (string | string[])[]

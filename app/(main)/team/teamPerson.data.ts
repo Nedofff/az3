@@ -109,22 +109,6 @@ export const teamData: IPerson[] = [
         height: 200,
         alt: "",
       },
-      {
-        key: 2,
-        name: "img3",
-        src: "/teamPage/certificates/team3/3.jpg",
-        width: 200,
-        height: 200,
-        alt: "",
-      },
-      {
-        key: 3,
-        name: "img4",
-        src: "/teamPage/certificates/team3/4.jpg",
-        width: 200,
-        height: 200,
-        alt: "",
-      },
     ]
   },
   {
@@ -201,11 +185,11 @@ export const teamData: IPerson[] = [
       },
     ]
   },
-  
   {
     id: 6,
     name: "Светлана",
     fullName: "Светлана Владимировна Попкова",
+    hasSecondImg: true,
     width: 3200,
     height: 3200,
     text: [
@@ -218,7 +202,7 @@ export const teamData: IPerson[] = [
       {
         key: 0,
         name: "1",
-        src: "/teamPage/certificates/team5/1.jpg",
+        src: "/teamPage/certificates/team6/1.jpg",
         width: 200,
         height: 200,
         alt: "",
@@ -226,7 +210,7 @@ export const teamData: IPerson[] = [
       {
         key: 1,
         name: "2",
-        src: "/teamPage/certificates/team5/2.jpg",
+        src: "/teamPage/certificates/team6/2.jpg",
         width: 200,
         height: 200,
         alt: "",

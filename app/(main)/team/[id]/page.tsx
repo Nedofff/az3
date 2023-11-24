@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { teamData } from "../teamPerson.data";
 import { redirect } from "next/navigation";
 import Image from "next/image";
@@ -16,7 +16,7 @@ export default function page({ params: { id } }: { params: { id: number } }) {
       <div className="relative">
         <Image
           className="rounded-lg shadow-xl w-full max-w-[300px]"
-          src={`/teamPage/team${id}.jpg`}
+          src={person.hasSecondImg ? `/teamPage/team${id}_second.jpg` : `/teamPage/team${id}.jpg`}
           alt={person.name}
           width={3200}
           height={3200}
@@ -25,7 +25,7 @@ export default function page({ params: { id } }: { params: { id: number } }) {
           {person.fullName}
         </p>
       </div>
-        <Link className="block mt-4 bg-accent-color text-white px-5 py-2 rounded-md hover:bg-opacity-50 duration-200 text-center" href={'/team'}>Назад</Link>
+        <Link className="block max-w-[302px] mt-4 bg-accent-color text-white px-5 py-2 rounded-md hover:bg-opacity-50 duration-200 text-center" href={'/team'}>Назад</Link>
       </div>
       <div className="w-5/6 sm:px-5 mt-24">
         <div>
