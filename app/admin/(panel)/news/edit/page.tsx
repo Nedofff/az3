@@ -9,7 +9,7 @@ export default function Page() {
     
   useEffect(()=>{
     const getNews = async () => {
-      const response = await fetch(`/api/admin/news/list/`)
+      const response = await fetch(`/api/admin/news`)
     const news = await response.json() as {id: string, title:string}[]
     setNews(news)
     }

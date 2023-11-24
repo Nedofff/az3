@@ -66,7 +66,7 @@ export default function ToolPanel() {
         formData.set('header', header)
         formData.set('html', toHtml())
 
-        await fetch('/api/admin/news/add', {
+        await fetch('/api/admin/news', {
           method: 'POST',
           body: formData
         })

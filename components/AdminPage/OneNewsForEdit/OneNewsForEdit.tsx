@@ -11,7 +11,7 @@ export default function OneNewsForEdit({id, title}:{id:string, title:string}) {
        
        if (!answer) return;
 
-       await fetch(`/api/admin/news/delete/`, {
+       await fetch(`/api/admin/news/`, {
         method: 'DELETE',
         headers: {
             'Content-Type': 'application/json'
