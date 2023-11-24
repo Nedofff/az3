@@ -72,11 +72,16 @@ export default function ToolPanel() {
         })
        }
 
+       const dopHadnler = () => {
+        console.log(toHtml())
+       }
+
   return (
     <div className='bg-accent-color w-fit text-white px-10 flex flex-col items-center pt-10'>
       <div className='flex w-full'>
         <button onClick={backHandler} className={styleBtns}>Назад</button>
         <button onClick={saveHandler} className={styleBtns}>Сохранить</button>
+        <button onClick={dopHadnler} className={styleBtns}>PRINT</button>
       </div>
       <div className='my-5 flex flex-col'>
         <input value={header} onChange={(e) => setHeader(e.target.value)} className='w-full p-2 outline-none text-black' placeholder='Заголовок'/>

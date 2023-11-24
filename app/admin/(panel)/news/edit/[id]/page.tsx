@@ -1,33 +1,27 @@
-'use client'
-
 import TextEditorBox from '@/components/TextEditor/TextEditorBox/TextEditorBox'
-import { useTextEditor } from '@/hooks/textEditorSlice/useTextEditor'
-import useTextEditorActions from '@/hooks/textEditorSlice/useTextEditorActions'
-import React, { useEffect, useState } from 'react'
+import TextEditorProvider from '@/components/TextEditor/TextEditorProvider'
+import React from 'react'
 
 interface IParams {
     params: {
         id: string
     }
 }
-
-export default function Page({params}:IParams) {
-  const {clearPreinstalledContent, setPreinstalledContent} = useTextEditorActions()
-  const {preinstalledContent} = useTextEditor()
-  const [u, setU] = useState(false)
-  useEffect(() => {
-    if (params.id) {
-      // TODO: сделать тут запрос на серв и потом занос в херь ниже
-      setPreinstalledContent('<p>kek</p>')  
-    } else {
-      clearPreinstalledContent()
+export default async function Page({params}:IParams) {
+  const response = await fetch(`http://localhost:3000/api/admin/news/edit?postId=${params.id}`,
+  {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
     }
-  }, [])
+  })
+  const preinstalledContent = (await response.json()).body
   return (
     <>
-      {/* TODO: сюда вставить провайдер для текстЭдитора и ему заносить инфу, убрать из глобального провайдер */}
-    <button onClick={() => {setU(!u); console.log(preinstalledContent)}}>CLICK</button>
-    {u && <TextEditorBox/>}
+    {/* TODO: Сделать возможность смены заголовка и картинки */}
+    <TextEditorProvider preinstalledContent={preinstalledContent}>
+    {!!preinstalledContent ? <TextEditorBox/> : <div>Такого элемента не существует</div>}
+    </TextEditorProvider>
     </>
   )
 }

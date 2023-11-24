@@ -16,8 +16,7 @@ export const useEditorApi = () => {
 }
 
 
-export default function TextEditorProvider({children}: {children: React.ReactNode}) {
-    const {preinstalledContent} = useTextEditor()
+export default function TextEditorProvider({children, preinstalledContent=''}: {children: React.ReactNode, preinstalledContent?: string}) {
     const editorApi = useEditor(preinstalledContent);
   
     return (

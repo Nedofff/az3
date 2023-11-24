@@ -3,7 +3,6 @@
 
 import Link from 'next/link'
 import React from 'react'
-// TODO: Реализовать добавление и редактирование(мб просто удаление?) новостей
 export default function page() {
   return (
     <div className='flex flex-col bg-accent-color rounded-lg p-10 space-y-4'>

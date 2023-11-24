@@ -1,4 +1,5 @@
 import TextEditorBox from '@/components/TextEditor/TextEditorBox/TextEditorBox'
+import TextEditorProvider from '@/components/TextEditor/TextEditorProvider'
 import dynamic from 'next/dynamic'
 import React from 'react'
 
@@ -12,7 +13,10 @@ export default function page() {
     //   <DynamicToolPanel />
     //   <DynamicTextEditor />
     // </div>
-    <TextEditorBox/>
+    <TextEditorProvider>
+      <TextEditorBox/>
+    </TextEditorProvider>
+
   )
 }
 

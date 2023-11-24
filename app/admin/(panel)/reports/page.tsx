@@ -3,7 +3,6 @@
 
 import Link from 'next/link'
 import React from 'react'
-// TODO: реализовать добавление отчетов
 
 export default function page() {
   return (
