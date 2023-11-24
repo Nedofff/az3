@@ -3,7 +3,7 @@ export default function TransformPage() {
   return (
     <main className='pt-28 pb-20 px-2 sm:flex sm:justify-center'>
       <div className="sm:w-2/3">
-      <h1 className="text-4xl text-sub-color mb-8 font-bold break-words">Транформация отчетности под МСФО</h1>
+      <h1 className="text-4xl text-sub-color mb-8 font-bold break-words">Транcформация отчетности под МСФО</h1>
       <p>
         В настоящее время идет стремительное сближение федеральных стандартов
         бухгалтерского учета (ФСБУ) с международными стандартами финансовой
