@@ -1,7 +1,29 @@
+import { nanoid } from 'nanoid'
+import { NextResponse } from 'next/server'
 import {rename, writeFile} from "fs/promises";
-import { NextResponse } from "next/server";
 import { join } from "path";
 
+const mokReports = [
+    {
+        id: nanoid(),
+        year: '2022',
+    },
+    {
+        id: nanoid(),
+        year: '2021',
+    },
+    {
+        id: nanoid(),
+        year: '2042',
+    },
+    
+]
+
+export async function GET(req:Request) {
+    
+    
+    return NextResponse.json(mokReports)
+}
 
 
 export async function POST(req:Request) {
@@ -26,4 +48,12 @@ export async function POST(req:Request) {
     // await writeFile(path, buffer)
     // console.log(`open ${path}`)
     // return NextResponse.json({})
+}
+
+
+export async function DELETE(req:Request) {
+    const id = await req.json()
+    console.log(id)
+
+    return NextResponse.json({id})
 }

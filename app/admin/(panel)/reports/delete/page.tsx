@@ -9,7 +9,7 @@ export default function Page() {
 
   useEffect(() => {
     const getReports = async () => {
-      const response = await fetch(`/api/admin/reports/list`);
+      const response = await fetch(`/api/admin/reports`);
       const reports = (await response.json()) as { id: string; year: string }[];
       setReports(reports);
     };

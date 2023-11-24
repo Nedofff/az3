@@ -5,7 +5,7 @@ import { RxCross1 } from "react-icons/rx";
 
 export default function OneReport({ id, year }: { id: string; year: string }) {
     const clickHandler = async () => {
-        await fetch('/api/admin/reports/delete', {
+        await fetch('/api/admin/reports', {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',

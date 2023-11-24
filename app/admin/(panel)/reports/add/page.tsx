@@ -26,7 +26,7 @@ export default function Page() {
       formData.set('file', file)
       formData.set('other', JSON.stringify(data))
     reset()
-      const res = await fetch('/api/admin/reports/add', {
+      const res = await fetch('/api/admin/reports', {
           method: 'POST',
           body: formData
       })
