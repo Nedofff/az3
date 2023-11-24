@@ -6,7 +6,7 @@ import OneUser from './OneUser'
 export default function UsersBlock() {
     const [users, setUsers] = useState<{id:string, login:string}[]>()
     const getUsers = async () => {
-        const response = await fetch('/api/admin/users/list')
+        const response = await fetch('/api/admin/users')
         const data = await response.json()
         setUsers(data)
     }
@@ -17,7 +17,7 @@ export default function UsersBlock() {
     }, [])
 
     const deleteUser = (id: string) => {
-        fetch("../api/admin/users/delete", {
+        fetch("../api/admin/users", {
             method: "DELETE",
             headers: {
               "Content-Type": "application/json",

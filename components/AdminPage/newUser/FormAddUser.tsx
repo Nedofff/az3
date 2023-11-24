@@ -8,7 +8,7 @@ export default function FormAddUser() {
 
   const submitHandler: React.FormEventHandler<HTMLFormElement> = async (e) => {
     e.preventDefault();
-    fetch("/api/admin/users/add", {
+    fetch("/api/admin/users", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
