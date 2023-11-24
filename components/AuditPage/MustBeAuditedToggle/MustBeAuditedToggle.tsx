@@ -112,7 +112,10 @@ function Ras({ onClick, styleForButtons }: { onClick: Dispatch<SetStateAction<EN
           бумаг, бюро кредитных историй
         </li>
       </ul>
+      {/* <div className="flex flex-col"> */}
+        <a className="block text-sm mt-10 text-center uppercase px-1 text-sub-accent-color text-opacity-70 font-semibold duration-150 hover:text-opacity-100 active:scale-95" download href="/downloadedFiles/mandatoryAudit2022.doc">ПОЛНЫЙ ПЕРЕЧЕНЬ случаев проведения обязательного аудита бухгалтерской (финансовой) отчетности за 2022 год (согласно законодательству Российской Федерации)</a>
       <button className={styleForButtons} onClick={() => clickHandler(ENormType.idle)}>К выбору</button>
+      {/* </div> */}
     </section>
   );
 }

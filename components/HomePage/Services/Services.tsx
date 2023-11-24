@@ -31,7 +31,7 @@ export default function Services() {
             <li>Оптимизация финансовых потоков</li>
           </ul>
         </AService>
-        <AService linkTo='transform' title="Транформация отчетности под МСФО">
+        <AService linkTo='transform' title="Трансформация отчетности под МСФО">
           <p className="break-words hyphens-auto">
             Это процедура формирования отчетности в соответствии с
             Международными стандартами финансовой отчетности, на основе данных

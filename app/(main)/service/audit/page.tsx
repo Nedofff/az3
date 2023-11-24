@@ -22,7 +22,7 @@ export default function AuditPage() {
         инициативный.
         </p>
         <div className="mt-5">
-        <a className="text-sub-color px-1 font-bold hover:text-sub-accent-color duration-150" href="#">ПАМЯТКА ДЛЯ КЛИЕНТОВ</a>
+        <a download className="text-sub-color px-1 font-bold hover:text-sub-accent-color duration-150" href="/downloadedFiles/memo.pdf">ПАМЯТКА ДЛЯ КЛИЕНТОВ</a>
         </div>
       </article>
       <MustBeAuditedToggle/>
