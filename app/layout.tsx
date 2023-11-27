@@ -18,7 +18,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html className="overflow-x-hidden" lang="ru">
+    <html className="overflow-x-hidden w-screen" lang="ru">
       <body>
         <StrictMode>
         <Providers>
