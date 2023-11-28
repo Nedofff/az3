@@ -1,9 +1,9 @@
 interface IOneNews {
   id: string;
   title: string;
-  width: number
-  height: number
-  src: string;
+  widthImg: number
+  heightImg: number
+  srcToImage: string;
 }
 
 interface IFeedback {
@@ -13,30 +13,25 @@ interface IFeedback {
   text: string;
 }
 
-interface IAuditeesAndRevenue {
-  year: string;
-  listOrganization?: {
-    id: string,
-    name: string
-  }[];
-  moneyOZO: string;
-  moneyAll: string;
-  moneyAudit: string;
-  moneyOther: string;
+interface IReport {
+  id: string;
+  year: number;
+  srcToReport: string
+  listOrganization?: string[];
+  moneySSO: number;
+  moneyAll: number;
+  moneyAudit: number;
+  moneyOther: number;
 }
 
-interface IReport{
-  year: string
-  link: string
-}
 
 interface IFormInputAddReport {
   year: string;               // год
-  listSSO: string;           // Перечень ОЗО
-  revenueSSO: string;       // Выручка от ОЗО
-  revenueAll: string;      // Выручка всего
-  revenueAudit: string;   // Выручка от аудита
-  revenueOther: number;  // Выручка прочая
+  listOrganization: string           // Перечень ОЗО
+  moneySSO: string;       // Выручка от ОЗО
+  moneyAll: string;      // Выручка всего
+  moneyAudit: string;   // Выручка от аудита
+  moneyOther: number;  // Выручка прочая
   reportFile: File      // файл Отчета
 }
 

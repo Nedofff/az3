@@ -57,41 +57,41 @@ export default function Page() {
           {...register("year", {required: true})}
         />
         <label className="flex flex-col" htmlFor="login">
-          Лист ОЗО (enter - новая организация)
+          Лист ОЗО <span className="text-sm">(enter - новая организация)</span>
         </label>
         {/* <input
           className="text-black outline-none px-3 py-1 rounded-sm"
           {...register("listSSO", {required: true})}
         /> */}
-        <textarea className="text-black outline-none w-full rounded-sm p-3" {...register("listSSO", {required: false})}></textarea>
+        <textarea className="text-black outline-none w-full rounded-sm p-3" {...register("listOrganization", {required: false})}></textarea>
         <label className="flex flex-col" htmlFor="login">
           Выручка от ОЗО
         </label>
         <input
           className="text-black outline-none px-3 py-1 rounded-sm w-full"
           defaultValue={'0'}
-          {...register("revenueSSO", {required: true})}
+          {...register("moneySSO", {required: true})}
         />
         <label className="flex flex-col" htmlFor="login">
           Выручка всего
         </label>
         <input
           className="text-black outline-none px-3 py-1 rounded-sm w-full"
-          {...register("revenueAll", {required: true})}
+          {...register("moneyAll", {required: true})}
         />
         <label className="flex flex-col" htmlFor="login">
-          Вурчка от аудиторских услуг
+          Выручка от аудиторских услуг
         </label>
         <input
           className="text-black outline-none px-3 py-1 rounded-sm w-full"
-          {...register("revenueAudit", {required: true})}
+          {...register("moneyAudit", {required: true})}
         />
         <label className="flex flex-col" htmlFor="login">
           Выручка от прочих услуг
         </label>
         <input
           className="text-black outline-none px-3 py-1 rounded-sm w-full"
-          {...register("revenueOther", {required: true})}
+          {...register("moneyOther", {required: true})}
         />
         <label className="flex flex-col" htmlFor="login">
           Файл отчета

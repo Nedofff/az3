@@ -12,7 +12,7 @@ export default function page() {
       <div className='bg-accent-color flex flex-col py-10 px-1 sm:p-16 space-y-6 rounded-lg'>
           <Link href={'/admin/news'} className={btnStyle}>Управление новостями</Link>
           <Link href={'/admin/reports'} className={`${btnStyle} break-words max-w-xl`}>Добавить отчеты, информацию об аудируемых лицах и величину выручки от оказанных аудиторской организацией услуг</Link>
-          <Link href={'/admin/newUser'} className={btnStyle}>Управление пользователями</Link>
+          {/* <Link href={'/admin/users'} className={btnStyle}>Управление пользователями</Link> */}
           <button onClick={() => signOut()} className={btnStyle}>Выйти</button>
       </div>
   )

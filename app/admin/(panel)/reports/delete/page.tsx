@@ -8,13 +8,26 @@ export default function Page() {
   const [reports, setReports] = useState<{ id: string; year: string }[]>();
 
   useEffect(() => {
-    const getReports = async () => {
-      const response = await fetch(`/api/admin/reports`);
-      const reports = (await response.json()) as { id: string; year: string }[];
-      setReports(reports);
-    };
+    
     getReports();
   }, []);
+
+  const getReports = async () => {
+    const response = await fetch(`/api/admin/reports`);
+    const reports = (await response.json()) as { id: string; year: string }[];
+    setReports(reports);
+  };
+
+  const deleteHandler = async (id: string) => {
+    await fetch(`/api/admin/reports/${id}`, {
+      method: 'DELETE',
+      headers: {
+          'Content-Type': 'application/json',
+      }
+      
+  })
+  await getReports()
+  }
 
   return (
     <div className="bg-accent-color p-10 rounded-lg">
@@ -27,7 +40,7 @@ export default function Page() {
         </Link>
         {Boolean(reports) &&
           reports!.map((report) => (
-            <OneReport key={report.id} id={report.id} year={report.year} />
+            <OneReport onClick={() => deleteHandler(report.id)} key={report.id} id={report.id} year={report.year} />
           ))}
       </div>
     </div>

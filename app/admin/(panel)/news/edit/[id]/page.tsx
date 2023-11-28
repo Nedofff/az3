@@ -15,7 +15,7 @@ export default async function Page({params}:IParams) {
       'Content-Type': 'application/json',
     }
   })
-  const preinstalledContent = (await response.json()).body
+  const preinstalledContent = (await response.json()).content
   return (
     <>
     {/* TODO: Сделать возможность смены заголовка и картинки */}

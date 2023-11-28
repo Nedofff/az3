@@ -1,7 +1,6 @@
 'use client'
-import useTextEditorActions from '@/hooks/textEditorSlice/useTextEditorActions'
 import dynamic from 'next/dynamic'
-import React, { useEffect } from 'react'
+import React from 'react'
 
 const DynamicToolPanel = dynamic(() => import('@/components/TextEditor/ToolPanel/ToolPanel').then(mod => mod.default), { ssr: false })
 const DynamicTextEditor = dynamic(() => import('@/components/TextEditor/TextEditor/TextEditor').then(mod => mod.default), { ssr: false })

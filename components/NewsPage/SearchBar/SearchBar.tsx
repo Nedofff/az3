@@ -9,7 +9,6 @@ export default function SearchBar({ onSearch }: { onSearch: (queryParams:string)
   const onSubmitForm:React.FormEventHandler<HTMLFormElement> = (e) => {
     e.preventDefault()
     onSearch(valueInput)
-    setValueInput('')
     setWasSearch(true)
   }
   const onResetForm = () => {

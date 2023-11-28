@@ -9,30 +9,29 @@ import { useRouter } from "next/navigation";
 
 export default function ANewsItem({
   id,
-  src,
+  srcToImage: src,
   title,
-  width,
-  height,
+  widthImg: width,
+  heightImg: height,
 }: IOneNews) {
   const router = useRouter()
-
   const clickHandler = () => {
     router.push(`/news/${id}`)
   }
 
   return (
     <article onClick={clickHandler} className={`w-full h-1/5 md:h-full cursor-pointer mb-7 bg-white shadow-lg rounded-lg md:w-1/4 md:m-3 duration-500 hover:duration-500 active:duration-150 hover:shadow-2xl active:scale-95`}>
-      <div className={`relative h-2/3 overflow-hidden md:h-1/2`}>
+      <div className={`relative w-full h-2/3 overflow-hidden md:h-1/2`}>
         <Image
           src={src}
           width={width}
           height={height}
           alt=""
-          className="w-full rounded-lg h-auto object-cover"
+          className="w-full rounded-lg h-auto object-cover object-center"
         />
         <WaveSvg className="absolute inline bottom-0 fill-white " />
       </div>
-      <div className="px-5 pt-5 sm:pb-24 relative ">
+      <div className="px-5 pt-5 sm:pb-24 relative">
       {/* <div className="px-5 pt-5 sm:pb-24 flex flex-col justify-around space-y-10 h-fit"> */}
         <h3 className="font-medium pb-10 sm:pb-0">{title}</h3>
         <Link

@@ -1,3 +1,5 @@
+import prisma from "@/lib/prisma";
+import hashingFunc from "@/service/hashingFunc";
 import NextAuth from "next-auth"
 import type { AuthOptions, User } from "next-auth";
 import Credentials from "next-auth/providers/credentials";
@@ -18,10 +20,19 @@ const authConfig: AuthOptions = {
       async authorize(credentials) {
         if (!credentials?.name || !credentials?.password) return null;
 
-        const currentUser = users.find((user) => user.name === credentials.name);
-
-        if (currentUser && currentUser.password === credentials.password) {
-          const { password, ...userWithoutPass } = currentUser;
+        const currentUser = await prisma.user.findUnique({
+          select: {
+            id: true,
+            name: true,
+            password: true
+          },
+          where: {
+            name: credentials.name
+          }
+        })
+        
+        if (currentUser && currentUser.password === hashingFunc(credentials.password)) {
+          const {password, ...userWithoutPass} = currentUser
 
           return userWithoutPass as User;
         }

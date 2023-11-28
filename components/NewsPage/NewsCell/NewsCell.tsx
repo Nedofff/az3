@@ -17,8 +17,8 @@ export default function NewsCell({
   height: number;
 }) {
   return (
-    <Link href={`/news/${id}`} className='block mx-5 p-5 sm:grow max-w-sm w-min-[450px] basis-1/4 shadow-black cursor-pointer mb-7 bg-white shadow-lg rounded-lg md:m-3 duration-500 hover:duration-500 hover:shadow-2xl hover:shadow-black'>
-      <div className='relative'>
+    <Link href={`/news/${id}`} className='block mx-5 sm:grow max-w-sm w-min-[450px] basis-1/4 shadow-black cursor-pointer mb-7 bg-white shadow-lg rounded-lg md:m-3 duration-500 hover:duration-500 hover:shadow-2xl hover:shadow-black'>
+      <div className='relative h-2/3 overflow-hidden'>
         <Image
           src={src}
           width={width}
@@ -28,7 +28,7 @@ export default function NewsCell({
         />
         <WaveSvg className="absolute inline bottom-0 fill-white " />
       </div>
-      <div className="relative">
+      <div className="relative px-5">
         <h3 className="font-medium break-all mb-5">{title}</h3>
         {/* <Link
           className="text-accent-color font-medium"

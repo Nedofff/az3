@@ -4,7 +4,8 @@ import React, { useEffect, useState } from 'react'
 import { EditorApi } from '../useEditor';
 import { BlockType, InlineStyle } from '../TextEditor/config';
 import { useEditorApi } from '../TextEditorProvider';
-import { useRouter } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
+
 
 
 const INLINE_STYLES_CODES = Object.values(InlineStyle)
@@ -32,10 +33,11 @@ const dictToNormal:{
 }
 
 export default function ToolPanel() {
-    const { toggleInlineStyle, toggleBlockType,hasInlineStyle, addLink, toHtml, currentBlockType} = useEditorApi();
+    const {state, toggleInlineStyle, toggleBlockType,hasInlineStyle, addLink, toHtml, currentBlockType, clearState} = useEditorApi();
     const [header, setHeader] = useState('')
     const [file, setFile] = useState<File>()
     const router = useRouter()
+    const path = usePathname()
 
     const handlerAddLink = () => {
         const url = prompt('URL:');
@@ -48,11 +50,13 @@ export default function ToolPanel() {
        const styleBtns = 'bg-main-color w-full text-center px-5 py-2 whitespace-nowrap text-black hover:bg-opacity-50 duration-200 block'
 
        const backHandler = () => {
-          if (confirm('Вы действительно хотите выйти? Все несохраненные изменения будут потеряны')) {
+
+          // if (confirm('Вы действительно хотите выйти? Все несохраненные изменения будут потеряны')) {
             router.push('/admin/news')
-          }
+          // }
        }
        const saveHandler = async () => {
+
          if (header === '') {
            alert('Отсутствует заголовок')
            return;
@@ -61,6 +65,11 @@ export default function ToolPanel() {
           alert('Отсутствует картинка')
           return;
         }
+        if (file.type.split('/')[0] !== 'image') {
+          alert('Файл должен быть изображением')
+          return;
+        }
+
         const formData = new FormData()
         formData.set('file', file)
         formData.set('header', header)
@@ -70,6 +79,12 @@ export default function ToolPanel() {
           method: 'POST',
           body: formData
         })
+
+        if (path.split('/')[3] === 'add') {
+          setHeader('')
+        setFile(undefined)
+        clearState()
+        }
        }
 
        const dopHadnler = () => {

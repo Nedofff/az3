@@ -1,37 +1,62 @@
 import { NextResponse } from "next/server"
 import {news} from '@/app/api/news/data'
+import { join } from "path"
+import { writeFile } from "fs/promises";
+import prisma from "@/lib/prisma";
+import sizeOf from 'image-size'
 
 export async function POST(req:Request) {
-    const data = await req.formData()
-    data.get('file' )
-    data.get('header' )
-    data.get('html')
+    const formData = await req.formData()
 
-    return NextResponse.json({success:true})
-}
-export async function DELETE(req:Request) {
-    const body = await req.json()
-    console.log(body)
+    const file: File | null = formData.get("file") as unknown as File;
+  if (!file) {
+    return NextResponse.json({ success: false });
+  }
+  const bytes = await file.arrayBuffer();
+  const buffer = Buffer.from(bytes);
 
-    return NextResponse.json({body})
+  const path = join(process.cwd(), "public/news", file.name)
+  const srcToImage = `/news/${file.name}`;
+  await writeFile(path, buffer);
+
+  const dimensions = sizeOf(path);
+
+  const width = dimensions.width!
+  const height = dimensions.height!
+
+  const createReport = await prisma.news.create({
+    data: {
+      title: formData.get('header') as string,
+      srcToImage,
+      widthImg: width,
+      heightImg: height,
+      content: formData.get('html') as string,
+    },
+  });
+
+    return NextResponse.json(createReport)
 }
+
 export async function GET(req: Request) {
     const {searchParams} = new URL(req.url)
-    const postId = searchParams.get('newsId')
+    const newsId = searchParams.get('newsId')
 
-    if (!postId) {
-        const data = news.map((item) => ({
-            id: item.id,
-            title: item.title   
-        }))
+    if (!newsId) {
+        const result = await prisma.news.findMany({
+            select: {
+                id: true,
+                title: true
+            }
+        })
 
-        return NextResponse.json(data)
+        return NextResponse.json(result)
     } else {
-        const answer = {
-            id: postId,
-            body: '<h2>21321313</h2><p>12323</p><p>21321313</p><p>123133</p><p>2131313</p>'
+      const result = await prisma.news.findUnique({
+        where: {
+            id: newsId
         }
+    })
 
-        return NextResponse.json(answer)
+        return NextResponse.json(result)
     }
 }

@@ -1,25 +1,14 @@
-'use client'
-import React, { useEffect, useState } from "react";
+import React from "react";
 
 
 
-export default function AuditeesAndRevenue() {
-    const [yearsData, setYearsData] = useState<IAuditeesAndRevenue[]>()
-
-    useEffect(() => {
-        const getYearsData = async ()  => {
-        const response = await fetch('/api/info/aditees')
-        const data = await response.json()
-        setYearsData(data)
-        }
-        getYearsData()
-    }, [])
+export default function AuditeesAndRevenue({reportsData}:{reportsData:IReport[]}) {
 
   return (
     <>
     <div className="space-y-5 mb-3">
-        {yearsData && yearsData.map((oneYear) => (
-            <OneItemAuditees key={oneYear.year} year={oneYear.year} listOrganization={oneYear.listOrganization} moneyOZO={oneYear.moneyOZO} moneyAll={oneYear.moneyAll} moneyAudit={oneYear.moneyAudit} moneyOther={oneYear.moneyOther}/>
+        {reportsData && reportsData.map((oneYear) => (
+            <OneItemAuditees key={oneYear.id} year={oneYear.year} listOrganization={oneYear.listOrganization} moneySSO={oneYear.moneySSO} moneyAll={oneYear.moneyAll} moneyAudit={oneYear.moneyAudit} moneyOther={oneYear.moneyOther}/>
         ))}
         </div>
     </>
@@ -29,11 +18,11 @@ export default function AuditeesAndRevenue() {
 function OneItemAuditees({
   year,
   listOrganization,
-  moneyOZO,
+  moneySSO: moneyOZO,
   moneyAll,
   moneyAudit,
   moneyOther,
-}: IAuditeesAndRevenue) {
+}: Omit<IReport, 'srcToReport' | 'id'>) {
   return (
     <div>
       <h3 className="font-bold">{year}</h3>
@@ -49,7 +38,7 @@ function OneItemAuditees({
       {Boolean(listOrganization) && (
         <ul className="list-inside list-disc italic">
           {listOrganization!.map((org) => (
-            <li key={org.id}>{org.name}</li>
+            <li key={org}>{org}</li>
           ))}
         </ul>
       )}

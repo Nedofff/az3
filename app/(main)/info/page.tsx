@@ -1,12 +1,12 @@
 import InfoSection from "@/components/InfoPage/InfoSection";
 import React from "react";
 import ScalingImages from "@/components/InfoPage/ScalingImages";
-import WrapperForText from "@/components/InfoPage/WrapperForText";
+import WrapperForText from "@/components/WrapperForText/WrapperForText";
 import styles from "./InfoPage.module.css";
 import AuditeesAndRevenue from "@/components/InfoPage/AuditeesAndRevenue/AuditeesAndRevenue";
 import ReportsBlock from "@/components/InfoPage/ReportsBlock/ReportsBlock";
 
-export default function InfoPage() {
+export default async function InfoPage() {
   const imagesData = [
     {
       key: 0,
@@ -41,6 +41,15 @@ export default function InfoPage() {
     //   alt: "",
     // },
   ];
+
+  const response = await fetch('http://localhost:3000/api/info/reports', {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    }
+  })
+  const reportsData = await response.json() as IReport[];
+
   return (
     <main className="flex flex-col bg-main-color items-center pt-28 pb-20">
       <h1 className="text-4xl text-sub-color font-bold text-center">
@@ -889,14 +898,13 @@ export default function InfoPage() {
           </WrapperForText>
         </InfoSection>
         <InfoSection label="7. Информация об аудируемых лицах и величине выручки от оказанных аудиторской организацией услуг">
-          {/* TODO: сделать тут соединение с БД */}
           <WrapperForText>
-            <AuditeesAndRevenue />
+            <AuditeesAndRevenue reportsData={reportsData}/>
           </WrapperForText>
         </InfoSection>
         <InfoSection label="8. Отчёты о деятельности ООО «Аудиторская группа «Аземша и партнёры»">
           <WrapperForText>
-            <ReportsBlock />
+            <ReportsBlock reportData={reportsData}/>
           </WrapperForText>
         </InfoSection>
       </div>

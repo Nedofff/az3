@@ -16,12 +16,17 @@ export type EditorApi = {
   handleKeyCommand: (command: DraftEditorCommand, editorState:EditorState) => "handled" | "not-handled";
   handlerKeyBinding: (e: React.KeyboardEvent) => DraftEditorCommand | null | 'accent';
   toHtml: () => string;
+  clearState: () => void;
 };
 
 const decorator = new CompositeDecorator([LinkDecorator]);
 
 export const useEditor = (html?: string): EditorApi => {
     const [state, setState] = React.useState(() => html ? EditorState.createWithContent(HTMLtoState(html), decorator) : EditorState.createEmpty(decorator));
+
+    const clearState = () => {
+      setState(EditorState.createEmpty(decorator))
+    }
 
   const toggleBlockType = React.useCallback((blockType: BlockType) => {
     setState((currentState) =>
@@ -30,13 +35,9 @@ export const useEditor = (html?: string): EditorApi => {
   }, []);
 
   const currentBlockType = React.useMemo(() => {
-    /* Шаг 1 */
     const selection = state.getSelection();
-    /* Шаг 2 */
     const content = state.getCurrentContent();
-    /* Шаг 3 */
     const block = content.getBlockForKey(selection.getStartKey());
-    /* Шаг 4 */
     return block.getType() as BlockType;
   }, [state]);
 
@@ -48,9 +49,7 @@ export const useEditor = (html?: string): EditorApi => {
 
   const hasInlineStyle = React.useCallback(
     (inlineStyle: InlineStyle) => {
-      /* Получаем иммутабельный Set с ключами стилей */
       const currentStyle = state.getCurrentInlineStyle();
-      /* Проверяем содержится ли там переданный стиль */
       return currentStyle.has(inlineStyle);
     },
     [state]
@@ -131,6 +130,7 @@ const toHtml = React.useCallback(() => {
   return React.useMemo(
     () => ({
       state,
+      clearState,
       onChange: setState,
       toggleBlockType,
       currentBlockType,

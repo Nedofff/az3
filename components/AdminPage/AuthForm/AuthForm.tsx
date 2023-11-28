@@ -7,6 +7,7 @@ import { useRouter } from "next/navigation";
 export default function AuthForm() {
   const [loginValue, setLoginValue] = useState("");
   const [passwordValue, setPasswordValue] = useState("");
+  const [isError, setIsError] = useState(false);
   const router = useRouter();
 
 
@@ -19,6 +20,8 @@ export default function AuthForm() {
     });
     if (res && !res.error) {
       router.push("/admin");
+    } else {
+      setIsError(true);
     }
   };
   return (
@@ -45,6 +48,7 @@ export default function AuthForm() {
           id="password"
         />
       </label>
+      <p className="text-red-500 text-sm">{isError && "Неверный логин или пароль"}</p>
       </div>
       <button className="bg-main-color px-5 py-2 text-black rounded-md hover:bg-opacity-50 duration-200" type="submit">Войти</button>
     </form>

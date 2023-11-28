@@ -6,15 +6,29 @@ import React, { useEffect, useState } from 'react'
 
 export default function Page() {
   const [news, setNews] = useState<{id: string, title:string}[]>()
-    
-  useEffect(()=>{
+    // TODO: большой список новостей выходит за экран
     const getNews = async () => {
       const response = await fetch(`/api/admin/news`)
     const news = await response.json() as {id: string, title:string}[]
     setNews(news)
     }
+  useEffect(()=>{
+    
     getNews()
   },[])
+  const deleteHadnelr = async (id:string) => {
+   const answer = confirm('Вы действительно хотите удалить новость?')
+   
+   if (!answer) return;
+
+   await fetch(`/api/admin/news/${id}`, {
+    method: 'DELETE',
+    headers: {
+        'Content-Type': 'application/json'
+    },
+   })
+   getNews()
+}
 
   return (
     <div className='bg-accent-color p-10 rounded-lg w-3/4'>
@@ -24,7 +38,7 @@ export default function Page() {
         </div>
         <div className='space-y-2'>
         {Boolean(news) && news!.map(item => (
-            <OneNewsForEdit key={item.id} id={item.id} title={item.title}/>
+            <OneNewsForEdit onClick={() => deleteHadnelr(item.id)} key={item.id} id={item.id} title={item.title}/>
         ))}
         </div>
     </div>

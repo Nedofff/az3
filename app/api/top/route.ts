@@ -1,11 +1,23 @@
+import { NextResponse } from "next/server";
+import prisma from "@/lib/prisma";
 
+export async function GET(
+  req: Request,
+  { params }: { params: { id: string } }
+) {
 
-
-import { NextResponse } from "next/server"
-import { news } from "../news/data"
-
-export async function GET(req: Request, { params }: { params: { id: string } }) {
-    const newsTop3 = news.splice(0, 3)
-    
-    return NextResponse.json(newsTop3)
+  const resultBD = await prisma.news.findMany({
+    take: 3,
+    select: {
+      id: true,
+      title: true,
+      srcToImage: true,
+      widthImg: true,
+      heightImg: true,
+    },
+    orderBy: {
+      date: "desc",
+    },
+  });
+  return NextResponse.json(resultBD);
 }

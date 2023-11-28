@@ -2,10 +2,23 @@
 
 
 import { NextResponse } from "next/server"
-import { news } from "../data"
+import prisma from "@/lib/prisma"
 
 export async function GET(req: Request, { params }: { params: { id: string } }) {
 
-    const currentOneNews = news.find((oneNews) => (oneNews.id === params.id))
-    return NextResponse.json(currentOneNews)
+    const resultBD = await prisma.news.findUnique({
+        where: {
+            id: params.id
+        }
+    })
+    const result = {
+        id: resultBD?.id,
+        title: resultBD?.title,
+        src: resultBD?.srcToImage,
+        width: resultBD?.widthImg,
+        height: resultBD?.heightImg,
+        text: resultBD?.content,
+    }
+
+    return NextResponse.json(result)
 }
