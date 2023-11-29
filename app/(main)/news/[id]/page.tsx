@@ -36,7 +36,9 @@ interface IOneNews {
 
 
 export default async function Page({ params }: IProps) {
-  const response = await fetch(`${env.NEXTAUTH_URL}/api/news/${params.id}`);
+  const response = await fetch(`${env.NEXTAUTH_URL}/api/news/${params.id}`, {
+    cache: 'no-store'
+  });
 
   if (response.ok) {
   const newsData:IOneNews = await response.json();

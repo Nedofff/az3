@@ -47,9 +47,9 @@ export const stateToHTML = convertToHTML<InlineStyle, BlockType>({
       case BlockType.cite:
         return <cite />;
       case BlockType.list:
-        return <ul />;
+        return <ul></ul>
       case BlockType.orderList:
-        return <ol />;
+        return <ol/>;
       case BlockType.default:
         return <p />;
       default:

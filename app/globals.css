@@ -79,14 +79,17 @@ p, h1, h2, h3, figure, ul, a, article{
     @apply list-disc;
 }
 .newsBlock ol {
-    @apply list-decimal
+    @apply list-decimal;
 }
 .newsBlock a {
     @apply text-sub-accent-color;
 }
 .newsBlock h2 {
-    @apply text-2xl font-bold;
+    @apply text-2xl font-bold my-2;
 }
 .newsBlock h3 {
-    @apply text-xl font-bold;
+    @apply text-xl font-bold my-2;
+}
+.newsBlock p {
+    @apply max-w-2xl break-words;
 }

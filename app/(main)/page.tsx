@@ -14,7 +14,7 @@ import Preloader from "@/components/Preloader/Preloader";
 export default function HomePage() {
   return (
     <main className="overflow-hidden w-full">
-      {/* <Preloader /> */}
+      <Preloader />
       <FirstScreen />
       <CircleAnimation />
       <Services />

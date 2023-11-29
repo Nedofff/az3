@@ -2,8 +2,7 @@ import { NextResponse } from "next/server";
 import prisma from "@/lib/prisma";
 
 export async function GET(
-  req: Request,
-  { params }: { params: { id: string } }
+  req: Request
 ) {
 
   const resultBD = await prisma.news.findMany({
@@ -19,5 +18,6 @@ export async function GET(
       date: "desc",
     },
   });
+  console.log(resultBD)
   return NextResponse.json(resultBD);
 }

@@ -4,7 +4,7 @@ import Link from "next/link";
 import AnimationOpacity from "@/components/Animation/AnimationOpacity/AnimationOpacity";
 
 export default async function News() {
-  const response = await fetch('http://localhost:3000/api/top', {cache: 'no-store'});
+  const response = await fetch('http://localhost:3000/api/top/', {cache: 'no-store'});
   const news: IOneNews[]= await response.json()
   // console.log(news[0].src)
   const newss: IOneNews[] = [

@@ -1,5 +1,6 @@
 import TextEditorBox from '@/components/TextEditor/TextEditorBox/TextEditorBox'
 import TextEditorProvider from '@/components/TextEditor/TextEditorProvider'
+import { News } from '@prisma/client'
 import React from 'react'
 
 interface IParams {
@@ -13,14 +14,16 @@ export default async function Page({params}:IParams) {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
-    }
+    },
+cache:'no-store'
   })
-  const preinstalledContent = (await response.json()).content
+  const data = await response.json() as News
+  const preinstalledContent = data.content
   return (
     <>
     {/* TODO: Сделать возможность смены заголовка и картинки */}
     <TextEditorProvider preinstalledContent={preinstalledContent}>
-    {!!preinstalledContent ? <TextEditorBox/> : <div>Такого элемента не существует</div>}
+    {!!preinstalledContent ? <TextEditorBox newsId={params.id} title={data.title} srcToImage={data.srcToImage}/> : <div>Такого элемента не существует</div>}
     </TextEditorProvider>
     </>
   )

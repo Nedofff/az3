@@ -17,7 +17,7 @@ export default function NewsCell({
   height: number;
 }) {
   return (
-    <Link href={`/news/${id}`} className='block mx-5 sm:grow max-w-sm w-min-[450px] basis-1/4 shadow-black cursor-pointer mb-7 bg-white shadow-lg rounded-lg md:m-3 duration-500 hover:duration-500 hover:shadow-2xl hover:shadow-black'>
+    <Link href={`/news/${id}`} className='block mx-5 sm:grow max-w-sm w-min-[450px]  shadow-black cursor-pointer mb-7 bg-white shadow-lg rounded-lg md:m-3 duration-500 hover:duration-500 hover:shadow-2xl hover:shadow-black'>
       <div className='relative h-2/3 overflow-hidden'>
         <Image
           src={src}

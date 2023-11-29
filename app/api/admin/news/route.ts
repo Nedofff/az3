@@ -4,6 +4,7 @@ import { join } from "path"
 import { writeFile } from "fs/promises";
 import prisma from "@/lib/prisma";
 import sizeOf from 'image-size'
+import { nanoid } from "@reduxjs/toolkit";
 
 export async function POST(req:Request) {
     const formData = await req.formData()
@@ -14,9 +15,10 @@ export async function POST(req:Request) {
   }
   const bytes = await file.arrayBuffer();
   const buffer = Buffer.from(bytes);
-
-  const path = join(process.cwd(), "public/news", file.name)
-  const srcToImage = `/news/${file.name}`;
+  
+  const newNameFile = `${Date.now()}.${file.type.split('/')[1]}`
+  const path = join(process.cwd(), "public/news", newNameFile);
+  const srcToImage = `/news/${newNameFile}`;
   await writeFile(path, buffer);
 
   const dimensions = sizeOf(path);
