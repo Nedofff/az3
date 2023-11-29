@@ -24,21 +24,20 @@ export default function Header() {
     { href: "#ContactFormBlock", label: "Контакты", isScrolling: true },
   ]
 
-  const linksInOrderPage = [
-    { href: "#Services", label: "Услуги", isScrolling: true },
-    { href: "#AboutUs", label: "О нас", isScrolling: true },
-    { href: "#News", label: "Новости", isScrolling: true },
-    { href: "#Feedback", label: "Отзывы", isScrolling: true },
-    { href: "#ContactFormBlock", label: "Контакты", isScrolling: true },
-  ]
-
   const path = usePathname();
   useEffect(() => {
+    const linksInOrderPages = [
+      '#Services',
+      '#AboutUs',
+      '#News',
+      '#Feedback',
+      '#ContactFormBlock',
+    ]
+
     const stylizeActiveAnchorLink = () => {
       let activeLink: string = "";
 
-      for (const navItem of linksInOrderPage) {
-        const link = navItem.href;
+      for (const link of linksInOrderPages) {
         const linkElement = document.querySelector(link)
         if ( linkElement &&
           linkElement.getBoundingClientRect().top -

@@ -56,7 +56,7 @@ export default function AnimationShift({id, side, transition={delay:0, duration:
                 
             } catch (error) {}
         }
-    }, [])
+    }, [amount, id])
 
   return (
     <div className={`${className} zindex`} style={{

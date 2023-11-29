@@ -16,7 +16,7 @@ export default function Question({ question }: { question: any }) {
           value: 'Красноярский край'
       })
       }
-    }, [])
+    }, [answers, question.id, selectAnswer])
     
     const clickHandler = (answer:string|null) => {
       console.log('message')
