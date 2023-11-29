@@ -18,6 +18,5 @@ export async function GET(
       date: "desc",
     },
   });
-  console.log(resultBD)
   return NextResponse.json(resultBD);
 }

@@ -1,12 +1,23 @@
-import React from "react";
+'use client'
+
+import React, { useEffect, useState } from "react";
 import ANewsItem from "./ANewItem/ANewsItem";
 import Link from "next/link";
 import AnimationOpacity from "@/components/Animation/AnimationOpacity/AnimationOpacity";
 
-export default async function News() {
-  const response = await fetch('http://localhost:3000/api/top/', {cache: 'no-store'});
-  const news: IOneNews[]= await response.json()
-  // console.log(news[0].src)
+export default function News() {
+  const [news, setNews] = useState<IOneNews[]>([]);
+
+  useEffect(() => {
+    const fetchNews = async () => {
+      const response = await fetch("/api/top", { cache: "no-store" });
+      const newsData: IOneNews[] = await response.json();
+      setNews(newsData);
+    };
+
+    fetchNews();
+  }, []);
+  
   const newss: IOneNews[] = [
     {
       id: "1",

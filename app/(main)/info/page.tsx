@@ -5,6 +5,7 @@ import WrapperForText from "@/components/WrapperForText/WrapperForText";
 import styles from "./InfoPage.module.css";
 import AuditeesAndRevenue from "@/components/InfoPage/AuditeesAndRevenue/AuditeesAndRevenue";
 import ReportsBlock from "@/components/InfoPage/ReportsBlock/ReportsBlock";
+import FetchBlockInfo from "@/components/InfoPage/FetchBlock/FetchBlock";
 
 export default async function InfoPage() {
   const imagesData = [
@@ -42,13 +43,7 @@ export default async function InfoPage() {
     // },
   ];
 
-  const response = await fetch('http://localhost:3000/api/info/reports', {
-    method: 'GET',
-    headers: {
-      'Content-Type': 'application/json',
-    }
-  })
-  const reportsData = await response.json() as IReport[];
+  
 
   return (
     <main className="flex flex-col bg-main-color items-center pt-28 pb-20">
@@ -897,16 +892,7 @@ export default async function InfoPage() {
             </p>
           </WrapperForText>
         </InfoSection>
-        <InfoSection label="7. Информация об аудируемых лицах и величине выручки от оказанных аудиторской организацией услуг">
-          <WrapperForText>
-            <AuditeesAndRevenue reportsData={reportsData}/>
-          </WrapperForText>
-        </InfoSection>
-        <InfoSection label="8. Отчёты о деятельности ООО «Аудиторская группа «Аземша и партнёры»">
-          <WrapperForText>
-            <ReportsBlock reportData={reportsData}/>
-          </WrapperForText>
-        </InfoSection>
+        <FetchBlockInfo/>
       </div>
     </main>
   );
