@@ -66,7 +66,7 @@ export default function TestModal() {
             className="h-min"
             useKeyboardArrows
             swipeable={false}
-            dynamicHeight
+            // dynamicHeight
             showThumbs={false}
             showArrows={false}
             showStatus={false}

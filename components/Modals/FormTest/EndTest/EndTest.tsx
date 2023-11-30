@@ -21,7 +21,6 @@ export default function EndTest({
   )
 }
 
-
 function EndForm({
   reset,
   prevSlide,
@@ -61,7 +60,7 @@ function EndForm({
 
   return (
     <form
-      className="flex flex-col items-center justify-between h-full"
+      className="flex flex-col items-center h-full"
       onSubmit={fetchData}
     >
       <label htmlFor="name">Имя</label>
@@ -122,14 +121,16 @@ function EndForm({
 }
 
 function EndAnswer({reset}:{reset:()=>void}) {
+  const approximatePrice = useModalTest().approximatePrice
   return (
     <div className="h-full flex items-center justify-center">
-      <div className=" flex flex-col items-center">
+      <div className="flex flex-col items-center">
         <p>
       <BsFillCheckSquareFill className="text-6xl text-green-600"/>
       </p>
       <p className="text-xl sm:text-3xl mt-1">Спасибо! Ваша заявка принята!</p>
-      <p className="text-lg sm:text-2xl">В ближайшее время с Вами свяжутся.</p>
+      <p className="text-xl sm:text-2xl mt-1">Приблизительная стоимость <span className="text-sub-accent-color">{approximatePrice}</span> рублей.</p>
+      <p className="text-lg sm:text-2xl">Для уточнения информации с Вами свяжется наш специалист.</p>
       <button className="mt-5 bg-black text-sm bg-opacity-60 p-2 sm:py-3 sm:px-5 rounded-xl text-white duration-300 hover:bg-sub-color active:scale-95" onClick={reset}>Закрыть</button>
       </div>
     </div>

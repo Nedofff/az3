@@ -2,19 +2,19 @@
 import React, { useState } from "react";
 import { HiOutlineMagnifyingGlass } from "react-icons/hi2"
 
-export default function SearchBar({ onSearch }: { onSearch: (queryParams:string) => void }) {
+export default function SearchBar({ setSearchQuery }: { setSearchQuery: (searchQuery:string) => void }) {
   const [valueInput, setValueInput] = useState('')
   const [wasSearch, setWasSearch] = useState(false)
 
   const onSubmitForm:React.FormEventHandler<HTMLFormElement> = (e) => {
     e.preventDefault()
-    onSearch(valueInput)
+    setSearchQuery(valueInput)
     setWasSearch(true)
   }
   const onResetForm = () => {
     setWasSearch(false)
     setValueInput('')
-    onSearch('')
+    setSearchQuery('')
   }
 
   return (

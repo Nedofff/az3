@@ -21,7 +21,6 @@ cache:'no-store'
   const preinstalledContent = data.content
   return (
     <>
-    {/* TODO: Сделать возможность смены заголовка и картинки */}
     <TextEditorProvider preinstalledContent={preinstalledContent}>
     {!!preinstalledContent ? <TextEditorBox newsId={params.id} title={data.title} srcToImage={data.srcToImage}/> : <div>Такого элемента не существует</div>}
     </TextEditorProvider>

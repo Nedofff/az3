@@ -289,3 +289,9 @@ export const questionsTest = [
         questions:[]
     }
 ]
+
+export const questionsForEmail:any = questionsTest.map(quest => {
+    return [...quest.questions.map(quest2 => {
+        return quest2.question
+    })]
+}).flat()

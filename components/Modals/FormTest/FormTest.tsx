@@ -22,10 +22,10 @@ export default function FormTest({
   const buttonStyle = 'bg-black text-sm bg-opacity-60 p-2 sm:py-3 sm:px-5 rounded-xl text-white duration-300 active:scale-95'
 
   return (
-    <div className="flex flex-col items-center">
+    <div className="flex flex-col items-center h-full overflow-hidden">
       <div className="w-2/3 flex flex-col items-start" key={theme.id}>
           <h4 className="text-xl">{theme.title}</h4>
-        <div className="h-[350px] py-10 w-full flex flex-col content-start overflow-y-auto">
+        <div className="min-h-[350px] h-[70vh] max-h-[700px] py-10 w-full flex flex-col content-start overflow-y-auto">
           {theme.questions.map((question: any) => (
             <Question key={question.id} question={question} />
           ))}

@@ -3,7 +3,6 @@ import React, { useLayoutEffect, useRef } from "react";
 import { createPortal } from "react-dom";
 import styles from "./ImgScaleBaseModal.module.css";
 import Image from "next/image";
-// TODO: починить скейлинг картинки, лучше всего заметно на странице service/audit/#Порядок взаимодействия
 const ModalWindow = ({
   src,
   width,

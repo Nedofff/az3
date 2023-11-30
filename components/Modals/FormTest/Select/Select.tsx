@@ -4,10 +4,10 @@
 
 
 import React from 'react'
-export default function MySelect({clickHandler}:{clickHandler:(answer:string) => void}) {
+export default function MySelect({clickHandler}:{clickHandler:(answer:string|null, answerRank:string) => void}) {
 
 const changeHandler = (e:React.ChangeEvent<HTMLSelectElement>) => {
-    clickHandler(e.currentTarget.value)
+    clickHandler(e.currentTarget.value, 'SELECT')
 }
 
   return (

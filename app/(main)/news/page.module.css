@@ -1,0 +1,6 @@
+
+
+.gridBlock{
+    @apply grid grid-rows-[none];
+    grid-auto-rows: 400px;
+}
