@@ -7,11 +7,7 @@ import Link from "next/link";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
 import styles from "./TeamSlider.module.css";
-import dynamic from 'next/dynamic'
 
-const DynamicImage = dynamic(() => import('next/image'), {
-  ssr: false
-})
 
 export default function TeamSlider({
   teamData,
@@ -81,8 +77,8 @@ export default function TeamSlider({
                   <div>{person.name}</div>
                   <div className="text-sm">Подробнее</div>
                 </Link>
-                <DynamicImage
-                priority
+                <Image
+                priority={true}
                   className=""
                   src={`/teamPage/team${person.id}.jpg`}
                   alt={person.name}
@@ -140,8 +136,8 @@ export default function TeamSlider({
                 <div>{person.name}</div>
                 <div className="text-sm">Подробнее</div>
               </Link>
-              <DynamicImage
-              priority
+              <Image
+              priority={true}
                 className=""
                 src={`/teamPage/team${person.id}.jpg`}
                 alt={person.name}

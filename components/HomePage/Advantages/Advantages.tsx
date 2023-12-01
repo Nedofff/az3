@@ -15,6 +15,7 @@ export default function Advantages() {
           src="/secondFace.jpg"
           width={853}
           height={1280}
+          priority={true}
           alt="Человек, работающий"
           className=""
         ></Image>

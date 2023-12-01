@@ -49,6 +49,7 @@ export default function AboutUs() {
           className="rounded-sm w-full zindex"
           width={853}
           height={1280}
+          priority={true}
           src={"/mainFace.jpg"}
           alt="Генерального директора  ООО «Аудиторской группы «Аземша и партнеры» Е.А Аземшы"
         />
