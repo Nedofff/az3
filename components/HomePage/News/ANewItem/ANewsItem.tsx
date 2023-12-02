@@ -34,13 +34,13 @@ export default function ANewsItem({
       <div className="px-5 pt-5 sm:pb-24 relative">
       {/* <div className="px-5 pt-5 sm:pb-24 flex flex-col justify-around space-y-10 h-fit"> */}
         <h3 className="font-medium pb-10 sm:pb-0">{title}</h3>
-        <Link
+        {/* <Link
           className="text-accent-color hidden absolute font-medium bottom-7 sm:inline"
           // className="text-accent-color font-medium "
           href={`/news/${id}`}
         >
           Читать подробнее
-        </Link>
+        </Link> */}
       </div>
     </article>
   );

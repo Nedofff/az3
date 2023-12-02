@@ -115,7 +115,7 @@ export default function ToolPanel({
   };
   
   return (
-    <div className="bg-accent-color w-fit min-w-fit text-white px-10 flex flex-col items-center pt-10">
+    <div className="bg-accent-color w-fit min-w-fit h-screen fixed right-0 text-white px-10 flex flex-col items-center pt-10">
       <div className="flex w-full">
         <button onClick={backHandler} className={styleBtns}>
           Назад

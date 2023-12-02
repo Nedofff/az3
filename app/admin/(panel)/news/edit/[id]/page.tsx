@@ -9,7 +9,7 @@ interface IParams {
     }
 }
 export default async function Page({params}:IParams) {
-  const response = await fetch(`http://localhost:3000/api/admin/news?newsId=${params.id}`,
+  const response = await fetch(`${process.env.NEXTAUTH_URL}/api/admin/news?newsId=${params.id}`,
   {
     method: 'GET',
     headers: {

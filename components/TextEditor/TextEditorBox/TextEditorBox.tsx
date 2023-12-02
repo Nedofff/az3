@@ -8,7 +8,7 @@ const DynamicTextEditor = dynamic(() => import('@/components/TextEditor/TextEdit
 export default function TextEditorBox(props:{newsId?:string, title?:string, srcToImage?:string | null}) {
 
   return (
-    <div className='flex justify-between w-screen bg-slate-200 h-screen'>
+    <div className='flex justify-between w-screen h-screen'>
       <DynamicTextEditor />
         <DynamicToolPanel {...props}/>
     </div>
