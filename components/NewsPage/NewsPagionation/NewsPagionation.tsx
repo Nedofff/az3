@@ -13,14 +13,12 @@ export default function NewsPagionation({
   currentPage: number;
   setPage: (page: number) => void;
 }) {
-
   const backHandler = () => {
     setPage(currentPage - 1);
   };
   const nextHandler = () => {
     setPage(currentPage + 1)
   };
-  console.log(countPages)
   if (countPages < 2) return <div></div>;
 
   return (

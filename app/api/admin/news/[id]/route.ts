@@ -15,7 +15,6 @@ export async function DELETE(req:Request, { params }: { params: { id: string } }
 export async function PUT(req:Request, { params }: { params: { id: string } }) {
 
     const formData = await req.formData()
-    const newsId = params.id
     const file: File | null = formData.get("file") as unknown as File;
 
     if (file) {

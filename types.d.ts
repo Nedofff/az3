@@ -1,9 +1,9 @@
 interface IOneNews {
   id: string;
   title: string;
-  widthImg: number
-  heightImg: number
-  srcToImage: string;
+  widthImg?: number
+  heightImg?: number
+  srcToImage?: string;
 }
 
 interface IFeedback {

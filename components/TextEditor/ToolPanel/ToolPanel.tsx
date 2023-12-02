@@ -68,9 +68,7 @@ export default function ToolPanel({
     "bg-main-color w-full text-center px-5 py-2 whitespace-nowrap text-black hover:bg-opacity-50 duration-200 block";
 
   const backHandler = () => {
-    // if (confirm('Вы действительно хотите выйти? Все несохраненные изменения будут потеряны')) {
     router.push("/admin/news");
-    // }
   };
 
   const saveHandler = async () => {
@@ -81,12 +79,8 @@ export default function ToolPanel({
         alert("Отсутствует заголовок");
         return;
       }
-      if (!file) {
-        alert("Отсутствует картинка");
-        return;
-      }
       const formData = new FormData();
-      formData.set("file", file);
+      if (file) formData.set("file", file);
       formData.set("header", header);
       formData.set("html", toHtml());
 
@@ -103,8 +97,6 @@ export default function ToolPanel({
       if (file) formData.set("file", file);
 
       formData.set("header", header);
-      // const something = document.querySelector('.public-DraftEditor-content')?.querySelector('div')?.innerHTML
-      // formData.set('html', something!)
       formData.set("html", toHtml());
       formData.set("srcToImage", srcToImage!);
 
@@ -121,11 +113,6 @@ export default function ToolPanel({
       }
     }
   };
-
-  const dopHandler = () => {
-    console.log(toHtml());
-  };
-
   
   return (
     <div className="bg-accent-color w-fit min-w-fit text-white px-10 flex flex-col items-center pt-10">
@@ -135,9 +122,6 @@ export default function ToolPanel({
         </button>
         <button onClick={saveHandler} className={styleBtns}>
           Сохранить
-        </button>
-        <button onClick={dopHandler} className={styleBtns}>
-          PRINT
         </button>
       </div>
       <div>

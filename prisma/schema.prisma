@@ -19,8 +19,8 @@ model News {
   title      String
   srcToImage String? @map("src_to_image")
   date       DateTime @default(now())
-  widthImg  Int @map("width_img")
-  heightImg Int @map("height_img")
+  widthImg  Int? @map("width_img")
+  heightImg Int? @map("height_img")
   content       String
   tags String[]
 

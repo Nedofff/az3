@@ -49,16 +49,23 @@ export default async function Page({ params }: IProps) {
   
     return (
       <main className="pb-24 flex flex-col items-center bg-main-color">
-        <section
+       {Boolean(forImg.src) && <section
       className={` bg-blend-overlay relative bg-black bg-opacity-40 flex items-center w-full h-screen bg-center bg-no-repeat bg-cover justify-center`}
     >
-      <OptimizedBgImg isNeedDark imageProps={forImg}/>
+       <OptimizedBgImg isNeedDark imageProps={forImg}/>
       <div className=" text-white px-3 md:w-1/2 md:p-0 z-[1]">
         <h1 className="font-bold text-lg sm:text-3xl uppercase md:text-6xl md:mb-2">{title}</h1>
       </div>
         <div className="hidden w-1/6 md:block"></div>
-    </section>
-    <section className="separator-min w-full flex justify-center">
+    </section>}
+    
+    <section className="separator-min w-full flex flex-col items-center">
+    {
+      !Boolean(forImg.src) && <div className="pt-28">
+        <h1 className="heading">{title}</h1>
+      </div>
+    }
+
       <ParsingBlock text={text}/>
     </section>
       </main>

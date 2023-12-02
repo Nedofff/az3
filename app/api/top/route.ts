@@ -14,6 +14,9 @@ export async function GET(
       widthImg: true,
       heightImg: true,
     },
+    where: {
+      srcToImage: { not: null },
+    },
     orderBy: {
       date: "desc",
     },

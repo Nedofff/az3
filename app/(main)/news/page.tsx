@@ -63,7 +63,6 @@ export default function NewsPage() {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log(data)
         setCountPages(Math.ceil(data / 24));
       });
   }, [searchQuery]);
@@ -79,7 +78,9 @@ export default function NewsPage() {
     onSearch();
     getCountPages();
     document.querySelector("main")?.scrollIntoView();
-  }, [page, searchQuery, onSearch, getCountPages]);
+  }, [page, searchQuery, onSearch, 
+    getCountPages
+  ]);
 
 
   return (
