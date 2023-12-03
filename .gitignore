@@ -39,3 +39,5 @@ next-env.d.ts
 commandToSql.md
 tsome.ts
 /service/hashing
+/public/news
+/public/reports
