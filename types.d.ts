@@ -31,7 +31,7 @@ interface IFormInputAddReport {
   moneySSO: string;       // Выручка от ОЗО
   moneyAll: string;      // Выручка всего
   moneyAudit: string;   // Выручка от аудита
-  moneyOther: number;  // Выручка прочая
+  moneyOther: string;  // Выручка прочая
   reportFile: File      // файл Отчета
 }
 

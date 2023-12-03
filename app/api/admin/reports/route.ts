@@ -39,10 +39,10 @@ export async function POST(req: Request) {
       year: +year,
       srcToReport,
       listOrganization: listOrganization.split('\\'),
-      moneySSO: +moneySSO,
-      moneyAll: +moneyAll,
-      moneyAudit: +moneyAudit,
-      moneyOther: +moneyOther,
+      moneySSO: Number(moneySSO.replace(',', '.')),
+      moneyAll: Number(moneyAll.replace(',', '.')),
+      moneyAudit: Number(moneyAudit.replace(',', '.')),
+      moneyOther: Number(moneyOther.replace(',', '.')),
     },
   });
 

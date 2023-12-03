@@ -1,6 +1,8 @@
 import React from "react";
 
-
+const toRussianNumberString = (number: number) => {
+  return String(number).replace('.', ',')
+}
 
 export default function AuditeesAndRevenue({reportsData}:{reportsData:IReport[]}) {
 
@@ -48,7 +50,7 @@ function OneItemAuditees({
         Величина выручки от оказания аудиторских услуг и прочих связанных с
         аудиторской деятельностью услуг:
       </p>
-      <p className="italic">ОЗО за {year} год: {moneyOZO} тыс. руб.</p>
+      <p className="italic">ОЗО за {year} год: {toRussianNumberString(moneyOZO)} тыс. руб.</p>
       </div>
       <div>
       <p className="font-normal">
@@ -56,15 +58,15 @@ function OneItemAuditees({
         аудиторской деятельностью услуг за {year} год:
       </p>
       <p>
-        Выручка всего: <span className="italic">{moneyAll} тыс. руб.</span>
+        Выручка всего: <span className="italic">{toRussianNumberString(moneyAll)} тыс. руб.</span>
       </p>
       <p>
         От оказания аудиторских услуг:{" "}
-        <span className="italic"> {moneyAudit} тыс. руб.</span>
+        <span className="italic"> {toRussianNumberString(moneyAudit)} тыс. руб.</span>
       </p>
       <p>
         От оказания прочих связанных с аудиторской деятельностью услуг:{" "}
-        <span className="italic">{moneyOther} тыс. руб.</span>
+        <span className="italic">{toRussianNumberString(moneyOther)} тыс. руб.</span>
       </p>
       </div>
       </div>

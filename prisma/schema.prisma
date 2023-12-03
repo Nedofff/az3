@@ -32,10 +32,10 @@ model Reports {
   year        Int
   srcToReport        String @map("src_to_report")
   listOrganization String[] @map("list_organization")
-  moneySSO   Int @map("money_sso")
-  moneyAudit Int @map("money_audit")
-  moneyAll   Int @map("money_all")
-  moneyOther Int @map("money_other")
+  moneySSO   Float @map("money_sso")
+  moneyAudit Float @map("money_audit")
+  moneyAll   Float @map("money_all")
+  moneyOther Float @map("money_other")
 
   @@map("reports")
 }

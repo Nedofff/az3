@@ -25,19 +25,17 @@ export default function FetchBlockInfo() {
   
 
   return (
-    <>{!!reports && 
       <>
     <InfoSection label="7. Информация об аудируемых лицах и величине выручки от оказанных аудиторской организацией услуг">
           <WrapperForText>
-            <AuditeesAndRevenue reportsData={reports}/>
+          {!!reports &&   <AuditeesAndRevenue reportsData={reports}/>}
           </WrapperForText>
         </InfoSection>
         <InfoSection label="8. Отчёты о деятельности ООО «Аудиторская группа «Аземша и партнёры»">
           <WrapperForText>
-            <ReportsBlock reportData={reports}/>
+          {!!reports &&  <ReportsBlock reportData={reports}/>}
           </WrapperForText>
         </InfoSection>
-        </>}
-    </>
+        </>
   )
 }

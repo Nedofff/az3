@@ -72,7 +72,7 @@ export default function ToolPanel({
     "bg-main-color w-full text-center px-5 py-2 whitespace-nowrap text-black hover:bg-opacity-50 duration-200 block";
 
   const backHandler = () => {
-    router.push("/admin/news/edit");
+    router.back();
   };
 
   const saveHandler = async () => {
