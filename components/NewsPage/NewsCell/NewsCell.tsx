@@ -21,7 +21,7 @@ export default function NewsCell({
   if (!src) {
     return (
       <div className="h-full">
-      <Link href={`/news/${id}`} className='flex flex-col h-full py-3 justify-center items-center mx-5 max-w-sm w-min-[450px] shadow-black cursor-pointer mb-7 bg-white shadow-lg rounded-lg md:m-3 duration-500 hover:duration-500 hover:shadow-2xl hover:shadow-black'>
+      <Link href={`/news/${id}`} className='flex flex-col h-full p-3 justify-center items-center mx-5 max-w-sm w-min-[450px] shadow-black cursor-pointer mb-7 bg-white shadow-lg rounded-lg md:m-3 duration-500 hover:duration-500 hover:shadow-2xl hover:shadow-black'>
         <h3 className="font-medium break-all">{title}</h3>
         <div className="h-1/5"></div>
     </Link>

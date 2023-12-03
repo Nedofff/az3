@@ -32,10 +32,10 @@ function OneItemAuditees({
         Перечень общественно значимых организаций (далее – ОЗО), которым оказаны
         аудиторские услуги в {year} году:
       </p>
-      {!Boolean(listOrganization) && (
+      {!Boolean(listOrganization?.length === 0) && (
         <p className="italic">услуги не оказывались</p>
       )}
-      {Boolean(listOrganization) && (
+      {Boolean(listOrganization?.length === 0) && (
         <ul className="list-inside list-disc italic">
           {listOrganization!.map((org) => (
             <li key={org}>{org}</li>

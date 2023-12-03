@@ -21,8 +21,9 @@ export async function PUT(req:Request, { params }: { params: { id: string } }) {
         const bytes = await file.arrayBuffer();
         const buffer = Buffer.from(bytes);
         
-        const newNameFile = (formData.get('srcToImage')! as string).split('/')[2]
-        const path = join(process.cwd(), "public/news", newNameFile);
+        const nameFileFromSrc = (formData.get('srcToImage')! as string).split('/')[2]
+        const nameFile = nameFileFromSrc ? nameFileFromSrc : `${Date.now()}.${file.type.split("/")[1]}`
+        const path = join(process.cwd(), "public/news", nameFile);
         await writeFile(path, buffer);
 
         const dimensions = sizeOf(path);
@@ -36,7 +37,7 @@ export async function PUT(req:Request, { params }: { params: { id: string } }) {
             },
             data: {
                 title: formData.get('header') as string,
-                srcToImage: formData.get('srcToImage') as string,
+                srcToImage: `/news/${nameFile}`,
                 widthImg: width,
                 heightImg: height,
                 content: formData.get('html') as string,

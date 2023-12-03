@@ -59,7 +59,7 @@ export default async function Page({ params }: IProps) {
         <div className="hidden w-1/6 md:block"></div>
     </section>}
     
-    <section className="separator-min w-full flex flex-col items-center">
+    <section className="separator-min px-7 w-full flex flex-col items-center">
     {
       !Boolean(forImg.src) && <div className="pt-28">
         <h1 className="heading">{title}</h1>

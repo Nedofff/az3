@@ -1,10 +1,14 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
-import { EditorApi } from "../useEditor";
+import React, { useState } from "react";
+import Lightbox from "yet-another-react-lightbox";
+import Zoom from "yet-another-react-lightbox/plugins/zoom";
+import NextJsImage from "@/components/RenderLightzom/RenderLightzom";
+import "yet-another-react-lightbox/styles.css";
 import { BlockType, InlineStyle } from "../TextEditor/config";
 import { useEditorApi } from "../TextEditorProvider";
 import { useRouter } from "next/navigation";
+
 
 const INLINE_STYLES_CODES = Object.values(InlineStyle);
 const BLOCK_TYPES_CODES = Object.values(BlockType);
@@ -106,10 +110,10 @@ export default function ToolPanel({
       });
       if (res.ok) {
         setStatusUpdate("success");
-        setTimeout(() => setStatusUpdate("idle"), 1500);
+        setTimeout(() => setStatusUpdate("idle"), 2000);
       } else {
         setStatusUpdate("error");
-        setTimeout(() => setStatusUpdate("idle"), 1500);
+        setTimeout(() => setStatusUpdate("idle"), 2000);
       }
     }
   };
@@ -148,6 +152,8 @@ export default function ToolPanel({
           type="file"
           onChange={(e) => setFile(e.target.files![0])}
         />
+        {!!srcToImage && <ForViewImg styleBtns={styleBtns} src={srcToImage}/>
+        }
       </form>
       <div className=" w-full overflow-hidden rounded-md">
         {BLOCK_TYPES_CODES.filter((type) => {
@@ -197,4 +203,39 @@ export default function ToolPanel({
       </div>
     </div>
   );
+}
+
+function ForViewImg({styleBtns, src}:{styleBtns:string, src:string}) {
+  const [isOpen, setIsOpen] = useState(false)
+
+  const clickHandler:React.MouseEventHandler<HTMLButtonElement> = (e) => {
+    e.preventDefault()
+    setIsOpen(true)
+    console.log(src)
+  }
+
+  return (
+    <>
+    <button
+        className = {`${styleBtns} mt-3`}
+          onClick={clickHandler}
+        >
+          Посмотреть предыдущую картинку
+        </button>
+        <Lightbox
+    styles={{ root: { "--yarl__color_backdrop": "rgba(0, 0, 0, .8)" } }}
+    controller={{closeOnBackdropClick: true}}
+    carousel={{
+        finite:true
+    }}
+    open={isOpen}
+    plugins={[Zoom]}
+    close={() => setIsOpen(false)}
+    slides={[{ src }]}
+    render={{ slide: NextJsImage,
+        buttonPrev: () => null,
+        buttonNext: () => null, }}
+  />
+    </>
+  )
 }
