@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Lightbox from "yet-another-react-lightbox";
 import Zoom from "yet-another-react-lightbox/plugins/zoom";
 import NextJsImage from "@/components/RenderLightzom/RenderLightzom";
@@ -34,6 +34,8 @@ const dictToNormal: {
   UNDERLINE: "Подчеркнутый",
 };
 
+type TChange = true | false | 'changed'
+
 export default function ToolPanel({
   newsId,
   title = "",
@@ -55,6 +57,8 @@ export default function ToolPanel({
   } = useEditorApi();
   const [header, setHeader] = useState(title);
   const [file, setFile] = useState<File>();
+  const [isFirst, setIsFirst] = useState(true);
+  const [isChanged, setIsChanged] = useState(false);
   const [statusUpdate, setStatusUpdate] = useState<
     "success" | "error" | "idle"
   >("idle");
@@ -72,17 +76,34 @@ export default function ToolPanel({
     "bg-main-color w-full text-center px-5 py-2 whitespace-nowrap text-black hover:bg-opacity-50 duration-200 block";
 
   const backHandler = () => {
-    router.back();
+    let answer:boolean = true
+    if (isChanged) {
+      answer = confirm('Вы уверены, что хотите выйти?\nВсе несохраненные изменения будут потеряны.');
+    }
+    if (answer) {
+      router.back();
+    }
   };
+
+  useEffect(() => {
+    if (isFirst) {
+      setIsFirst(false);
+      return;
+    } else {
+      setIsChanged(true);
+    }
+
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [state, header, file])
 
   const saveHandler = async () => {
     setStatusUpdate("idle");
+    if (header.trim() === "") {
+      alert("Отсутствует заголовок");
+      return;
+    }
 
     if (!newsId) {
-      if (header === "") {
-        alert("Отсутствует заголовок");
-        return;
-      }
       const formData = new FormData();
       if (file) formData.set("file", file);
       formData.set("header", header);

@@ -7,7 +7,9 @@ import React, { useEffect, useState } from 'react'
 export default function Page() {
   const [news, setNews] = useState<{id: string, title:string}[]>()
     const getNews = async () => {
-      const response = await fetch(`/api/admin/news`)
+      const response = await fetch(`/api/admin/news`, {
+        cache: 'no-store'
+      })
     const news = await response.json() as {id: string, title:string}[]
     setNews(news)
     }

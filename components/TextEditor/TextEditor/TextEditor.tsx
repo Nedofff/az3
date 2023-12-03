@@ -12,7 +12,7 @@ export default function TextEditor({ className }: TextEditorProps) {
   const { state, onChange, handleKeyCommand } = useEditorApi();
 
   return (
-    <div className="w-4/5 max-w-[60%] h-fit mx-10 my-10 mb-52 shadow-2xl bg-white py-5 px-10 newsBlock placeholder:text-red-500">
+    <div className="w-4/5 max-w-[40vw] lg:max-w-[55vw] xl:max-w-[65vw] h-fit mx-10 my-10 mb-52 shadow-2xl bg-white py-5 px-10 newsBlock placeholder:text-red-500">
       <Editor
         placeholder="Введите ваш текст ниже:"
         editorState={state}

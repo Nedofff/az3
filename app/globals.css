@@ -76,10 +76,10 @@ p, h1, h2, h3, figure, ul, a, article{
 
 /* news */
 .newsBlock ul {
-    @apply list-disc;
+    @apply list-disc my-1;
 }
 .newsBlock ol {
-    @apply list-decimal;
+    @apply list-decimal my-1;
 }
 .newsBlock a {
     @apply text-sub-accent-color;
@@ -91,5 +91,5 @@ p, h1, h2, h3, figure, ul, a, article{
     @apply text-xl font-bold my-2;
 }
 .newsBlock p {
-    @apply max-w-2xl break-words;
+    @apply max-w-2xl break-words min-h-[1rem];
 }

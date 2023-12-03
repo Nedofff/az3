@@ -38,7 +38,7 @@ export async function POST(req: Request) {
     data: {
       year: +year,
       srcToReport,
-      listOrganization: listOrganization.split('\\'),
+      listOrganization: listOrganization.split('\n').filter((x) => x !== '').map((x) => x.trim()),
       moneySSO: Number(moneySSO.replace(',', '.')),
       moneyAll: Number(moneyAll.replace(',', '.')),
       moneyAudit: Number(moneyAudit.replace(',', '.')),
