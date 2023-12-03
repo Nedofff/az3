@@ -12,7 +12,7 @@ export default function ContactForm({className}:{className?:string}) {
     const submitHandler: React.FormEventHandler<HTMLFormElement> = (e) => {
         e.preventDefault()
 
-        fetch("/api/test", {
+        fetch("/api/contactForm", {
             body: JSON.stringify({
                 nameValue,
                 surnameValue,

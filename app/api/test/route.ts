@@ -9,7 +9,7 @@ export async function POST(req: Request) {
     service:'yandex',
     host: "smtp.yandex.email",
     port: 465,
-    secure: false,
+    secure: true,
     auth: {
     user: process.env.NODEMAILER_USER,
     pass: process.env.NODEMAILER_PASS,
@@ -45,9 +45,9 @@ export async function POST(req: Request) {
 `;
   const result = await transporter.sendMail({
     from: `"Заявка с сайта" <${process.env.NODEMAILER_USER}>`,
-    to: "Ed.Novikov.D@yandex.ru",
-    subject: "Заявка с сайта",
-    text: "Hello world",
+    to: `${process.env.NODEMAILER_USER}`,
+    subject: "Заявка из расчёта стоимости на сайте",
+    text: "Something",
     html: mailBody,
   });
   return NextResponse.json(true);
