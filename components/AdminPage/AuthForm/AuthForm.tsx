@@ -44,7 +44,7 @@ export default function AuthForm() {
         <input
         className="text-black outline-none px-3 py-1 rounded-sm"
         onChange={(e) => setPasswordValue(e.target.value)}
-          type="text"
+          type="password"
           id="password"
         />
       </label>
