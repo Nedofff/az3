@@ -14,7 +14,8 @@ export default function FetchBlockInfo() {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
-    }
+    },
+    cache: 'no-store'
   })
   const reports = await response.json() as IReport[];
     setReports(reports) 
