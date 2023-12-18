@@ -12,7 +12,7 @@ export default function ParsingBlock({ text }: { text: string }) {
     <div className="flex justify-center">
       <div
         dangerouslySetInnerHTML={{ __html: text }}
-        className="newsBlock w-max-[600px]"
+        className="newsBlock max-w-[700px]"
       ></div>
     </div>
   );

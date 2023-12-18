@@ -22,7 +22,7 @@ export async function PUT(req:Request, { params }: { params: { id: string } }) {
         const buffer = Buffer.from(bytes);
         
         const nameFileFromSrc = (formData.get('srcToImage')! as string).split('/')[2]
-        const nameFile = nameFileFromSrc ? nameFileFromSrc : `${Date.now()}.${file.type.split("/")[1]}`
+const nameFile = nameFileFromSrc ? `${nameFileFromSrc.split('.')[0]}${file.type.split("/")[1]}` : `${Date.now()}${file.type.split("/")[1]}`
         const path = join(process.cwd(), "public/news", nameFile);
         await writeFile(path, buffer);
 

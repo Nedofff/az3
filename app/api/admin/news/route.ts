@@ -12,7 +12,8 @@ export async function POST(req: Request) {
     const bytes = await file.arrayBuffer();
     const buffer = Buffer.from(bytes);
 
-    const newNameFile = `${Date.now()}.${file.type.split("/")[1]}`;
+    const typeFile = file.name.split('.').splice(-1)[0]
+    const newNameFile = `${Date.now()}${typeFile}`;
     const path = join(process.cwd(), "public/news", newNameFile);
     const srcToImage = `/news/${newNameFile}`;
     await writeFile(path, buffer);
@@ -67,3 +68,5 @@ export async function GET(req: Request) {
     return NextResponse.json(result);
   }
 }
+
+
