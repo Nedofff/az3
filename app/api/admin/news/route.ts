@@ -3,6 +3,7 @@ import { join } from "path";
 import { writeFile } from "fs/promises";
 import prisma from "@/lib/prisma";
 import sizeOf from "image-size";
+import {exec} from 'node:child_process'
 
 export async function POST(req: Request) {
   const formData = await req.formData();
@@ -32,6 +33,8 @@ export async function POST(req: Request) {
         content: formData.get("html") as string,
       },
     });
+const restart = () => {exec('pm2 restart next')}
+    exec('cd /root/azmesha-and-partners-v2/ && npm run build', restart)
   return NextResponse.json(resultDB);
   } else {
     const resultDB = await prisma.news.create({

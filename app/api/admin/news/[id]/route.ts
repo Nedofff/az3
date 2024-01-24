@@ -3,6 +3,7 @@ import prisma from "@/lib/prisma";
 import { join } from "path";
 import { writeFile } from "fs/promises";
 import sizeOf from 'image-size'
+import {exec} from 'node:child_process'
 
 export async function DELETE(req:Request, { params }: { params: { id: string } }) {
     const resultBD = await prisma.news.delete({
@@ -43,6 +44,9 @@ const nameFile = nameFileFromSrc ? `${nameFileFromSrc.split('.')[0]}${file.type.
                 content: formData.get('html') as string,
             }
         })
+
+const restart = () => {exec('pm2 restart next')}
+    exec('cd /root/azmesha-and-partners-v2/ && npm run build', restart)
     return NextResponse.json(resultBD)
 
     } else {
