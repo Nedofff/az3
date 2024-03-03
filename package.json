@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "NODE_OPTIONS=\"--max_old_space_size=1024\" next build", 
+    "build": "NODE_OPTIONS=\"--max_old_space_size=512\" next build",
     "start": "next start",
     "lint": "next lint"
   },
@@ -31,6 +31,7 @@
     "react-dom": "18.2.0",
     "react-hook-form": "^7.48.2",
     "react-icons": "^4.11.0",
+    "react-multi-carousel": "^2.8.4",
     "react-redux": "^8.1.2",
     "react-responsive-carousel": "^3.2.23",
     "redux": "^4.2.1",

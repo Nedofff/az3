@@ -11,6 +11,7 @@ import FeedbackModal from "@/components/Modals/FeedbackModal";
 import TestModal from "@/components/Modals/TestModal";
 import CircleAnimation from "@/components/HomePage/CircleAnimation/CircleAnimation";
 import Preloader from "@/components/Preloader/Preloader";
+import DocumentSlider from "@/components/HomePage/DocumentSlider/DocumentSlider";
 
 export const metadata: Metadata = {
   description: 'Аудиторская группа "Аземша и партнеры" предоставляет широкий спектр профессиональных услуг по аудиту, налоговому консультированию, бухгалтерскому учету и финансовому анализу. На сайте вы найдете информацию о нашей команде экспертов, портфолио успешных проектов, а также полезные статьи и новости из мира бизнеса и финансов. Наша миссия - помогать компаниям и предпринимателям добиваться финансовой прозрачности и эффективного управления. С нами ваш бизнес всегда будет на верном пути к успеху.'
@@ -27,6 +28,7 @@ export default function HomePage() {
       <Advantages />
       <News />
       <Feedback />
+<DocumentSlider/>
       <ContactBlock />
       <YandexMap />
       <FeedbackModal />
