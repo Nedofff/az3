@@ -4,8 +4,29 @@ import { redirect } from "next/navigation";
 import Image from "next/image";
 import ScalingImages from "@/components/InfoPage/ScalingImages";
 import Link from "next/link";
+import type { Metadata } from "next";
 
-export default function page({ params: { id } }: { params: { id: number } }) {
+interface Props {
+  params: { id: number };
+}
+
+export async function generateMetadata({
+  params: { id },
+}: Props): Promise<Metadata> {
+  const person: IPerson | undefined = teamData.find((item) => item.id == id);
+
+  if (!person) {
+    return {
+      title: "undefined",
+    };
+  }
+
+  return {
+    title: person?.fullName,
+  };
+}
+
+export default function page({ params: { id } }: Props) {
   const person: IPerson | undefined = teamData.find((item) => item.id == id);
   if (!person) {
     redirect("/404");
@@ -13,19 +34,28 @@ export default function page({ params: { id } }: { params: { id: number } }) {
   return (
     <main className={`px-1 sm:px-14 flex justify-center relative pb-10`}>
       <div className="sticky w-1/2 pt-24 top-0 h-min mr-1 sm:mx-2 sm:ml-14">
-      <div className="relative">
-        <Image
-          className="rounded-lg shadow-xl w-full max-w-[300px]"
-          src={person.hasSecondImg ? `/teamPage/team${id}_second.jpg` : `/teamPage/team${id}.jpg`}
-          alt={person.name}
-          width={3200}
-          height={3200}
-        />
-        <p className="absolute bg-white bg-opacity-80 p-1 rounded-lg text-opacity-60 bottom-0 text-sm sm:text-base leading-none sm:leading-normal mb-1 ml-1">
-          {person.fullName}
-        </p>
-      </div>
-        <Link className="block max-w-[302px] mt-4 bg-accent-color text-white px-5 py-2 rounded-md hover:bg-opacity-50 duration-200 text-center" href={'/team'}>Назад</Link>
+        <div className="relative">
+          <Image
+            className="rounded-lg shadow-xl w-full max-w-[300px]"
+            src={
+              person.hasSecondImg
+                ? `/teamPage/team${id}_second.jpg`
+                : `/teamPage/team${id}.jpg`
+            }
+            alt={person.name}
+            width={3200}
+            height={3200}
+          />
+          <p className="absolute bg-white bg-opacity-80 p-1 rounded-lg text-opacity-60 bottom-0 text-sm sm:text-base leading-none sm:leading-normal mb-1 ml-1">
+            {person.fullName}
+          </p>
+        </div>
+        <Link
+          className="block max-w-[302px] mt-4 bg-accent-color text-white px-5 py-2 rounded-md hover:bg-opacity-50 duration-200 text-center"
+          href={"/team"}
+        >
+          Назад
+        </Link>
       </div>
       <div className="w-5/6 sm:px-5 mt-24">
         <div>
@@ -41,10 +71,14 @@ export default function page({ params: { id } }: { params: { id: number } }) {
             </div>
           </div>
         </div>
-        {Boolean(person.id <= 6) &&
-        <div className="flex flex-wrap mt-5 sm:mt-12">
-          <ScalingImages className="w-1/2" imagesData={person.certificates!}/>
-        </div>}
+        {Boolean(person.id <= 6) && (
+          <div className="flex flex-wrap mt-5 sm:mt-12">
+            <ScalingImages
+              className="w-1/2"
+              imagesData={person.certificates!}
+            />
+          </div>
+        )}
       </div>
     </main>
   );

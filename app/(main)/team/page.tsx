@@ -1,14 +1,18 @@
 import React from "react";
-// import TeamSlider from "@/components/TeamPage/TeamSlider/TeamSlider";
 import { teamData } from "./teamPerson.data";
 import styles from "./page.module.css";
 import dynamic from "next/dynamic";
 import TeamLoading from "@/components/TeamPage/TeamLoading/TeamLoading";
+import { Metadata } from "next";
 
 const TeamSliderDynamic = dynamic(() => import('@/components/TeamPage/TeamSlider/TeamSlider'), {
   ssr: false, 
   loading: () => <div className="flex justify-center items-center h-[474px]"><TeamLoading/></div>,
-} )
+})
+
+export const metadata: Metadata = {
+  title: 'Команда "Аземша и партнеры"',
+};
 
 
 export default function TeamPage() {

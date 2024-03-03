@@ -11,7 +11,7 @@ export default function News() {
   useEffect(() => {
     const fetchNews = async () => {
       const response = await fetch("/api/top", { cache: "no-store" });
-      const newsData: IOneNews[] = await response.json();
+      const newsData: IOneNews[] = await response.json()
       setNews(newsData);
     };
 

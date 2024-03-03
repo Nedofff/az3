@@ -6,6 +6,7 @@ import ContactBlock from "@/components/ContactBlock/ContactBlock";
 import LiWithMark from "@/components/LiWithMark/LiWithMark";
 import ScalingImage from "@/components/ScallingImage/ScallingImage";
 
+
 export default function AuditPage() {
   return (
     <main className="flex flex-col bg-main-color items-center pt-28">
