@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { writeFile } from "fs/promises";
 import { join } from "path";
 import prisma from "@/lib/prisma";
+import { exec } from "node:child_process";
 
 
 export async function GET(req: Request) {
@@ -45,6 +46,11 @@ export async function POST(req: Request) {
       moneyOther: Number(moneyOther.replace(',', '.')),
     },
   });
+
+  const restart = () => {
+    exec("pm2 restart next");
+  };
+  exec("cd /root/azmesha-and-partners-v2/ && npm run build", restart);
 
   return NextResponse.json(createReport);
 }

@@ -3,7 +3,7 @@ import { join } from "path";
 import { writeFile } from "fs/promises";
 import prisma from "@/lib/prisma";
 import sizeOf from "image-size";
-import {exec} from 'node:child_process'
+import { exec } from "node:child_process";
 
 export async function POST(req: Request) {
   const formData = await req.formData();
@@ -13,7 +13,7 @@ export async function POST(req: Request) {
     const bytes = await file.arrayBuffer();
     const buffer = Buffer.from(bytes);
 
-    const typeFile = file.name.split('.').splice(-1)[0]
+    const typeFile = file.name.split(".").splice(-1)[0];
     const newNameFile = `${Date.now()}${typeFile}`;
     const path = join(process.cwd(), "public/news", newNameFile);
     const srcToImage = `/news/${newNameFile}`;
@@ -33,9 +33,11 @@ export async function POST(req: Request) {
         content: formData.get("html") as string,
       },
     });
-const restart = () => {exec('pm2 restart next')}
-    exec('cd /root/azmesha-and-partners-v2/ && npm run build', restart)
-  return NextResponse.json(resultDB);
+    const restart = () => {
+      exec("pm2 restart next");
+    };
+    exec("cd /root/azmesha-and-partners-v2/ && npm run build", restart);
+    return NextResponse.json(resultDB);
   } else {
     const resultDB = await prisma.news.create({
       data: {
@@ -43,9 +45,8 @@ const restart = () => {exec('pm2 restart next')}
         content: formData.get("html") as string,
       },
     });
-  return NextResponse.json(resultDB);
-}
-
+    return NextResponse.json(resultDB);
+  }
 }
 
 export async function GET(req: Request) {
@@ -71,5 +72,3 @@ export async function GET(req: Request) {
     return NextResponse.json(result);
   }
 }
-
-
