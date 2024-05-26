@@ -5,11 +5,9 @@ import styles from "./Page.module.css";
 export default function PageDepreciation() {
   const ref = useRef<any>(null);
   function downloadPdf() {
-    if (typeof window !== "undefined") {
-      ref.current.style.display = "none";
-      window.print();
-      ref.current.style.display = "block";
-    }
+    ref.current.style.display = "none";
+    window.print();
+    ref.current.style.display = "block";
   }
 
   return (
