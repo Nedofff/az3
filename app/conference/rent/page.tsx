@@ -1,7 +1,8 @@
+"use client";
 import styles from "./Page.module.css";
 import { useRef} from 'react';
 
-function page() {
+export default function Page() {
   const ref = useRef<any>(null);
   function downloadPdf() {
     ref.current.style.display="none";
@@ -329,5 +330,3 @@ function page() {
     </div>
   );
 }
-
-export default page;

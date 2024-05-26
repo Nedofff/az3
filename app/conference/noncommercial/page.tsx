@@ -1,7 +1,8 @@
+"use client";
 import styles from "./Page.module.css";
 import { useRef} from 'react';
 
-export default function page() {
+export default function Page() {
   const ref = useRef<any>(null);
   function downloadPdf() {
     ref.current.style.display="none";
