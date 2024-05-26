@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import React from "react";
 import Image from "next/image";
 
@@ -10,15 +11,15 @@ interface IImageProps {
 export default function OptimizedBgImg({
   isNeedDark,
   imageProps,
-  addClassName
+  addClassName,
 }: {
-  isNeedDark?:boolean,
+  isNeedDark?: boolean;
   imageProps: IImageProps;
-  addClassName?: string
+  addClassName?: string;
 }) {
   return (
     <div
-    className={addClassName}
+      className={addClassName}
       style={{
         position: "absolute",
         height: "100vh",
@@ -36,14 +37,24 @@ export default function OptimizedBgImg({
         }}
       >
         {/* bg-black */}
-        <div className={`w-screen bg-opacity-40 h-screen fixed top-0 left-0 z-[1] ${isNeedDark && "bg-black"}`}></div>
-        <Image
+        <div
+          className={`w-screen bg-opacity-40 h-screen fixed top-0 left-0 z-[1] ${
+            isNeedDark && "bg-black"
+          }`}
+        ></div>
+        <img
+          className="w-screen h-screen object-cover"
+          src={imageProps.src}
+          alt=""
+        />
+        {/* <Image
           className="w-screen h-screen object-cover"
           {...imageProps}
+          src=
           sizes="100vw"
           priority
           alt="Задний фон главной страницы - рабочий стол адуторов"
-        />
+        /> */}
       </div>
     </div>
   );

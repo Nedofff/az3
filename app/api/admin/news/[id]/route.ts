@@ -1,9 +1,9 @@
 import { NextResponse } from "next/server";
 import prisma from "@/lib/prisma";
 import { join } from "path";
-import { writeFile } from "fs/promises";
+import { writeFile, unlink } from "fs/promises";
 import sizeOf from "image-size";
-import { exec } from "node:child_process";
+import { PATH_TO_IMAGES_FS } from "@/consts/paths";
 
 export async function DELETE(
   req: Request,
@@ -14,6 +14,11 @@ export async function DELETE(
       id: params.id,
     },
   });
+  if (resultBD.srcToImage) {
+    const path = join(PATH_TO_IMAGES_FS, resultBD.srcToImage);
+    await unlink(path);
+  }
+
   return NextResponse.json(resultBD);
 }
 export async function PUT(
@@ -33,7 +38,7 @@ export async function PUT(
     const nameFile = nameFileFromSrc
       ? `${nameFileFromSrc.split(".")[0]}${file.type.split("/")[1]}`
       : `${Date.now()}${file.type.split("/")[1]}`;
-    const path = join(process.cwd(), "public/news", nameFile);
+    const path = join(PATH_TO_IMAGES_FS, "news", nameFile);
     await writeFile(path, buffer);
 
     const dimensions = sizeOf(path);
@@ -54,10 +59,6 @@ export async function PUT(
       },
     });
 
-    const restart = () => {
-      exec("pm2 restart next");
-    };
-    exec("cd /root/azmesha-and-partners-v2/ && npm run build", restart);
     return NextResponse.json(resultBD);
   } else {
     const resultBD = await prisma.news.update({
