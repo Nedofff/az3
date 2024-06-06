@@ -1,6 +1,6 @@
 FROM node:lts as dependencies
 WORKDIR /Kate-docs
-COPY package.json yarn.lock ./
+COPY package.json ./
 RUN npm install
 
 FROM node:lts as builder
