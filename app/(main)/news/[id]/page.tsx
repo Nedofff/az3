@@ -43,7 +43,7 @@ export default async function Page({ params }: IProps) {
   });
 
   if (response.ok) {
-    const newsData: IOneNews = JSON.parse(await response.json());
+    const newsData: IOneNews = await response.json();
     if (Object.keys(newsData).length == 0) {
       redirect("/404");
     }
