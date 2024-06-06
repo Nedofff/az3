@@ -5,6 +5,7 @@ import { env } from "process";
 import ParsingBlock from "@/components/NewsPage/ParsingBlock/ParsingBlock";
 import { redirect } from "next/navigation";
 import { getUrlImg } from "@/service/getUrlImg";
+import { JSONContent, JSONToHTML } from "@/service/htmlConvertor";
 
 interface IProps {
   params: {
@@ -34,7 +35,7 @@ interface IOneNews {
   src: string;
   width: number;
   height: number;
-  text: string;
+  text: string | JSONContent;
 }
 
 export default async function Page({ params }: IProps) {
@@ -48,7 +49,7 @@ export default async function Page({ params }: IProps) {
       redirect("/404");
     }
     const { title, text, src, ...forImg } = newsData;
-
+    const trueText = (await JSONToHTML(text)).toString();
     return (
       <main className="pb-24 flex flex-col items-center bg-main-color">
         {Boolean(src) && (
@@ -78,7 +79,7 @@ export default async function Page({ params }: IProps) {
             </div>
           )}
 
-          <ParsingBlock text={text} />
+          <ParsingBlock text={trueText} />
         </section>
       </main>
     );
