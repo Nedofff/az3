@@ -7,7 +7,7 @@ FROM node:lts as builder
 WORKDIR /Kate-docs
 COPY . .
 COPY --from=dependencies /Kate-docs/node_modules ./node_modules
-RUN npm run build
+RUN npm build
 
 FROM node:lts as runner
 WORKDIR /Kate-docs
