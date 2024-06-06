@@ -1,5 +1,3 @@
-import { DOMParser } from "@xmldom/xmldom";
-
 export interface JSONContent {
   type: string;
   attributes?: object;
