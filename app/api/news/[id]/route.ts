@@ -16,8 +16,8 @@ export async function GET(
     src: resultBD?.srcToImage,
     width: resultBD?.widthImg,
     height: resultBD?.heightImg,
-    // text: resultBD?.content,
+    text: resultBD?.content,
   };
-
+  console.log(result);
   return NextResponse.json(result);
 }
