@@ -16,7 +16,7 @@ export async function GET(
     src: resultBD?.srcToImage,
     width: resultBD?.widthImg,
     height: resultBD?.heightImg,
-    text: JSON.stringify(resultBD?.content),
+    // text: resultBD?.content,
   };
 
   return NextResponse.json(result);

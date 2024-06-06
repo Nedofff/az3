@@ -34,7 +34,7 @@ interface IOneNews {
   src: string;
   width: number;
   height: number;
-  text: string;
+  // text: string;
 }
 
 export default async function Page({ params }: IProps) {
@@ -47,7 +47,7 @@ export default async function Page({ params }: IProps) {
     if (Object.keys(newsData).length == 0) {
       redirect("/404");
     }
-    const { title, text, src, ...forImg } = newsData;
+    const { title, src, ...forImg } = newsData;
 
     return (
       <main className="pb-24 flex flex-col items-center bg-main-color">
@@ -78,7 +78,7 @@ export default async function Page({ params }: IProps) {
             </div>
           )}
 
-          <ParsingBlock text={text} />
+          {/* <ParsingBlock text={text} /> */}
         </section>
       </main>
     );
