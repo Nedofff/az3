@@ -11,8 +11,8 @@ export async function GET(
       id: params.id,
     },
   });
-
-  const jsonHtml = await HTMLParser(resultBD?.content || "");
+  const wrappedHtml = `<div>${resultBD?.content}</div>`;
+  const jsonHtml = await HTMLParser(wrappedHtml);
 
   const result = {
     id: resultBD?.id,
