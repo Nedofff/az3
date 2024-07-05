@@ -13,7 +13,7 @@ export default function TeamSlider({
 }: {
   teamData: Omit<IPerson, "fullName">[];
 }) {
-  const [activeId, setActiveId] = useState(5);
+  const [activeId, setActiveId] = useState(4);
   const lenghtData = teamData.length;
 
   const next = () => {
