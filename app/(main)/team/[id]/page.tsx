@@ -71,7 +71,7 @@ export default function page({ params: { id } }: Props) {
             </div>
           </div>
         </div>
-        {Boolean(person.id <= 6) && (
+        {!!person.certificates && (
           <div className="flex flex-wrap mt-5 sm:mt-12">
             <ScalingImages
               className="w-1/2"

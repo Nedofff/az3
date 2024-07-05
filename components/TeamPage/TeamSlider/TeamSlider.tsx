@@ -8,7 +8,6 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
 import styles from "./TeamSlider.module.css";
 
-
 export default function TeamSlider({
   teamData,
 }: {
@@ -78,7 +77,7 @@ export default function TeamSlider({
                   <div className="text-sm">Подробнее</div>
                 </Link>
                 <Image
-                priority={true}
+                  priority={true}
                   className=""
                   src={`/teamPage/team${person.id}.jpg`}
                   alt={person.name}
@@ -137,7 +136,7 @@ export default function TeamSlider({
                 <div className="text-sm">Подробнее</div>
               </Link>
               <Image
-              priority={true}
+                priority={true}
                 className=""
                 src={`/teamPage/team${person.id}.jpg`}
                 alt={person.name}

@@ -10,7 +10,7 @@ export default function News() {
 
   useEffect(() => {
     const fetchNews = async () => {
-      const response = await fetch("/api/top", { cache: "no-store" });
+      const response = await fetch("https://ap-audit.ru/api/top");
       const newsData: IOneNews[] = await response.json();
       setNews(newsData);
     };
