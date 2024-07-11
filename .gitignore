@@ -40,5 +40,5 @@ commandToSql.md
 tsome.ts
 /service/hashing
 /public/news
-# /public/reports
+/public/reports
 /.vscode
