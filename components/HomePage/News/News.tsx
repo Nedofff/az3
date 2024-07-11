@@ -1,22 +1,10 @@
-"use client";
-
-import React, { useEffect, useState } from "react";
 import ANewsItem from "./ANewItem/ANewsItem";
 import Link from "next/link";
 import AnimationOpacity from "@/components/Animation/AnimationOpacity/AnimationOpacity";
+import { getTopNewsFromDB } from "./getTopNewsFromDB";
 
-export default function News() {
-  const [news, setNews] = useState<IOneNews[]>([]);
-
-  useEffect(() => {
-    const fetchNews = async () => {
-      const response = await fetch("https://ap-audit.ru/api/top");
-      const newsData: IOneNews[] = await response.json();
-      setNews(newsData);
-    };
-
-    fetchNews();
-  }, []);
+export default async function News() {
+  const news = await getTopNewsFromDB();
 
   return (
     <section id="News" className="separator">

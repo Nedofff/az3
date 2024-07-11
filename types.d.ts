@@ -1,9 +1,9 @@
 interface IOneNews {
   id: string;
   title: string;
-  widthImg?: number
-  heightImg?: number
-  srcToImage?: string;
+  widthImg?: number | null;
+  heightImg?: number | null;
+  srcToImage?: string | null;
 }
 
 interface IFeedback {
@@ -16,7 +16,7 @@ interface IFeedback {
 interface IReport {
   id: string;
   year: number;
-  srcToReport: string
+  srcToReport: string;
   listOrganization?: string[];
   moneySSO: number;
   moneyAll: number;
@@ -24,39 +24,40 @@ interface IReport {
   moneyOther: number;
 }
 
-
 interface IFormInputAddReport {
-  year: string;               // год
-  listOrganization: string           // Перечень ОЗО
-  moneySSO: string;       // Выручка от ОЗО
-  moneyAll: string;      // Выручка всего
-  moneyAudit: string;   // Выручка от аудита
-  moneyOther: string;  // Выручка прочая
-  reportFile: File      // файл Отчета
+  /** год */
+  year: string;
+  /** Перечень ОЗО */
+  listOrganization: string;
+  /** Выручка от ОЗО */
+  moneySSO: string;
+  /** Выручка всего */
+  moneyAll: string;
+  /** Выручка от аудита */
+  moneyAudit: string;
+  /** Выручка прочая */
+  moneyOther: string;
+  /** файл Отчета */
+  reportFile: File;
 }
 
 interface IImage {
-    key: number,
-    name: string,
-    src: string,
-    width: number,
-    height: number,
-    alt: string,
+  key: number;
+  name: string;
+  src: string;
+  width: number;
+  height: number;
+  alt: string;
 }
 
 interface IPerson {
-    id: number,
-    name: string,
-    fullName: string,
-    hasSecondImg?: boolean,
-    width: number,
-    height: number,
-    // text: (string | string[])[]
-    text: [
-      string,
-      string,
-      string,
-      string[]
-    ],
-    certificates?: IImage[]
+  id: number;
+  name: string;
+  fullName: string;
+  hasSecondImg?: boolean;
+  width: number;
+  height: number;
+  // text: (string | string[])[]
+  text: [string, string, string, string[]];
+  certificates?: IImage[];
 }

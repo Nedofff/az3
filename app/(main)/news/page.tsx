@@ -57,7 +57,7 @@ export default function NewsPage() {
     if (searchQuery !== "") {
       url += `?q=${searchQuery}`;
     }
-    
+
     await fetch(url, {
       cache: "no-store",
     })
@@ -78,14 +78,11 @@ export default function NewsPage() {
     onSearch();
     getCountPages();
     document.querySelector("main")?.scrollIntoView();
-  }, [page, searchQuery, onSearch, 
-    getCountPages
-  ]);
-
+  }, [page, searchQuery, onSearch, getCountPages]);
 
   return (
     <main className="pt-28 pb-24 flex flex-col items-center">
-        <h1 className="heading">Новости</h1>
+      <h1 className="heading">Новости</h1>
       <div className="max-w-7xl flex flex-col items-center justify-between min-h-[50vh]">
         <SearchBar setSearchQuery={setSearchQuery} />
         {Boolean(status === "idle") && (
@@ -106,8 +103,16 @@ export default function NewsPage() {
             <p className="text-2xl">Ничего не найдено</p>
           </div>
         )}
-        {Boolean(status === "idle") ? <NewsPagionation setPage={setPage} currentPage={page} countPages={countPages} /> : <div/>}
-        </div>
+        {Boolean(status === "idle") ? (
+          <NewsPagionation
+            setPage={setPage}
+            currentPage={page}
+            countPages={countPages}
+          />
+        ) : (
+          <div />
+        )}
+      </div>
     </main>
   );
 }
