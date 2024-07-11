@@ -29,7 +29,7 @@ export default function ANewsItem({
           <img
             src={getUrlImg(src)}
             alt={title}
-            className="w-full rounded-lg h-auto object-cover object-center"
+            className="w-full rounded-lg h-full object-cover object-center"
           />
           <WaveSvg className="absolute inline bottom-0 fill-white " />
         </div>
