@@ -2,8 +2,9 @@
 "use client";
 import WaveSvg from "@/components/WaveSvg/WaveSvg";
 import { getUrlImg } from "@/service/getUrlImg";
+import Image from "next/image";
 import Link from "next/link";
-import React, { Suspense } from "react";
+import React from "react";
 
 export default function NewsCell({
   id,
@@ -40,7 +41,7 @@ export default function NewsCell({
       >
         {Boolean(src) ? (
           <div className="relative w-full h-2/3 overflow-hidden">
-            <img
+            <Image
               src={getUrlImg(src)}
               alt={title}
               className="w-full rounded-lg h-full object-center object-cover"

@@ -26,9 +26,11 @@ export default function ANewsItem({
     >
       {!!src && (
         <div className={`relative w-full h-2/3 overflow-hidden md:h-1/2`}>
-          <img
+          <Image
             src={getUrlImg(src)}
             alt={title}
+            width={width ?? undefined}
+            height={height ?? undefined}
             className="w-full rounded-lg h-full object-cover object-center"
           />
           <WaveSvg className="absolute inline bottom-0 fill-white " />

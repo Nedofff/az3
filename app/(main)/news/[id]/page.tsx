@@ -1,11 +1,47 @@
 import React from "react";
-import type { Metadata, ResolvingMetadata } from "next";
+import type { Metadata } from "next";
 import OptimizedBgImg from "@/components/OptimizedBgImg/OptimizedBgImg";
-import { env } from "process";
 import ParsingBlock from "@/components/NewsPage/ParsingBlock/ParsingBlock";
 import { redirect } from "next/navigation";
 import { getUrlImg } from "@/service/getUrlImg";
-import { JSONContent, JSONToHTML } from "@/service/htmlConvertor";
+import { JSONContent, JSONToHTML, HTMLParser } from "@/service/htmlConvertor";
+import prisma from "@/lib/prisma";
+
+interface IOneNews {
+  id: string;
+  title: string;
+  src: string | null;
+  width: number | null;
+  height: number | null;
+  text: string | JSONContent;
+}
+
+const getFromDataBaseNewsById = async (
+  id: string
+): Promise<IOneNews | null> => {
+  const resultBD = await prisma.news.findUnique({
+    where: {
+      id,
+    },
+  });
+  if (!resultBD) {
+    return null;
+  }
+
+  const wrappedHtml = `<div>${resultBD.content}</div>`;
+  const jsonHtml = await HTMLParser(wrappedHtml);
+
+  const result = {
+    id: resultBD.id,
+    title: resultBD.title,
+    src: resultBD.srcToImage,
+    width: resultBD.widthImg,
+    height: resultBD.heightImg,
+    text: jsonHtml,
+  };
+
+  return result;
+};
 
 interface IProps {
   params: {
@@ -16,74 +52,56 @@ interface IProps {
 export async function generateMetadata({ params }: IProps): Promise<Metadata> {
   const id = params.id;
 
-  const response = await fetch(`${env.NEXTAUTH_URL}/api/news/${id}`);
-  let title;
-  if (!response.ok) {
-    title = "Новости";
+  const data = await getFromDataBaseNewsById(id);
+  if (!data) {
+    return {
+      title: "Страница не найдена",
+    };
   }
-  const data = await response.json();
-  title = data.title;
 
   return {
-    title,
+    title: data.title,
   };
 }
 
-interface IOneNews {
-  id: string;
-  title: string;
-  src: string;
-  width: number;
-  height: number;
-  text: string | JSONContent;
-}
-
 export default async function Page({ params }: IProps) {
-  const response = await fetch(`${env.NEXTAUTH_URL}/api/news/${params.id}`, {
-    cache: "no-store",
-  });
-
-  if (response.ok) {
-    const newsData: IOneNews = await response.json();
-    if (Object.keys(newsData).length == 0) {
-      redirect("/404");
-    }
-    const { title, text, src, ...forImg } = newsData;
-    const trueText = (await JSONToHTML(text)).toString();
-    return (
-      <main className="pb-24 flex flex-col items-center bg-main-color">
-        {Boolean(src) && (
-          <section
-            className={` bg-blend-overlay relative bg-black bg-opacity-40 flex items-center w-full h-screen bg-center bg-no-repeat bg-cover justify-center`}
-          >
-            <OptimizedBgImg
-              isNeedDark
-              imageProps={{
-                src: getUrlImg(src),
-                ...forImg,
-              }}
-            />
-            <div className=" text-white px-3 md:w-1/2 md:p-0 z-[1]">
-              <h1 className="font-bold text-lg sm:text-3xl uppercase md:text-6xl md:mb-2">
-                {title}
-              </h1>
-            </div>
-            <div className="hidden w-1/6 md:block"></div>
-          </section>
-        )}
-
-        <section className="separator-min px-7 w-full flex flex-col items-center">
-          {!Boolean(src) && (
-            <div className="pt-28">
-              <h1 className="heading">{title}</h1>
-            </div>
-          )}
-
-          <ParsingBlock text={trueText} />
-        </section>
-      </main>
-    );
-  } else {
+  const data = await getFromDataBaseNewsById(params.id);
+  if (!data) {
     redirect("/404");
   }
+
+  const { id, title, text, src, ...sizes } = data;
+  const trueText = (await JSONToHTML(text)).toString();
+  return (
+    <main className="pb-24 flex flex-col items-center bg-main-color">
+      {src && (
+        <section
+          className={` bg-blend-overlay relative bg-black bg-opacity-40 flex items-center w-full h-screen bg-center bg-no-repeat bg-cover justify-center`}
+        >
+          <OptimizedBgImg
+            isNeedDark
+            imageProps={{
+              src: getUrlImg(src),
+              ...sizes,
+            }}
+          />
+          <div className=" text-white px-3 md:w-1/2 md:p-0 z-[1]">
+            <h1 className="font-bold text-lg sm:text-3xl uppercase md:text-6xl md:mb-2">
+              {title}
+            </h1>
+          </div>
+          <div className="hidden w-1/6 md:block"></div>
+        </section>
+      )}
+
+      <section className="separator-min px-7 w-full flex flex-col items-center">
+        {!data.src && (
+          <div className="pt-28">
+            <h1 className="heading">{title}</h1>
+          </div>
+        )}
+        <ParsingBlock text={trueText} />
+      </section>
+    </main>
+  );
 }

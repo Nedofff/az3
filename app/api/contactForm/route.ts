@@ -1,3 +1,4 @@
+import { sendEmailSelf } from "@/service/nodemailer";
 import { NextResponse } from "next/server";
 import { createTransport } from "nodemailer";
 
@@ -9,20 +10,9 @@ export async function POST(req: Request) {
     emailValue: string;
     commentValue: string;
   };
+  console.log("get body", body);
   const { nameValue, surnameValue, phoneValue, emailValue, commentValue } =
     body;
-
-  const transporter = createTransport({
-    service: "yandex",
-    host: "smtp.yandex.email",
-    port: 465,
-    secure: true,
-    auth: {
-      user: process.env.NODEMAILER_USER,
-      pass: process.env.NODEMAILER_PASS,
-    },
-  });
-
 
   const mailBody = `От: ${nameValue} ${surnameValue} ${emailValue}
 <table>
@@ -44,12 +34,16 @@ export async function POST(req: Request) {
     </tr>
 </table>
 `;
-  const result = await transporter.sendMail({
-    from: `<${process.env.NODEMAILER_USER}>`,
-    to: `${process.env.NODEMAILER_USER}`,
-    subject: "Заявка с формы на сайте",
-    text: "Something",
-    html: mailBody,
-  });
-  return NextResponse.json(true);
+
+  try {
+    await sendEmailSelf({
+      subject: "Заявка с формы на сайте",
+      html: mailBody,
+    });
+    return NextResponse.json({
+      isOk: true,
+    });
+  } catch (error) {
+    return NextResponse.error();
+  }
 }

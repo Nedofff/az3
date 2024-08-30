@@ -1,9 +1,10 @@
 "use client";
 
 import React, { useState } from "react";
-import {BsFillCheckSquareFill} from 'react-icons/bs'
+import { BsFillCheckSquareFill } from "react-icons/bs";
+import { MdError } from "react-icons/md";
 import { useModalTest } from "@/hooks/modalTest/useModalTest";
-
+import Loading from "@/components/Loading/Loading";
 
 export default function EndTest({
   reset,
@@ -12,33 +13,46 @@ export default function EndTest({
   reset: () => void;
   prevSlide: () => void;
 }) {
-  const [isApplicationSent, setIsApplicationSent] = useState(false)
+  const [isApplicationSent, setIsApplicationSent] = useState(false);
+  const [isError, setIsError] = useState(false);
 
   return (
     <>
-    {isApplicationSent ? (<EndAnswer reset={reset}/>) : <EndForm setIsApplicationSent={() => setIsApplicationSent(true)} reset={reset} prevSlide={prevSlide}/>}
+      {isApplicationSent || isError ? null : (
+        <EndForm
+          setIsApplicationSent={() => setIsApplicationSent(true)}
+          setIsError={() => setIsError(true)}
+          reset={reset}
+          prevSlide={prevSlide}
+        />
+      )}
+      {isError && <EndAnswerError reset={reset} />}
+      {isApplicationSent && <EndAnswer reset={reset} />}
     </>
-  )
+  );
 }
 
 function EndForm({
   reset,
   prevSlide,
   setIsApplicationSent,
+  setIsError,
 }: {
   reset: () => void;
   prevSlide: () => void;
-  setIsApplicationSent: ()=>void;
+  setIsApplicationSent: () => void;
+  setIsError: () => void;
 }) {
   const [nameValue, setNameValue] = useState("");
   const [INNValue, setINNValue] = useState("");
   const [emailValue, setEmailValue] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
   const { answers } = useModalTest();
 
-  const fetchData: React.FormEventHandler<HTMLFormElement> = (e) => {
+  const fetchData: React.FormEventHandler<HTMLFormElement> = async (e) => {
     e.preventDefault();
-
-    fetch("/api/test", {
+    setIsLoading(true);
+    const result = await fetch("/api/test", {
       body: JSON.stringify({
         name: nameValue,
         INN: INNValue,
@@ -50,19 +64,28 @@ function EndForm({
       },
       method: "POST",
     });
-    setNameValue('')
-    setINNValue('')
-    setEmailValue('')
-    setIsApplicationSent()
+    setNameValue("");
+    setINNValue("");
+    setEmailValue("");
+    if (result.ok && result) {
+      setIsApplicationSent();
+    } else {
+      setIsError();
+    }
   };
   const buttonStyle =
     "bg-black text-sm bg-opacity-60 p-2 sm:py-3 sm:px-5 rounded-xl text-white duration-300 active:scale-95";
 
+  if (isLoading) {
+    return (
+      <div className="h-full flex items-center justify-center">
+        <Loading className="h-[50%] w-[50%]" />
+      </div>
+    );
+  }
+
   return (
-    <form
-      className="flex flex-col items-center h-full"
-      onSubmit={fetchData}
-    >
+    <form className="flex flex-col items-center h-full" onSubmit={fetchData}>
       <label htmlFor="name">Имя</label>
       <input
         className="w-2/3 rounded-sm border-2 p-2 outline-none duration-150 focus:border-accent-color"
@@ -120,19 +143,56 @@ function EndForm({
   );
 }
 
-function EndAnswer({reset}:{reset:()=>void}) {
-  const approximatePrice = useModalTest().approximatePrice
+function EndAnswerError({ reset }: { reset: () => void }) {
   return (
     <div className="h-full flex items-center justify-center">
       <div className="flex flex-col items-center">
         <p>
-      <BsFillCheckSquareFill className="text-6xl text-green-600"/>
-      </p>
-      <p className="text-xl sm:text-3xl mt-1">Спасибо! Ваша заявка принята!</p>
-      <p className="text-xl sm:text-2xl mt-1">Приблизительная стоимость <span className="text-sub-accent-color">{approximatePrice}</span> рублей.</p>
-      <p className="text-lg sm:text-2xl">Для уточнения информации с Вами свяжется наш специалист.</p>
-      <button className="mt-5 bg-black text-sm bg-opacity-60 p-2 sm:py-3 sm:px-5 rounded-xl text-white duration-300 hover:bg-sub-color active:scale-95" onClick={reset}>Закрыть</button>
+          <MdError className="text-6xl text-red-600" />
+        </p>
+        <p className="text-xl sm:text-3xl mt-3">Что-то пошло не так</p>
+        <p className="text-xl sm:text-2xl mt-4">
+          Позвоните нам{" "}
+          <a className="text-sub-accent-color" href="tel:+7 (391) 214-93-60">
+            +7 (391) 214-93-60
+          </a>
+        </p>
+        <button
+          className="mt-5 bg-black text-sm bg-opacity-60 p-2 sm:py-3 sm:px-5 rounded-xl text-white duration-300 hover:bg-sub-color active:scale-95"
+          onClick={reset}
+        >
+          Закрыть
+        </button>
       </div>
     </div>
-  )
+  );
+}
+function EndAnswer({ reset }: { reset: () => void }) {
+  const approximatePrice = useModalTest().approximatePrice;
+  return (
+    <div className="h-full flex items-center justify-center">
+      <div className="flex flex-col items-center">
+        <p>
+          <BsFillCheckSquareFill className="text-6xl text-green-600" />
+        </p>
+        <p className="text-xl sm:text-3xl mt-1">
+          Спасибо! Ваша заявка принята!
+        </p>
+        <p className="text-xl sm:text-2xl mt-1">
+          Приблизительная стоимость{" "}
+          <span className="text-sub-accent-color">{approximatePrice}</span>{" "}
+          рублей.
+        </p>
+        <p className="text-lg sm:text-2xl">
+          Для уточнения информации с Вами свяжется наш специалист.
+        </p>
+        <button
+          className="mt-5 bg-black text-sm bg-opacity-60 p-2 sm:py-3 sm:px-5 rounded-xl text-white duration-300 hover:bg-sub-color active:scale-95"
+          onClick={reset}
+        >
+          Закрыть
+        </button>
+      </div>
+    </div>
+  );
 }

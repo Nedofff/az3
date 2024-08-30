@@ -4,8 +4,8 @@ import Image from "next/image";
 
 interface IImageProps {
   src: string;
-  width: number;
-  height: number;
+  width?: number | null;
+  height?: number | null;
 }
 
 export default function OptimizedBgImg({
@@ -42,9 +42,11 @@ export default function OptimizedBgImg({
             isNeedDark && "bg-black"
           }`}
         ></div>
-        <img
+        <Image
           className="w-screen h-screen object-cover"
           src={imageProps.src}
+          width={imageProps.width ?? undefined}
+          height={imageProps.height ?? undefined}
           alt=""
         />
         {/* <Image
