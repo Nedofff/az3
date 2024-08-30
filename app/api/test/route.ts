@@ -1,21 +1,9 @@
 import { questionsForEmail } from "@/components/Modals/TestModal.data";
+import { sendEmailSelf } from "@/service/nodemailer";
 import { NextResponse } from "next/server";
-import { createTestAccount, createTransport } from "nodemailer";
 
 export async function POST(req: Request) {
   const body = await req.json();
-
-  const transporter = createTransport({
-    service: "yandex",
-    host: "smtp.yandex.email",
-    port: 465,
-    secure: true,
-    auth: {
-      user: process.env.NODEMAILER_USER,
-      pass: process.env.NODEMAILER_PASS,
-    },
-  });
-
   const answers = body.answers;
 
   const mainMailBody = questionsForEmail
@@ -45,14 +33,15 @@ export async function POST(req: Request) {
     ${mainMailBody}
 </table>
 `;
-  const result = await transporter.sendMail({
-    from: `"Заявка с сайта" <${process.env.NODEMAILER_USER}>`,
-    to: `${process.env.NODEMAILER_USER}`,
-    subject: "Заявка из расчёта стоимости на сайте",
-    text: "Something",
-    html: mailBody,
-  });
-  return NextResponse.json(true);
+  try {
+    await sendEmailSelf({
+      subject: "Заявка из теста на сайте",
+      html: mailBody,
+    });
+    return NextResponse.json({});
+  } catch (error) {
+    return NextResponse.error();
+  }
 }
 
 // import { questionsForEmail } from "@/components/Modals/TestModal.data";
