@@ -33,13 +33,26 @@ export async function POST(req: Request) {
     ${mainMailBody}
 </table>
 `;
-  try {
-    await sendEmailSelf({
-      subject: "Заявка из теста на сайте",
-      html: mailBody,
-    });
-    return NextResponse.json({});
-  } catch (error) {
-    return NextResponse.error();
+
+  interface IResponse {
+    status: "success" | "error";
+    error?: any;
   }
+
+  const response: IResponse = await sendEmailSelf({
+    subject: "Заявка из теста на сайте",
+    html: mailBody,
+  })
+    .then(
+      (): IResponse => ({
+        status: "success",
+      })
+    )
+    .catch(
+      (error): IResponse => ({
+        status: "error",
+        error,
+      })
+    );
+  return NextResponse.json(response);
 }

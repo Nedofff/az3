@@ -26,7 +26,6 @@ export default function FirstScreen() {
             top: "0",
           }}
         >
-          {/* bg-black */}
           <div
             className={`w-screen bg-opacity-40 h-screen fixed top-0 left-0 z-[1] "bg-black"`}
           ></div>

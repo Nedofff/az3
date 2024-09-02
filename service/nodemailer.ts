@@ -19,7 +19,8 @@ export const sendEmailSelf = (mailData: MailData) =>
     }).sendMail(
       {
         from: `ap-audit.ru <${process.env.NODEMAILER_USER}>`,
-        to: `${process.env.NODEMAILER_USER}`,
+        to: process.env.NODEMAILER_USER,
+        text: "Произошла ошибка",
         ...mailData,
       },
       (error, info) => {
