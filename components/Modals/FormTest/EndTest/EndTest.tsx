@@ -1,10 +1,12 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { BsFillCheckSquareFill } from "react-icons/bs";
 import { MdError } from "react-icons/md";
 import { useModalTest } from "@/hooks/modalTest/useModalTest";
 import Loading from "@/components/Loading/Loading";
+import { SubmitHandler, useForm } from "react-hook-form";
+import { UserFormData } from "./EndTest.types";
 
 export default function EndTest({
   reset,
@@ -43,30 +45,26 @@ function EndForm({
   setIsApplicationSent: () => void;
   setIsError: () => void;
 }) {
-  const [nameValue, setNameValue] = useState("");
-  const [INNValue, setINNValue] = useState("");
-  const [emailValue, setEmailValue] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const { register, reset: resetForm, handleSubmit } = useForm<UserFormData>();
   const { answers } = useModalTest();
 
-  const fetchData: React.FormEventHandler<HTMLFormElement> = async (e) => {
-    e.preventDefault();
+  const onSubmit: SubmitHandler<UserFormData> = async (data) => {
+    if (!data.check) {
+      return;
+    }
     setIsLoading(true);
     const result = await fetch("/api/test", {
       body: JSON.stringify({
-        name: nameValue,
-        INN: INNValue,
-        email: emailValue,
-        answers: answers,
+        ...data,
+        answers,
       }),
       headers: {
         "Content-Type": "application/json",
       },
       method: "POST",
     });
-    setNameValue("");
-    setINNValue("");
-    setEmailValue("");
+    resetForm();
     if (result.ok && result) {
       setIsApplicationSent();
     } else {
@@ -85,39 +83,38 @@ function EndForm({
   }
 
   return (
-    <form className="flex flex-col items-center h-full" onSubmit={fetchData}>
+    <form
+      className="flex flex-col items-center h-full"
+      onSubmit={handleSubmit(onSubmit)}
+    >
       <label htmlFor="name">Имя</label>
       <input
         className="w-2/3 rounded-sm border-2 p-2 outline-none duration-150 focus:border-accent-color"
-        onChange={(e) => setNameValue(e.currentTarget.value)}
-        value={nameValue}
-        type="text"
-        id="name"
-        required
+        {...register("name", { required: true })}
       />
       <br />
       <label htmlFor="INN">ИНН компании</label>
       <input
         className="w-2/3 rounded-sm border-2 p-2 outline-none duration-150 focus:border-accent-color"
-        onChange={(e) => setINNValue(e.currentTarget.value)}
-        value={INNValue}
+        {...register("INN", { required: true })}
+      />
+      <br />
+      <label htmlFor="phoneNumber">Телефон</label>
+      <input
+        className="w-2/3 rounded-sm border-2 p-2 outline-none duration-150 focus:border-accent-color"
+        {...register("phoneNumber", { required: true })}
         type="text"
-        id="INN"
-        required
       />
       <br />
       <label htmlFor="Email">Электронная почта</label>
       <input
         className="w-2/3 rounded-sm border-2 p-2 outline-none duration-150 focus:border-accent-color"
-        onChange={(e) => setEmailValue(e.currentTarget.value)}
-        value={emailValue}
+        {...register("email", { required: true })}
         type="text"
-        id="email"
-        required
       />
       <br />
       <div className="mb-5">
-        <input type="checkbox" name="" id="check" required />
+        <input id="check" type="checkbox" {...register("check")} />
         <label htmlFor="check" className="ml-2">
           Я даю согласие на обработку своих персональных данных
         </label>
@@ -126,12 +123,14 @@ function EndForm({
         <button
           className={`${buttonStyle} hover:bg-sub-color`}
           onClick={prevSlide}
+          type="button"
         >
           Назад
         </button>
         <button
           className={`${buttonStyle} hover:bg-red-600 mx-1`}
           onClick={reset}
+          type="reset"
         >
           Закрыть
         </button>

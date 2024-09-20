@@ -9,21 +9,22 @@ export const metadata: Metadata = {
     width: "device-width",
     initialScale: 1,
     maximumScale: 1,
-  }
+  },
 };
 
 export default function RootLayout({
-  children, 
+  children,
 }: {
   children: React.ReactNode;
 }) {
   return (
     <html className="overflow-x-hidden w-screen" lang="ru">
+      <head>
+        <meta name="yandex-verification" content="2c2596b37195afdb" />
+      </head>
       <body>
         <StrictMode>
-        <Providers>
-        {children}
-        </Providers>
+          <Providers>{children}</Providers>
         </StrictMode>
       </body>
     </html>

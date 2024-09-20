@@ -1,9 +1,10 @@
+import { UserFormData } from "@/components/Modals/FormTest/EndTest/EndTest.types";
 import { questionsForEmail } from "@/components/Modals/TestModal.data";
 import { sendEmailSelf } from "@/service/nodemailer";
 import { NextResponse } from "next/server";
 
 export async function POST(req: Request) {
-  const body = await req.json();
+  const body: UserFormData = await req.json();
   const answers = body.answers;
 
   const mainMailBody = questionsForEmail
@@ -27,19 +28,26 @@ export async function POST(req: Request) {
         <td>${body.INN}</td>
     </tr>
     <tr>
+        <td>Номер телефона</td>
+        <td>${body.phoneNumber}</td>
+    </tr>
+    <tr>
         <td>Электронная почта</td>
         <td>${body.email}</td>
     </tr>
     ${mainMailBody}
 </table>
 `;
+  console.log("create done");
   try {
     await sendEmailSelf({
       subject: "Заявка из теста на сайте",
       html: mailBody,
     });
+    console.log("send done");
     return NextResponse.json({});
   } catch (error) {
+    console.log(error);
     return NextResponse.error();
   }
 }
