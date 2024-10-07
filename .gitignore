@@ -43,3 +43,5 @@ tsome.ts
 /public/reports
 /.vscode
 PASSWORDS.md
+
+rebuild.bash
