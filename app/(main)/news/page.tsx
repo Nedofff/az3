@@ -11,6 +11,7 @@ import SearchBar from "@/components/NewsPage/SearchBar/SearchBar";
 import NewsCell from "@/components/NewsPage/NewsCell/NewsCell";
 import styles from "./page.module.css";
 import NewsLoading from "@/components/NewsPage/NewsLoading/NewsLoading";
+import { Metadata } from "next";
 
 interface IOneNews {
   id: string;
@@ -19,6 +20,12 @@ interface IOneNews {
   width: number;
   height: number;
 }
+
+export const metadata: Metadata = {
+  title: 'Новости "Аземша и партнеры"',
+  description:
+    "Актуальные новости об аудите организаций и изменения в законодательстве. Следите за последними обновлениями и правовыми изменениями в сфере аудита",
+};
 
 export default function NewsPage() {
   const [dataNews, setDataNews] = useState<IOneNews[]>([]);

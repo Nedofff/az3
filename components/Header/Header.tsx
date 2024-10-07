@@ -22,27 +22,28 @@ export default function Header() {
     { href: "#Feedback", label: "Отзывы", isScrolling: true },
     { href: "/info", label: "Раскрытие информации", isScrollsing: false },
     { href: "#ContactFormBlock", label: "Контакты", isScrolling: true },
-  ]
+  ];
 
   const path = usePathname();
   useEffect(() => {
     const linksInOrderPages = [
-      '#Services',
-      '#AboutUs',
-      '#News',
-      '#Feedback',
-      '#ContactFormBlock',
-    ]
+      "#Services",
+      "#AboutUs",
+      "#News",
+      "#Feedback",
+      "#ContactFormBlock",
+    ];
 
     const stylizeActiveAnchorLink = () => {
       let activeLink: string = "";
 
       for (const link of linksInOrderPages) {
-        const linkElement = document.querySelector(link)
-        if ( linkElement &&
+        const linkElement = document.querySelector(link);
+        if (
+          linkElement &&
           linkElement.getBoundingClientRect().top -
             document.documentElement.clientHeight / 4 <=
-          0
+            0
         ) {
           activeLink = link;
         } else {
@@ -56,11 +57,11 @@ export default function Header() {
       500
     );
     if (path === "/") {
-      setActiveLink('');
+      setActiveLink("");
       document.addEventListener("scroll", throtlingStylizeActiveAnchorLink);
     } else {
-      if (path === '/news') {
-      setActiveLink('#News');
+      if (path === "/news") {
+        setActiveLink("#News");
       } else {
         setActiveLink(path);
       }
@@ -124,42 +125,51 @@ export default function Header() {
             />
           </Link>
           <div className="text-white flex justify-between ">
-                { Boolean(path === "/") ? (
-                    links.map(link => {
-                      if (link.isScrolling) {
-                        return (
-                          <ScrollLink
-                            className={`${Boolean(activeLink===link.href) ? 'text-sub-accent-color':''} ${styleLinkDesktop}`}
-                            key={link.label}
-                            href={link.href}
-                          >
-                            {link.label}
-                          </ScrollLink>
-                        )
-                      } else {
-                        return (
-                          <Link
-                            href={link.href}
-                            className={`${Boolean(activeLink===link.href) ? 'text-sub-accent-color':''} ${styleLinkDesktop}`}
-                            key={link.label}
-                           >
-                            {link.label}
-                           </Link>
-                        )
-                      }
-                    })
-                  ) : (
-                    links.map(link => (
+            {Boolean(path === "/")
+              ? links.map((link) => {
+                  if (link.isScrolling) {
+                    return (
+                      <ScrollLink
+                        className={`${
+                          Boolean(activeLink === link.href)
+                            ? "text-sub-accent-color"
+                            : ""
+                        } ${styleLinkDesktop}`}
+                        key={link.label}
+                        href={link.href}
+                      >
+                        {link.label}
+                      </ScrollLink>
+                    );
+                  } else {
+                    return (
                       <Link
-                            href={link.isScrolling ? `/${link.href}` : `${link.href}`}
-                            className={`${Boolean(activeLink===link.href) ? 'text-sub-accent-color':''} ${styleLinkDesktop}`}
-                            key={link.label}
-                           >
-                            {link.label}
-                           </Link>
-                    ))
-                  )
-                }
+                        href={link.href}
+                        className={`${
+                          Boolean(activeLink === link.href)
+                            ? "text-sub-accent-color"
+                            : ""
+                        } ${styleLinkDesktop}`}
+                        key={link.label}
+                      >
+                        {link.label}
+                      </Link>
+                    );
+                  }
+                })
+              : links.map((link) => (
+                  <Link
+                    href={link.isScrolling ? `/${link.href}` : `${link.href}`}
+                    className={`${
+                      Boolean(activeLink === link.href)
+                        ? "text-sub-accent-color"
+                        : ""
+                    } ${styleLinkDesktop}`}
+                    key={link.label}
+                  >
+                    {link.label}
+                  </Link>
+                ))}
           </div>
           <address className="flex items-center mr-8 not-italic">
             <a
@@ -168,7 +178,7 @@ export default function Header() {
             >
               +7 (391) 214-93-60
             </a>
-            <Messengers className="ml-1"/>
+            <Messengers className="ml-1" />
           </address>
         </nav>
       </div>
@@ -202,47 +212,54 @@ export default function Header() {
           className={`${styles.content} flex z-30 justify-between`}
         >
           <nav className="text-white w-[40%] flex flex-col">
-                { Boolean(path === "/") ? (
-                    links.map(link => {
-                      if (link.isScrolling) {
-                        return (
-                          <ScrollLink
-                            className={`${Boolean(activeLink===link.href) ? 'text-sub-accent-color':''} ${styleLinkMobile}`}
-                            key={link.label}
-                      onClick={clickOnBurgerHandler}
-
-                            href={link.href}
-                          >
-                            {link.label}
-                          </ScrollLink>
-                        )
-                      } else {
-                        return (
-                          <Link
-                            href={link.href}
-                            className={`${Boolean(activeLink===link.href) ? 'text-sub-accent-color':''} ${styleLinkMobile}`}
-                            key={link.label}
-                      onClick={clickOnBurgerHandler}
-
-                           >
-                            {link.label}
-                           </Link>
-                        )
-                      }
-                    })
-                  ) : (
-                    links.map(link => (
+            {Boolean(path === "/")
+              ? links.map((link) => {
+                  if (link.isScrolling) {
+                    return (
+                      <ScrollLink
+                        className={`${
+                          Boolean(activeLink === link.href)
+                            ? "text-sub-accent-color"
+                            : ""
+                        } ${styleLinkMobile}`}
+                        key={link.label}
+                        onClick={clickOnBurgerHandler}
+                        href={link.href}
+                      >
+                        {link.label}
+                      </ScrollLink>
+                    );
+                  } else {
+                    return (
                       <Link
-                            href={link.isScrolling ? `/${link.href}` : `${link.href}`}
-                            className={`${Boolean(activeLink===link.href) ? 'text-sub-accent-color':''} ${styleLinkMobile}`}
-                            key={link.label}
-                      onClick={clickOnBurgerHandler}
-                           >
-                            {link.label}
-                           </Link>
-                    ))
-                  )
-                }
+                        href={link.href}
+                        className={`${
+                          Boolean(activeLink === link.href)
+                            ? "text-sub-accent-color"
+                            : ""
+                        } ${styleLinkMobile}`}
+                        key={link.label}
+                        onClick={clickOnBurgerHandler}
+                      >
+                        {link.label}
+                      </Link>
+                    );
+                  }
+                })
+              : links.map((link) => (
+                  <Link
+                    href={link.isScrolling ? `/${link.href}` : `${link.href}`}
+                    className={`${
+                      Boolean(activeLink === link.href)
+                        ? "text-sub-accent-color"
+                        : ""
+                    } ${styleLinkMobile}`}
+                    key={link.label}
+                    onClick={clickOnBurgerHandler}
+                  >
+                    {link.label}
+                  </Link>
+                ))}
           </nav>
           <address className="flex flex-col items-end">
             <a
@@ -258,5 +275,3 @@ export default function Header() {
     </header>
   );
 }
-
-

@@ -1,10 +1,17 @@
 import React from "react";
-import {FaHandshake} from "react-icons/fa";
-import {GiLightBulb} from "react-icons/gi";
-import {SlNotebook} from "react-icons/sl";
+import { FaHandshake } from "react-icons/fa";
+import { GiLightBulb } from "react-icons/gi";
+import { SlNotebook } from "react-icons/sl";
 import styles from "./tax.module.css";
 import Dropdown from "@/components/Dropdown/Dropdown";
 import ContactBlock from "@/components/ContactBlock/ContactBlock";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Налоговый консалтинг",
+  description:
+    "Налоговый консалтинг: профессиональные услуги по оптимизации налогообложения, снижению налоговых рисков и обеспечению соответствия законодательству. Узнайте, как эффективно управлять налоговыми обязательствами.",
+};
 
 export default function TaxPage() {
   const heading2Style = "text-xl text-sub-color font-semibold mb-5";
@@ -49,8 +56,10 @@ export default function TaxPage() {
         <h2 className={`${heading2Style} text-center`}>Налоговые споры</h2>
         <div className="hidden lg:grid grid-cols-3 grid-rows-1 w-2/3">
           <div className="px-5">
-            <h3 className="text-md text-sub-color font-semibold mb-5">Сопровождение налоговых проверок</h3>
-          <ul className="space-y-2  list-disc">
+            <h3 className="text-md text-sub-color font-semibold mb-5">
+              Сопровождение налоговых проверок
+            </h3>
+            <ul className="space-y-2  list-disc">
               <li>Предварительный налоговый аудит</li>
               <li>
                 Проверка документов, подготовленных для представления по
@@ -65,8 +74,10 @@ export default function TaxPage() {
             </ul>
           </div>
           <div className="px-5">
-            <h3 className="text-md text-sub-color font-semibold mb-5">Досудебная защита</h3>
-          <ul className="space-y-2 list-disc">
+            <h3 className="text-md text-sub-color font-semibold mb-5">
+              Досудебная защита
+            </h3>
+            <ul className="space-y-2 list-disc">
               <li>Анализ акта налоговой проверки</li>
               <li>Подготовка возражений на акт налоговой проверки</li>
               <li>
@@ -85,8 +96,10 @@ export default function TaxPage() {
             </ul>
           </div>
           <div className="px-5">
-          <h3 className="text-md text-sub-color font-semibold mb-5">Судебное представительство</h3>
-          <ul className="space-y-2 list-disc">
+            <h3 className="text-md text-sub-color font-semibold mb-5">
+              Судебное представительство
+            </h3>
+            <ul className="space-y-2 list-disc">
               <li>Разработка стратегии ведения дела</li>
               <li>Сбор необходимых доказательств</li>
               <li>Подготовка процессуальных документов</li>
@@ -98,7 +111,11 @@ export default function TaxPage() {
           </div>
         </div>
         <div className="sm:w-2/3 md:w-4/5 lg:hidden">
-          <Dropdown needHeading className="" label="Сопровождение налоговых проверок">
+          <Dropdown
+            needHeading
+            className=""
+            label="Сопровождение налоговых проверок"
+          >
             <ul className="space-y-1 px-3 list-disc pl-6">
               <li>Предварительный налоговый аудит</li>
               <li>
@@ -148,26 +165,31 @@ export default function TaxPage() {
         </div>
       </section>
       <section className="separator-min mb-24 sm:w-4/5 md:w-full lg:w-3/4">
-        <h2  className={`${heading2Style} text-center md:text-black md:mb-10`}>Помощь в выстраивании конструктивного диалога с налоговыми органами</h2>
+        <h2 className={`${heading2Style} text-center md:text-black md:mb-10`}>
+          Помощь в выстраивании конструктивного диалога с налоговыми органами
+        </h2>
         <div className="space-y-4 md:flex md:space-y-0 md:space-x-4">
-        <div className="flex items-center md:flex-col md:text-center md:w-1/3">
-          <div>
-          <FaHandshake className='text-[48px] text-sub-color p-2 mr-4'/></div>
-          <p>Изучение требований, запросов налоговых органов</p>
-        </div>
-        <div className="flex items-center md:flex-col md:text-center md:w-1/3">
-          <div>
-          <GiLightBulb className='text-[48px] text-sub-color p-2 mr-4'/></div>
-          <p>Подготовка аргументированных ответов</p>
-        </div>
-        <div className="flex items-center md:flex-col md:text-center md:w-1/3">
-          <div>
-          <SlNotebook className='text-[48px] text-sub-color p-2 mr-4'/></div>
-          <p>Зачет / возврат налогов</p>
-        </div>
+          <div className="flex items-center md:flex-col md:text-center md:w-1/3">
+            <div>
+              <FaHandshake className="text-[48px] text-sub-color p-2 mr-4" />
+            </div>
+            <p>Изучение требований, запросов налоговых органов</p>
+          </div>
+          <div className="flex items-center md:flex-col md:text-center md:w-1/3">
+            <div>
+              <GiLightBulb className="text-[48px] text-sub-color p-2 mr-4" />
+            </div>
+            <p>Подготовка аргументированных ответов</p>
+          </div>
+          <div className="flex items-center md:flex-col md:text-center md:w-1/3">
+            <div>
+              <SlNotebook className="text-[48px] text-sub-color p-2 mr-4" />
+            </div>
+            <p>Зачет / возврат налогов</p>
+          </div>
         </div>
       </section>
-      <ContactBlock/>
+      <ContactBlock />
     </main>
   );
 }

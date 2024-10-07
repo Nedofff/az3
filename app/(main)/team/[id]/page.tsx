@@ -23,6 +23,7 @@ export async function generateMetadata({
 
   return {
     title: person?.fullName,
+    description: person.text.slice(0, 3).join(" "),
   };
 }
 

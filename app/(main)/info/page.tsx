@@ -6,6 +6,13 @@ import styles from "./InfoPage.module.css";
 import AuditeesAndRevenue from "@/components/InfoPage/AuditeesAndRevenue/AuditeesAndRevenue";
 import ReportsBlock from "@/components/InfoPage/ReportsBlock/ReportsBlock";
 import FetchBlockInfo from "@/components/InfoPage/FetchBlock/FetchBlock";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: 'Раскрытие информации "Аземша и партнеры"',
+  description:
+    "Подробная информация об организации: раскрытие данных и актуальные отчеты.",
+};
 
 export default async function InfoPage() {
   const imagesData = [

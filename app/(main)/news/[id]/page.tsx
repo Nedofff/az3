@@ -58,9 +58,10 @@ export async function generateMetadata({ params }: IProps): Promise<Metadata> {
       title: "Страница не найдена",
     };
   }
-
+  const text = `Новости "Аземша и партнеры" - ${data.title}`;
   return {
-    title: data.title,
+    title: text,
+    description: text,
   };
 }
 

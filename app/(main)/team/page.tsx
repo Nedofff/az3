@@ -5,21 +5,29 @@ import dynamic from "next/dynamic";
 import TeamLoading from "@/components/TeamPage/TeamLoading/TeamLoading";
 import { Metadata } from "next";
 
-const TeamSliderDynamic = dynamic(() => import('@/components/TeamPage/TeamSlider/TeamSlider'), {
-  ssr: false, 
-  loading: () => <div className="flex justify-center items-center h-[474px]"><TeamLoading/></div>,
-})
+const TeamSliderDynamic = dynamic(
+  () => import("@/components/TeamPage/TeamSlider/TeamSlider"),
+  {
+    ssr: false,
+    loading: () => (
+      <div className="flex justify-center items-center h-[474px]">
+        <TeamLoading />
+      </div>
+    ),
+  }
+);
 
 export const metadata: Metadata = {
   title: 'Команда "Аземша и партнеры"',
+  description:
+    "Наша команда: познакомьтесь с профессионалами, которые обеспечивают успешную работу компании. Опытные эксперты в области аудита, консалтинга и финансов.",
 };
-
 
 export default function TeamPage() {
   return (
     <main className="separator pb-14 bg-main-color">
       <h1 className="heading">Наша команда</h1>
-      <TeamSliderDynamic teamData={teamData}/>
+      <TeamSliderDynamic teamData={teamData} />
       <div className="w-[90vw] mx-auto mt-12">
         <h2 className="font-bold text-xl mb-5">
           Также нашими сотрудниками являются:
